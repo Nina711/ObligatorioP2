@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Dominio.Enumeraciones
 {
-    class Equipaje
+    public enum Equipaje
     {
+        light = 1,
+        cabina = 2,
+        bodega = 3,
     }
 }
