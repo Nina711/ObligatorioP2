@@ -11,7 +11,7 @@ namespace Dominio.Entidades_no_abst
     public class Pasaje
     {
         private int _id;
-        private int _ultimoId;
+        private int _ultimoId = 0;
         private Vuelo _vuelo;
         private DateTime _fecha;
         private Cliente _pasajero;
@@ -53,7 +53,27 @@ namespace Dominio.Entidades_no_abst
         {
             get { return this.precioPasaje; }
         }
+        
+        public Pasaje(Vuelo vuelo, DateTime fecha, Cliente pasajero, Equipaje equipaje, decimal precioPasaje)
+        {
+            this._ultimoId++;
+            this._id = _ultimoId;
+            this._vuelo = vuelo;
+            this._fecha = fecha;
+            this._pasajero = pasajero;
+            this._equipaje = equipaje;
+            this._precioPasaje = precioPasaje;
 
+        }
+
+        public void ValidarFecha()
+        {
+
+        }
+
+        public decimal CalcularPrecioPasaje()
+        {
+        }
 
     }
 }

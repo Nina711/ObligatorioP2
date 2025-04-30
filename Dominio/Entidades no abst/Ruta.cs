@@ -39,5 +39,14 @@ namespace Dominio.Entidades_no_abst
             get { return this._distancia;}
         }
 
+        public Ruta (Aeropuerto aeropSalida, Aeropuerto aeropLlegada, decimal distancia)
+        {
+            this._ultimoId++;
+            this._id = _ultimoId;
+            this._aeropSalida = aeropSalida;
+            this._aeropLlegada = aeropLlegada;
+            this._distancia = distancia;
+        }
+
     }
 }

@@ -41,5 +41,10 @@
             _alcance = alcance;
             _costoOperacionAvion = costoOperacionAvion;
         }
+
+        public void ValidarAlcance()
+        {
+
+        }
     }
 }

@@ -33,5 +33,13 @@ namespace Dominio.Entidades_no_abst
         {
             get { return this._frecuencia; }
         }
+
+        public Vuelo (string numVuelo, Ruta ruta, Avion avion, Frecuencia frecuencia)
+        {
+            this._numVuelo = numVuelo;
+            this._ruta = ruta;
+            this._avion = avion;
+            this._frecuencia = frecuencia;
+        }
     }
 }
