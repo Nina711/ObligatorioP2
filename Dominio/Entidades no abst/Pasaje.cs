@@ -53,7 +53,7 @@ namespace Dominio.Entidades_no_abst
         {
             get { return this.precioPasaje; }
         }
-        
+
         public Pasaje(Vuelo vuelo, DateTime fecha, Cliente pasajero, Equipaje equipaje, decimal precioPasaje)
         {
             this._ultimoId++;
@@ -71,9 +71,31 @@ namespace Dominio.Entidades_no_abst
 
         }
 
+        // Creo que deberia hacerlo sistema el todo
         public decimal CalcularPrecioPasaje()
         {
         }
 
+        public decimal CalcularCostoEquipaje()
+        {
+            decimal costoBase = _vuelo.CostoAsiento;
+            decimal costoEquipaje = 0;
+
+            if (_pasajero is Premium && _equipaje == Equipaje.bodega)
+            {
+                costoEquipaje = costoBase + (costoBase * 0.05);
+            }
+            else if (_pasajero is Ocasional)
+            {
+                if(_equipaje == Equipaje.cabina) { 
+                costoEquipaje = costoBase + (costoBase * 0.10);
+                } else if (_equipaje == Equipaje.bodega)
+                {
+                    costoEquipaje = costoBase + (costoBase * 0.20);
+                }
+            }
+
+            return costoEquipaje;
+        }
     }
 }

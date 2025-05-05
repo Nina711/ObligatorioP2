@@ -48,5 +48,12 @@ namespace Dominio.Entidades_no_abst
             this._distancia = distancia;
         }
 
+        public decimal CalcularCostoOperacionAeropuertos()
+        {
+            decimal costoRuta = _aeropLlegada.CostoOperacionAeropuerto + _aeropSalida.CostoOperacionAeropuerto;
+
+            return costoRuta;
+        }
+
     }
 }

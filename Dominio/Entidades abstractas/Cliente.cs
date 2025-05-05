@@ -38,6 +38,8 @@ namespace Dominio.Entidades_no_abst
             _nombre = nombre;
             _nacionalidad = nacionalidad;
         }
+
+
     }
 
 }

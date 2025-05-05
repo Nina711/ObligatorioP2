@@ -42,9 +42,14 @@
             _costoOperacionAvion = costoOperacionAvion;
         }
 
-        public void ValidarAlcance()
-        {
 
+        // Valida si el alcance del avion puede cubrir una ruta. Entiendo que se usaría para crear un vuelo 
+        public void ValidarAlcance(int kmDistancia)
+        {
+            if (kmDistancia > _alcance)
+            {
+                throw new Exception($"El avión seleccionado no puede cubrir la distancia de esta ruta.")
+            }
         }
     }
 }
