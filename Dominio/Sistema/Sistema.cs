@@ -18,6 +18,7 @@ namespace Dominio
         private List<Vuelo> _vuelos = new List<Vuelo>();
         private List<Pasaje> _pasajes = new List<Pasaje>();
 
+        //no va a servir esto pero lo dejare por el cariño <3
         public decimal CalcularPrecioPasaje (Pasaje pasaje)
         {
             //obtengo el vuelo del pasaje
