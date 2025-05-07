@@ -11,12 +11,25 @@ namespace Dominio
 
         private bool _esElegible; // Le cambie el nombre para que sea más claro - yo me habia confundido con Premium
 
-        public bool EsElegible
+        public string EsElegible
         {
-            get { return this._esElegible; }
+            get
+            {
+                string mensaje = "";
+
+                if (_esElegible)
+                {
+                    mensaje = "Elegible";
+                }
+                else
+                {
+                    mensaje = "No elegible";
+                }
+                    return mensaje;
+            }
         }
 
-        public Ocasional(string correo, string contrasenia, string documento, string nombre, string nacionalidad, bool esElegible): base(correo, contrasenia, documento, nombre, nacionalidad)
+        public Ocasional(string correo, string contrasenia, string documento, string nombre, string nacionalidad, bool esElegible) : base(correo, contrasenia, documento, nombre, nacionalidad)
         {
             _esElegible = EsElegibleRandomizado(); 
         }
@@ -25,6 +38,12 @@ namespace Dominio
         {
             Random r = new Random();   
             return r.Next(0,2) == 1;
+        }
+
+        public override string ToString()
+        {
+            string mensaje = base.ToString() + $"{EsElegible}\n";
+            return mensaje;
         }
     }
 }

@@ -70,9 +70,13 @@ namespace Dominio.Entidades_no_abst
             ValidarNacionalidad();
         }
 
-        
+        // ToString
 
-
+        public override string ToString()
+        {
+            string mensaje = $"{_nombre}, {base.ToString()}, {_nacionalidad}";
+            return mensaje;
+        }
 
     }
 

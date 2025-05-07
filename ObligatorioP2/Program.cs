@@ -1,9 +1,13 @@
-﻿namespace ObligatorioP2
+﻿using Dominio;
+
+namespace ObligatorioP2
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            Sistema s = new Sistema();
+
             try
             {
                 int opcion;
@@ -17,7 +21,7 @@
                     switch (opcion)
                     {
                         case 1:
-                            // Llamar método que obtiene el listado de los cliente y los muestra
+                            Console.WriteLine(s.MostrarListadoClientes()); 
                             break;
                         case 2:
                             // Llamar método que pide que se ingrese un código de aeropuerto y usará método que filtra vuelos

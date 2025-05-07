@@ -24,6 +24,13 @@ namespace Dominio.Entidades_no_abst
             _puntos = puntos;
             
         }
+
+        // ToString
+
+        public override string ToString()
+        {
+            return base.ToString() + $"Cantidad de puntos: {_puntos}\n";
+        }
     }
 }
 

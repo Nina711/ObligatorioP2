@@ -35,5 +35,17 @@ namespace Dominio
             return costoPasaje;
         }*/
 
+        public string MostrarListadoClientes()
+        {
+            string listado = "";
+
+            foreach (Cliente c in _clientes)
+            {
+                listado += c.ToString();
+            }
+
+            return listado;
+        }
+
     }
 }

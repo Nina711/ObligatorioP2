@@ -50,5 +50,11 @@ namespace Dominio.Entidades_abstractas
             ValidarContrasenia();
             ValidarCorreo();
         }
+
+        public virtual string ToString()
+        {
+            string mensaje = $"{_contrasenia}";
+            return mensaje;
+        }
     }
 }
