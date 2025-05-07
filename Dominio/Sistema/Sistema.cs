@@ -19,7 +19,7 @@ namespace Dominio
         private List<Pasaje> _pasajes = new List<Pasaje>();
 
         //no va a servir esto pero lo dejare por el cariño <3
-        public decimal CalcularPrecioPasaje (Pasaje pasaje)
+        /*public decimal CalcularPrecioPasaje (Pasaje pasaje)
         {
             //obtengo el vuelo del pasaje
             Vuelo vueloDelPasaje = Pasaje.Vuelo;
@@ -33,7 +33,7 @@ namespace Dominio
             costoPasaje += Pasaje.CalcularCostoEquipaje();            
 
             return costoPasaje;
-        }
+        }*/
 
     }
 }

@@ -26,5 +26,29 @@ namespace Dominio.Entidades_abstractas
             _correo = correo;
             _contrasenia = contrasenia;
         }
+
+        // ---- VALIDACIONES
+
+        private void ValidarCorreo()
+        {
+            if (string.IsNullOrWhiteSpace(_correo))
+            {
+                throw new Exception("El campo correo electrónico no puede estar vacío.");
+            }
+        }
+
+        private void ValidarContrasenia()
+        {
+            if (string.IsNullOrWhiteSpace(_contrasenia))
+            {
+                throw new Exception("La contraseña no puede ser vacía");
+            }
+        }
+
+        public virtual void ValidarUsuario()
+        {
+            ValidarContrasenia();
+            ValidarCorreo();
+        }
     }
 }

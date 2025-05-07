@@ -8,9 +8,19 @@ namespace Dominio
 {
     internal class Ocasional
     {
-        public Ocasional(string correo, string contrasenia, string documento, string nombre, string nacionalidad): base(correo, contrasenia, documento, nombre, nacionalidad)
-        {
 
+        // Le cambie el nombre para que sea más claro - yo me habia confundido con Premium
+
+        private bool _esElegible; // seguramente aca se iguale en realidad al metodo que ve si es elegible o no... veremos o.O
+
+        public bool EsElegible
+        {
+            get { return this._esElegible; }
+        }
+
+        public Ocasional(string correo, string contrasenia, string documento, string nombre, string nacionalidad, bool esElegible): base(correo, contrasenia, documento, nombre, nacionalidad)
+        {
+            _esElegible = esElegible; 
         }
     }
 }

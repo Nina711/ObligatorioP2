@@ -9,7 +9,6 @@ namespace Dominio.Entidades_no_abst
     public class Premium : Cliente
     {
         private int _puntos;
-        private bool _programaVentajas;
 
         public int Puntos
         {
@@ -19,17 +18,26 @@ namespace Dominio.Entidades_no_abst
             }
         }
 
-        public bool ProgramaVentajas
-        {
-            get { return this._programaVentajas; }
-        }
-
         
-        public Premium(string correo, string contrasenia, string documento, string nombre, string nacionalidad, int puntos, bool programaVentajas) : base(correo, contrasenia, documento, nombre, nacionalidad)
+        public Premium(string correo, string contrasenia, string documento, string nombre, string nacionalidad, int puntos) : base(correo, contrasenia, documento, nombre, nacionalidad)
         {
             _puntos = puntos;
-            _programaVentajas = programaVentajas; //seguramente aca vaya el metodo que ve si es elegible o no... veremos o.O
+            
+        }
+
+        private void ValidarPuntos()
+        {
+            if(_puntos < 0)
+            {
+                throw new Exception("Los puntos no pueden ser un número negativo");
+            }
+        }
+
+        public override void ValidarUsuario()
+        {
+            base.ValidarUsuario();
+            ValidarPuntos();
         }
     }
-    }
+}
 

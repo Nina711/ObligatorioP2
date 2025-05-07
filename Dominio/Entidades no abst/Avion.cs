@@ -48,7 +48,7 @@
         {
             if (kmDistancia > _alcance)
             {
-                throw new Exception($"El avión seleccionado no puede cubrir la distancia de esta ruta.")
+                throw new Exception("El avión seleccionado no puede cubrir la distancia de esta ruta.")
             }
         }
     }

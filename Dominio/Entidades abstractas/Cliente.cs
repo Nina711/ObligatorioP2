@@ -39,6 +39,40 @@ namespace Dominio.Entidades_no_abst
             _nacionalidad = nacionalidad;
         }
 
+        // --- VALIDACIONES PROPIAS DE CLIENTES
+        private void ValidarDocumento()
+        {
+            if (string.IsNullOrWhiteSpace(_documento) {
+                throw new Exception("El documento no puede estar vacío.");
+            }
+        }
+
+        private void ValidarNombre()
+        {
+            if (string.IsNullOrWhiteSpace(_nombre) {
+                throw new Exception("El nombre no puede estar vacío.");
+            }
+        }
+
+        private void ValidarNacionalidad()
+        {
+            if (string.IsNullOrWhiteSpace(_nacionalidad)) {
+                throw new Exception("La nacionalidad no puede ser vacía");
+            }
+        }
+
+        // OVERRIDE PARA VALIDAR CON HEREDADAS
+        public override void ValidarUsuario()
+        {
+            base.ValidarUsuario();
+            ValidarNombre();
+            ValidarDocumento();
+            ValidarNacionalidad();
+        }
+
+        
+
+
 
     }
 
