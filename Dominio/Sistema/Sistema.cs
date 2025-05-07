@@ -9,7 +9,7 @@ using Dominio.Enumeraciones;
 
 namespace Dominio
 {
-    internal class Sistema
+    public class Sistema
     {
         private List<Cliente> _clientes = new List<Cliente>();
         private List<Avion> _aviones = new List<Avion>();

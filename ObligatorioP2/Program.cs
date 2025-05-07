@@ -4,10 +4,7 @@
     {
         static void Main(string[] args)
         {
-            //inicializar sistema
-            //Menu
-
-
+            
         }
     }
 }
