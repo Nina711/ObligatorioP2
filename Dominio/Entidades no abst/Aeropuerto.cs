@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Aeropuerto
+    public class Aeropuerto : IValidable
     {
         private string _codigo;
         private string _ciudad;
@@ -81,13 +81,12 @@ namespace Dominio
             }
         }   
 
-        public void ValidarAeropuerto()
+        public void Validar()
         {
             ValidarCodigo();
             ValidarCiudad();
             ValidarCostoOperacionAeropuerto();
             ValidarCostoTasas();
         }
-
     }
 }

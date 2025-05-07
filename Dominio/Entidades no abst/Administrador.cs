@@ -34,9 +34,9 @@ namespace Dominio.Entidades_no_abst
             }
         }
 
-        public override void ValidarUsuario()
+        public void Validar()
         {
-            base.ValidarUsuario();
+            base.Validar();
             ValidarApodo();
         }
     }

@@ -7,7 +7,7 @@ using Dominio.Enumeraciones;
 
 namespace Dominio.Entidades_no_abst
 {
-    public class Vuelo
+    public class Vuelo : IValidable
     {
         private string _numVuelo;
         private Ruta _ruta;
@@ -69,5 +69,44 @@ namespace Dominio.Entidades_no_abst
             }
         }
 
+        public void Validar()
+        {
+            ValidarNumVuelo();
+            ValidarRuta();
+            ValidarAvion();
+            ValidarFrecuencia();
+        }
+
+        private void ValidarNumVuelo()
+        {
+            if (string.IsNullOrWhiteSpace(_numVuelo))
+            {
+                throw new Exception("El campo número de vuelo no puede estar vacío.");
+            }
+        }
+
+        private void ValidarRuta()
+        {
+            if (_ruta == null)
+            {
+                throw new Exception("El campo ruta no puede estar vacío.");
+            }
+        }
+
+        private void ValidarAvion()
+        {
+            if (_avion == null)
+            {
+                throw new Exception("El campo avión no puede estar vacío.");
+            }
+        }   
+
+        private void ValidarFrecuencia()
+        {
+            if (_frecuencia == null || _frecuencia.Count < 1)
+            {
+                throw new Exception("El campo frecuencia no puede estar vacío.");
+            }
+        }
     }
 }

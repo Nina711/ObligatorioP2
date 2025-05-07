@@ -9,7 +9,7 @@ using Microsoft.VisualBasic;
 
 namespace Dominio.Entidades_no_abst
 {
-    public class Pasaje
+    public class Pasaje : IValidable
     {
         private int _id;
         private int _ultimoId = 0;
@@ -69,7 +69,6 @@ namespace Dominio.Entidades_no_abst
 
         private void ValidarFecha()
         {
-            //Validar formato de fecha
 
             if (_fecha < DateTime.Today)
             {
@@ -81,7 +80,7 @@ namespace Dominio.Entidades_no_abst
 
             foreach (Frecuencia f in _vuelo.Frecuencia)
             {
-                if(((int)f) == fecha)
+                if (((int)f) == fecha)
                 {
                     esValido = true;
                     break;
@@ -92,13 +91,11 @@ namespace Dominio.Entidades_no_abst
             {
                 throw new Exception("El vuelo no opera en la fecha seleccionada.");
             }
-
-            // Habría que agregar que tambien valide si es una fecha supongo con algun tryparse
         }
 
         private void ValidarVuelo()
         {
-            
+
             if (!(_vuelo is Vuelo))
             {
                 throw new Exception("El vuelo no es correcto");
@@ -107,26 +104,41 @@ namespace Dominio.Entidades_no_abst
 
         private void ValidarPasajero()
         {
-            if (!(_pasajero is Cliente)
+            if (_pasajero != null && _pasajero is Cliente)
             {
                 throw new Exception("Los datos del pasajero no son correctos.");
             }
         }
 
-        public void ValidarPasaje()
+        // No se si esto es necesario ahora ya que no vamos a dar de alta pasaje para esta entrega
+        // Hice método aparte del validar fecha porque este necesita que se le ingrese un parámetro idk lol a ver que pensas vos
+        public bool ValidarFormatoFecha(string fecha)
+        {
+            DateTime fechaPasaje;
+            if (DateTime.TryParse(fecha, out fechaPasaje))
+            {
+                return true;
+            }
+            else
+            {
+                throw new Exception("El formato de la fecha no es correcto.");
+            }
+        }
+
+        public void Validar()
         {
             ValidarFecha();
-            ValidarPasaje();
             ValidarPasajero();
             ValidarVuelo();
         }
 
-        
+
 
         // Creo que deberia hacerlo sistema el todo
-        public decimal CalcularPrecioPasaje()
+        /*public decimal CalcularPrecioPasaje()
         {
-        }
+        }*/
+    
         /* TAMPOCO VA ESTO SADLY ---
          *
         public decimal CalcularCostoEquipaje()

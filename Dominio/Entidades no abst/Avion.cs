@@ -1,6 +1,6 @@
 ﻿namespace Dominio
 {
-    public class Avion
+    public class Avion : IValidable
     {
         private string _fabricante;
         private string _modelo;
@@ -44,7 +44,7 @@
 
         //Validaciones
 
-        public void ValidarAvion()
+        public void Validar()
         {
             ValidarFabricante();
             ValidarModelo();

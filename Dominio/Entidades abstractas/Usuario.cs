@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidades_abstractas
 {
-    public abstract class Usuario
+    public abstract class Usuario : IValidable
     {
         private string _correo;
         private string _contrasenia;
@@ -45,7 +45,7 @@ namespace Dominio.Entidades_abstractas
             }
         }
 
-        public virtual void ValidarUsuario()
+        public void Validar()
         {
             ValidarContrasenia();
             ValidarCorreo();

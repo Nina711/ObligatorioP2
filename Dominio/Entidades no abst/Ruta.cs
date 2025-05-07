@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidades_no_abst
 {
-    public class Ruta
+    public class Ruta : IValidable
     {
         private int _id;
         private int _ultimoId;
@@ -55,5 +55,35 @@ namespace Dominio.Entidades_no_abst
             return costoRuta;
         }
 
+        public void Validar()
+        {
+            ValidarAeropuertoSalida();
+            ValidarAeropuertoLlegada();
+            ValidarDistancia();
+        }
+
+        private void ValidarAeropuertoSalida()
+        {
+            if (_aeropSalida == null)
+            {
+                throw new Exception("El aeropuerto de salida no puede ser vacío.");
+            }
+        }   
+
+        private void ValidarAeropuertoLlegada()
+        {
+            if (_aeropLlegada == null)
+            {
+                throw new Exception("El aeropuerto de llegada no puede ser vacío.");
+            }
+        }   
+
+        private void ValidarDistancia()
+        {
+            if (_distancia <= 0)
+            {
+                throw new Exception("La distancia no puede ser menor o igual a cero.");
+            }
+        }
     }
 }

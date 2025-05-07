@@ -62,9 +62,9 @@ namespace Dominio.Entidades_no_abst
         }
 
         // OVERRIDE PARA VALIDAR CON HEREDADAS
-        public override void ValidarUsuario()
+        public void Validar()
         {
-            base.ValidarUsuario();
+            base.Validar();
             ValidarNombre();
             ValidarDocumento();
             ValidarNacionalidad();
