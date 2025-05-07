@@ -66,16 +66,49 @@ namespace Dominio.Entidades_no_abst
 
         }
 
-        public void ValidarFecha()
+        private void ValidarFecha()
         {
+            if (_fecha < DateTime.Today)
+            {
+                throw new Exception("La fecha del pasaje no puede ser menor al día de hoy.");
+            }
 
+            // Habría que agregar que tambien valide si es una fecha supongo con algun tryparse
         }
+
+        private void ValidarVuelo()
+        {
+            
+            if (!(_vuelo is Vuelo))
+            {
+                throw new Exception("El vuelo no es correcto");
+            }
+        }
+
+        private void ValidarPasajero()
+        {
+            if (!(_pasajero is Pasajero))
+            {
+                throw new Exception("Los datos del pasajero no son correctos.");
+            }
+        }
+
+        public void ValidarPasaje()
+        {
+            ValidarFecha();
+            ValidarPasaje();
+            ValidarPasajero();
+            ValidarVuelo();
+        }
+
+        
 
         // Creo que deberia hacerlo sistema el todo
         public decimal CalcularPrecioPasaje()
         {
         }
-
+        /* TAMPOCO VA ESTO SADLY ---
+         *
         public decimal CalcularCostoEquipaje()
         {
             decimal costoBase = _vuelo.CostoAsiento;
@@ -96,6 +129,6 @@ namespace Dominio.Entidades_no_abst
             }
 
             return costoEquipaje;
-        }
+        }*/
     }
 }

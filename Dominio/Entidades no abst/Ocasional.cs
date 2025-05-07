@@ -9,9 +9,7 @@ namespace Dominio
     internal class Ocasional
     {
 
-        // Le cambie el nombre para que sea más claro - yo me habia confundido con Premium
-
-        private bool _esElegible; // seguramente aca se iguale en realidad al metodo que ve si es elegible o no... veremos o.O
+        private bool _esElegible; // Le cambie el nombre para que sea más claro - yo me habia confundido con Premium
 
         public bool EsElegible
         {
@@ -20,7 +18,13 @@ namespace Dominio
 
         public Ocasional(string correo, string contrasenia, string documento, string nombre, string nacionalidad, bool esElegible): base(correo, contrasenia, documento, nombre, nacionalidad)
         {
-            _esElegible = esElegible; 
+            _esElegible = EsElegibleRandomizado(); 
+        }
+
+        private bool EsElegibleRandomizado()
+        {
+            Random r = new Random();   
+            return r.Next(0,2) == 1;
         }
     }
 }
