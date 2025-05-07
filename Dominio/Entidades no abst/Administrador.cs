@@ -20,5 +20,24 @@ namespace Dominio.Entidades_no_abst
         {
             this._apodo = apodo;
         }
+
+        // Validaciones
+
+        private void ValidarApodo()
+        {
+            if (string.IsNullOrWhiteSpace(_apodo))
+            {
+                throw new Exception("El campo apodo no puede estar vacío.");
+            }
+            {
+                throw new Exception("Debe ingresar un apodo");
+            }
+        }
+
+        public override void ValidarUsuario()
+        {
+            base.ValidarUsuario();
+            ValidarApodo();
+        }
     }
 }

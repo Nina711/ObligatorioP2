@@ -41,5 +41,53 @@ namespace Dominio
             _costoOperacionAeropuerto = costoOperacionAeropuerto;
             _costoTasas = costoTasas;
         }
+
+        // Validaciones
+
+        private void ValidarCodigo()
+        {
+            if (string.IsNullOrWhiteSpace(_codigo))
+            {
+                throw new Exception("El código del aeropuerto no puede estar vacío");
+            }
+
+            if (_codigo.Length !=3)
+            {
+                throw new Exception("El código del aeropuerto debe tener exactamente 3 caracteres");
+            }
+        }
+
+        private void ValidarCiudad()
+        {
+            if (string.IsNullOrWhiteSpace(_ciudad))
+            {
+                throw new Exception ("La ciudad del aeropuerto no puede estar vacía");
+            }
+        }
+
+        private void ValidarCostoOperacionAeropuerto()
+        {
+            if (_costoOperacionAeropuerto < 0)
+            {
+                throw new Exception("El costo de operación del aeropuerto no puede ser negativo");
+            }
+        }   
+
+        private void ValidarCostoTasas()
+        {
+            if (_costoTasas < 0)
+            {
+                throw new Exception("El costo de tasas del aeropuerto no puede ser negativo");
+            }
+        }   
+
+        public void ValidarAeropuerto()
+        {
+            ValidarCodigo();
+            ValidarCiudad();
+            ValidarCostoOperacionAeropuerto();
+            ValidarCostoTasas();
+        }
+
     }
 }

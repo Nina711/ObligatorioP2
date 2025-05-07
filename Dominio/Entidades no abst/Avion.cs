@@ -42,14 +42,55 @@
             _costoOperacionAvion = costoOperacionAvion;
         }
 
+        //Validaciones
 
-        // Valida si el alcance del avion puede cubrir una ruta. Entiendo que se usaría para crear un vuelo 
-        public void ValidarAlcance(int kmDistancia)
+        public void ValidarAvion()
         {
-            if (kmDistancia > _alcance)
-            {
-                throw new Exception("El avión seleccionado no puede cubrir la distancia de esta ruta.")
-            }
+            ValidarFabricante();
+            ValidarModelo();
+            ValidarCantAsientos();
+            ValidarAlcance();
+            ValidarCostoOperacionAvion();
         }
+
+        private void ValidarFabricante()
+        {
+            if(string.IsNullOrWhiteSpace(_fabricante))
+            {
+                throw new Exception("El campo fabricante no puede estar vacío.");
+            }   
+        }
+
+        private void ValidarModelo()
+        {
+            if (string.IsNullOrWhiteSpace(_modelo))
+            {
+                throw new Exception("El campo modelo no puede estar vacío.");
+            }
+        }   
+
+        private void ValidarCantAsientos()
+        {
+            if (_cantAsientos <= 0)
+            {
+                throw new Exception("El campo cantidad de asientos no puede ser menor o igual a cero.");
+            }
+        }   
+
+        private void ValidarAlcance()
+        {
+            if (_alcance <= 0)
+            {
+                throw new Exception("El campo alcance no puede ser menor o igual a cero.");
+            }
+        }   
+
+        private void ValidarCostoOperacionAvion()
+        {
+            if (_costoOperacionAvion <= 0)
+            {
+                throw new Exception("El campo costo de operación no puede ser menor o igual a cero.");
+            }
+        }   
     }
 }

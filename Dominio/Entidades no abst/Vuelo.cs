@@ -12,7 +12,7 @@ namespace Dominio.Entidades_no_abst
         private string _numVuelo;
         private Ruta _ruta;
         private Avion _avion;
-        private Frecuencia _frecuencia;
+        private List<Frecuencia> _frecuencia;
         // Agregué el atributo que será el costo base, seria calculado:
         private decimal _costoAsiento;
 
@@ -31,7 +31,7 @@ namespace Dominio.Entidades_no_abst
             get { return this._avion; }
         }
 
-        public Frecuencia Frecuencia
+        public List<Frecuencia> Frecuencia
         {
             get { return this._frecuencia; }
         }
@@ -41,7 +41,7 @@ namespace Dominio.Entidades_no_abst
             get { return this._costoAsiento; }
         }
 
-        public Vuelo (string numVuelo, Ruta ruta, Avion avion, Frecuencia frecuencia)
+        public Vuelo (string numVuelo, Ruta ruta, Avion avion, List<Frecuencia> frecuencia)
         {
             this._numVuelo = numVuelo;
             this._ruta = ruta;
@@ -59,6 +59,15 @@ namespace Dominio.Entidades_no_abst
             return costoAsiento;
         }
 
-        
+
+        // Valida si el alcance del avion puede cubrir una ruta. Entiendo que se usaría para crear un vuelo 
+        public void ValidarAlcance()
+        {
+            if (_ruta.Distancia > _avion.Alcance)
+            {
+                throw new Exception("El avión seleccionado no puede cubrir la distancia de esta ruta.");
+            }
+        }
+
     }
 }

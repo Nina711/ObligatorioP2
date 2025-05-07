@@ -8,7 +8,7 @@ namespace Dominio.Entidades_no_abst
 {
     public class Premium : Cliente
     {
-        private int _puntos;
+        private int _puntos = 0;
 
         public int Puntos
         {
@@ -23,20 +23,6 @@ namespace Dominio.Entidades_no_abst
         {
             _puntos = puntos;
             
-        }
-
-        private void ValidarPuntos()
-        {
-            if(_puntos < 0)
-            {
-                throw new Exception("Los puntos no pueden ser un número negativo");
-            }
-        }
-
-        public override void ValidarUsuario()
-        {
-            base.ValidarUsuario();
-            ValidarPuntos();
         }
     }
 }

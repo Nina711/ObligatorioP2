@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio.Enumeraciones;
+using Microsoft.VisualBasic;
 
 
 namespace Dominio.Entidades_no_abst
@@ -68,9 +69,28 @@ namespace Dominio.Entidades_no_abst
 
         private void ValidarFecha()
         {
+            //Validar formato de fecha
+
             if (_fecha < DateTime.Today)
             {
                 throw new Exception("La fecha del pasaje no puede ser menor al día de hoy.");
+            }
+
+            int fecha = (int)_fecha.DayOfWeek;
+            bool esValido = false;
+
+            foreach (Frecuencia f in _vuelo.Frecuencia)
+            {
+                if(((int)f) == fecha)
+                {
+                    esValido = true;
+                    break;
+                }
+            }
+
+            if (!esValido)
+            {
+                throw new Exception("El vuelo no opera en la fecha seleccionada.");
             }
 
             // Habría que agregar que tambien valide si es una fecha supongo con algun tryparse
@@ -87,7 +107,7 @@ namespace Dominio.Entidades_no_abst
 
         private void ValidarPasajero()
         {
-            if (!(_pasajero is Pasajero))
+            if (!(_pasajero is Cliente)
             {
                 throw new Exception("Los datos del pasajero no son correctos.");
             }
