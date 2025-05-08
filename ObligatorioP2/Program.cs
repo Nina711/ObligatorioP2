@@ -4,9 +4,9 @@ namespace ObligatorioP2
 {
     internal class Program
     {
+        static Sistema s = new Sistema();
         static void Main(string[] args)
         {
-            Sistema s = new Sistema();
             s.PrecargarDatos();
             //Habría que validar precargas supongo pero no me quedó muy claro dónde ni cómo (dudas con IValidable)
 
@@ -23,15 +23,10 @@ namespace ObligatorioP2
                     switch (opcion)
                     {
                         case 1:
-                            Console.WriteLine("Listado de Clientes:");
-                            Console.WriteLine(s.MostrarListadoClientes());
+                            ListarClientes();
                             break;
                         case 2:
-                            Console.WriteLine("Ingrese un código de Aeropuerto:");
-                            string codigo = Console.ReadLine();
-                            //habria que validar el codigo pero no se como porque en el checklist dice que si no pasa las
-                            //validaciones, no deberia llamar al metodo en sistema (donde pensaba agregar la validacion)
-                            Console.WriteLine(s.VuelosPorCodigo(codigo));
+                            ListarVuelosPorCodigo();
                             break;
                         case 3:
                             // Método que va a pedir datos de un cliente, y usará métodos para validar y agregarlo a la lista
@@ -90,6 +85,42 @@ namespace ObligatorioP2
             }
 
             return numero;
+        }
+
+        public static void ListarClientes()
+        {
+            Console.WriteLine("Listado de Clientes:");
+            Console.WriteLine(s.MostrarListadoClientes());
+        }
+
+        public static void ListarVuelosPorCodigo()
+        {
+            try
+            {
+                Console.WriteLine("Ingrese un código de Aeropuerto:");
+                string codigo = Console.ReadLine();
+                bool letra = true;
+
+                foreach(char c in codigo)
+                {
+                    if (!char.IsLetter(c))
+                    {
+                        letra = false;
+                        break;
+                    }
+                }
+
+                if (codigo == null || codigo.Length != 3 || !letra)
+                {
+                    throw new Exception("Ingrese un código válido");
+                }
+
+                Console.WriteLine(s.VuelosPorCodigo(codigo.ToUpper()));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
         }
     }
 }

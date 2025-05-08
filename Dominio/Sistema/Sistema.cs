@@ -223,6 +223,7 @@ namespace Dominio
 
             foreach(Vuelo v in _vuelos)
             {
+                //podriamos reemplazarlo por Contains, tendríamos que hacer override de Equals.
                 if (v.ObtenerAeropuertoSalida() == codigo.ToUpper() || v.ObtenerAeropuertoLlegada() == codigo.ToUpper())
                 {
                     lista += v.ToString();
