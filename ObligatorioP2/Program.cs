@@ -7,6 +7,7 @@ namespace ObligatorioP2
         static void Main(string[] args)
         {
             Sistema s = new Sistema();
+            s.PrecargarDatos();
 
             try
             {
@@ -21,10 +22,13 @@ namespace ObligatorioP2
                     switch (opcion)
                     {
                         case 1:
+                            Console.WriteLine("Listado de Clientes:\n");
                             Console.WriteLine(s.MostrarListadoClientes()); 
                             break;
                         case 2:
-                            // Llamar método que pide que se ingrese un código de aeropuerto y usará método que filtra vuelos
+                            Console.WriteLine("Ingrese un código de Aeropuerto:");
+                            string codigo = Console.ReadLine();
+                            Console.WriteLine(s.VuelosPorCodigo(codigo));
                             break;
                         case 3:
                             // Método que va a pedir datos de un cliente, y usará métodos para validar y agregarlo a la lista

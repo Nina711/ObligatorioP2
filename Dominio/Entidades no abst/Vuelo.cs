@@ -108,5 +108,34 @@ namespace Dominio.Entidades_no_abst
                 throw new Exception("El campo frecuencia no puede estar vacío.");
             }
         }
+        public string ObtenerAeropuertoSalida()
+        {
+            return _ruta.ObtenerCodigoAeropuertoSalida();
+        }
+        public string ObtenerAeropuertoLlegada()
+        {
+            return _ruta.ObtenerCodigoAeropuertoLlegada();
+        }
+
+        public string Frecuencias()
+        {
+            string frec = "";
+
+            foreach(Frecuencia f in _frecuencia)
+            {
+                f.ToString();
+                frec += $"{f} ";
+            }
+
+            return frec;
+        }
+
+        public string ToString()
+        {
+            string mensaje = $"Número de vuelo {_numVuelo}, Modelo del avión: {_avion.Modelo}, Ruta: {_ruta.ToString()}, Frecuencia: {Frecuencias()}\n";
+            return mensaje;
+        }
+
+
     }
 }

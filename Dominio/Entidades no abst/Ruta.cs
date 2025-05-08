@@ -85,5 +85,22 @@ namespace Dominio.Entidades_no_abst
                 throw new Exception("La distancia no puede ser menor o igual a cero.");
             }
         }
+
+        public string ObtenerCodigoAeropuertoSalida()
+        {
+            string codigoSalida = _aeropSalida.Codigo;
+            return codigoSalida;
+        }
+
+        public string ObtenerCodigoAeropuertoLlegada()
+        {
+            string codigoLlegada = _aeropLlegada.Codigo;
+            return codigoLlegada;
+        }
+
+        public string ToString()
+        {
+            return $"{_aeropSalida.Codigo}-{_aeropLlegada.Codigo}";
+        }
     }
 }

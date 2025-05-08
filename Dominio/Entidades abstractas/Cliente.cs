@@ -42,14 +42,16 @@ namespace Dominio.Entidades_no_abst
         // --- VALIDACIONES PROPIAS DE CLIENTES
         private void ValidarDocumento()
         {
-            if (string.IsNullOrWhiteSpace(_documento) {
+            if (string.IsNullOrWhiteSpace(_documento))
+            {
                 throw new Exception("El documento no puede estar vacío.");
             }
         }
 
         private void ValidarNombre()
         {
-            if (string.IsNullOrWhiteSpace(_nombre) {
+            if (string.IsNullOrWhiteSpace(_nombre)) 
+            {
                 throw new Exception("El nombre no puede estar vacío.");
             }
         }
@@ -74,7 +76,7 @@ namespace Dominio.Entidades_no_abst
 
         public override string ToString()
         {
-            string mensaje = $"{_nombre}, {base.ToString()}, {_nacionalidad}";
+            string mensaje = $"Nombre: {_nombre}, {base.ToString()}, Nacionalidad: {_nacionalidad},";
             return mensaje;
         }
 

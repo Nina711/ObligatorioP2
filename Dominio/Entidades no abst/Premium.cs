@@ -8,7 +8,7 @@ namespace Dominio.Entidades_no_abst
 {
     public class Premium : Cliente
     {
-        private int _puntos = 0;
+        private int _puntos;
 
         public int Puntos
         {
@@ -19,9 +19,9 @@ namespace Dominio.Entidades_no_abst
         }
 
         
-        public Premium(string correo, string contrasenia, string documento, string nombre, string nacionalidad, int puntos) : base(correo, contrasenia, documento, nombre, nacionalidad)
+        public Premium(string correo, string contrasenia, string documento, string nombre, string nacionalidad) : base(correo, contrasenia, documento, nombre, nacionalidad)
         {
-            _puntos = puntos;
+            _puntos = 0;
             
         }
 
@@ -29,7 +29,7 @@ namespace Dominio.Entidades_no_abst
 
         public override string ToString()
         {
-            return base.ToString() + $"Cantidad de puntos: {_puntos}\n";
+            return base.ToString() + $" Cantidad de puntos: {_puntos}\n";
         }
     }
 }

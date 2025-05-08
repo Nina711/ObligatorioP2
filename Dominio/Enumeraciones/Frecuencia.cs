@@ -8,12 +8,12 @@ namespace Dominio.Enumeraciones
 {
     public enum Frecuencia
     {
-        domingo = 0,
-        lunes = 1,
-        martes = 2,
-        miercoles = 3,
-        jueves = 4,
-        viernes = 5,   
-        sabado = 6
+        Domingo = 0,
+        Lunes = 1,
+        Martes = 2,
+        Miércoles = 3,
+        Jueves = 4,
+        Viernes = 5,
+        Sábado = 6
     }
 }

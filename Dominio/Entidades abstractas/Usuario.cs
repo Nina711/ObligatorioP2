@@ -53,7 +53,7 @@ namespace Dominio.Entidades_abstractas
 
         public virtual string ToString()
         {
-            string mensaje = $"{_contrasenia}";
+            string mensaje = $"Correo: {_correo}";
             return mensaje;
         }
     }
