@@ -71,7 +71,6 @@ namespace Dominio.Entidades_no_abst
 
         private void ValidarFecha()
         {
-
             if (_fecha < DateTime.Today)
             {
                 throw new Exception("La fecha del pasaje no puede ser menor al día de hoy.");
@@ -109,21 +108,6 @@ namespace Dominio.Entidades_no_abst
             if (_pasajero != null && _pasajero is Cliente)
             {
                 throw new Exception("Los datos del pasajero no son correctos.");
-            }
-        }
-
-        // Hice método aparte del validar fecha porque este necesita que se le ingrese un parámetro idk lol a ver que pensas vos
-        // No se donde dejarlo porque como me acpta un parámetro no puedo ponerlo en el Validar().
-        public bool ValidarFormatoFecha(string fecha)
-        {
-            DateTime fechaPasaje;
-            if (DateTime.TryParse(fecha, out fechaPasaje))
-            {
-                return true;
-            }
-            else
-            {
-                throw new Exception("El formato de la fecha no es correcto.");
             }
         }
 

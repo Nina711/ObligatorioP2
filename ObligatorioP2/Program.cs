@@ -122,5 +122,19 @@ namespace ObligatorioP2
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
+
+        // Esto creo que va acá como primer filtro.
+        //public bool ValidarFormatoFecha(string fecha)
+        //{
+        //    DateTime fechaPasaje;
+        //    if (DateTime.TryParse(fecha, out fechaPasaje))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("El formato de la fecha no es correcto.");
+        //    }
+        //}
     }
 }
