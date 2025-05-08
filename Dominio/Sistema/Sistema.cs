@@ -191,6 +191,7 @@ namespace Dominio
             return listado;
         }
 
+        // Este lo hice y después me di cuenta que no lo necesitaba lol pero lo quise dejar por las dudas
         //public Aeropuerto BuscarAeropuerto(string codigo)
         //{
         //    int i = 0;
@@ -210,6 +211,7 @@ namespace Dominio
         //}
 
 
+        // Método para mostrar vuelos por código de aeropuerto en consola
         public string VuelosPorCodigo(string codigo)
         {
             string lista = "";

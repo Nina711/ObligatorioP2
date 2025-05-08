@@ -10,7 +10,7 @@ namespace Dominio
     public class Ocasional : Cliente
     {
 
-        private bool _esElegible; // Le cambie el nombre para que sea más claro - yo me habia confundido con Premium
+        private bool _esElegible;
 
         public string EsElegible
         {
@@ -35,12 +35,15 @@ namespace Dominio
             EsElegibleRandomizado(); 
         }
 
+        // Método para determinar si es elegible o no
+
         private void EsElegibleRandomizado()
         {
             Random r = new Random();   
             _esElegible = r.Next(0,2) == 1;
         }
 
+        // ToString()
         public override string ToString()
         {
             string mensaje = base.ToString() + $" {EsElegible}\n";

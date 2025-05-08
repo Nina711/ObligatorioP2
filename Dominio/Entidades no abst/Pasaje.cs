@@ -67,6 +67,8 @@ namespace Dominio.Entidades_no_abst
 
         }
 
+        //Validaciones 
+
         private void ValidarFecha()
         {
 
@@ -110,7 +112,6 @@ namespace Dominio.Entidades_no_abst
             }
         }
 
-        // No se si esto es necesario ahora ya que no vamos a dar de alta pasaje para esta entrega
         // Hice método aparte del validar fecha porque este necesita que se le ingrese un parámetro idk lol a ver que pensas vos
         public bool ValidarFormatoFecha(string fecha)
         {

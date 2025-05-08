@@ -48,12 +48,15 @@ namespace Dominio.Entidades_no_abst
             this._distancia = distancia;
         }
 
+        // Calculos
         public decimal CalcularCostoOperacionAeropuertos()
         {
             decimal costoRuta = _aeropLlegada.CostoOperacionAeropuerto + _aeropSalida.CostoOperacionAeropuerto;
 
             return costoRuta;
         }
+
+        //Validaciones
 
         public void Validar()
         {
@@ -86,6 +89,7 @@ namespace Dominio.Entidades_no_abst
             }
         }
 
+        //Obtener el código de los aeropuertos (1)
         public string ObtenerCodigoAeropuertoSalida()
         {
             string codigoSalida = _aeropSalida.Codigo;
@@ -98,6 +102,7 @@ namespace Dominio.Entidades_no_abst
             return codigoLlegada;
         }
 
+        //ToString
         public string ToString()
         {
             return $"{_aeropSalida.Codigo}-{_aeropLlegada.Codigo}";

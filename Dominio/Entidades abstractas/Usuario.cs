@@ -51,6 +51,8 @@ namespace Dominio.Entidades_abstractas
             ValidarCorreo();
         }
 
+        // ToString()
+
         public virtual string ToString()
         {
             string mensaje = $"Correo: {_correo}";

@@ -25,7 +25,7 @@ namespace Dominio.Entidades_no_abst
             
         }
 
-        // ToString
+        // ToString()
 
         public override string ToString()
         {

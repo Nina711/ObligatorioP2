@@ -63,7 +63,6 @@ namespace Dominio.Entidades_no_abst
             }
         }
 
-        // OVERRIDE PARA VALIDAR CON HEREDADAS
         public void Validar()
         {
             base.Validar();

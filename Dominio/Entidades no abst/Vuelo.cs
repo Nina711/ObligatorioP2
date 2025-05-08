@@ -13,7 +13,6 @@ namespace Dominio.Entidades_no_abst
         private Ruta _ruta;
         private Avion _avion;
         private List<Frecuencia> _frecuencia;
-        // Agregué el atributo que será el costo base, seria calculado:
         private decimal _costoAsiento;
 
         public string NumVuelo
@@ -108,6 +107,8 @@ namespace Dominio.Entidades_no_abst
                 throw new Exception("El campo frecuencia no puede estar vacío.");
             }
         }
+
+        //Obtiene el código de los aeropuertos a partir del método en Ruta (2)
         public string ObtenerAeropuertoSalida()
         {
             return _ruta.ObtenerCodigoAeropuertoSalida();
@@ -116,6 +117,8 @@ namespace Dominio.Entidades_no_abst
         {
             return _ruta.ObtenerCodigoAeropuertoLlegada();
         }
+
+        //ToString() -- uno para frecuencias por ser lista y otro para el resto de datos.
 
         public string Frecuencias()
         {
