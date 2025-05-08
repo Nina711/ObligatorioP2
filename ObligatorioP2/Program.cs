@@ -8,6 +8,7 @@ namespace ObligatorioP2
         {
             Sistema s = new Sistema();
             s.PrecargarDatos();
+            //Habría que validar precargas supongo pero no me quedó muy claro dónde ni cómo (dudas con IValidable)
 
             try
             {
@@ -22,12 +23,14 @@ namespace ObligatorioP2
                     switch (opcion)
                     {
                         case 1:
-                            Console.WriteLine("Listado de Clientes:\n");
-                            Console.WriteLine(s.MostrarListadoClientes()); 
+                            Console.WriteLine("Listado de Clientes:");
+                            Console.WriteLine(s.MostrarListadoClientes());
                             break;
                         case 2:
                             Console.WriteLine("Ingrese un código de Aeropuerto:");
                             string codigo = Console.ReadLine();
+                            //habria que validar el codigo pero no se como porque en el checklist dice que si no pasa las
+                            //validaciones, no deberia llamar al metodo en sistema (donde pensaba agregar la validacion)
                             Console.WriteLine(s.VuelosPorCodigo(codigo));
                             break;
                         case 3:

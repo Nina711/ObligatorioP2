@@ -113,6 +113,7 @@ namespace Dominio.Entidades_no_abst
         }
 
         // Hice método aparte del validar fecha porque este necesita que se le ingrese un parámetro idk lol a ver que pensas vos
+        // No se donde dejarlo porque como me acpta un parámetro no puedo ponerlo en el Validar().
         public bool ValidarFormatoFecha(string fecha)
         {
             DateTime fechaPasaje;

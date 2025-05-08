@@ -188,6 +188,11 @@ namespace Dominio
                 }
             }
 
+            if (string.IsNullOrWhiteSpace(listado))
+            {
+                listado = "No se encontraron clientes.";
+            }
+
             return listado;
         }
 
@@ -232,5 +237,9 @@ namespace Dominio
             return lista;
         }
 
+        // Método para dar Alta a cliente ocasional
+
+
+        //Método para filtrar pasajes por fecha
     }
 }
