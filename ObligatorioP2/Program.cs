@@ -1,4 +1,6 @@
 ﻿using Dominio;
+using Dominio.Entidades_abstractas;
+using Dominio.Entidades_no_abst;
 
 namespace ObligatorioP2
 {
@@ -29,7 +31,7 @@ namespace ObligatorioP2
                             ListarVuelosPorCodigo();
                             break;
                         case 3:
-                            // Método que va a pedir datos de un cliente, y usará métodos para validar y agregarlo a la lista
+                            AltaClienteOcasional();
                             break;
                         case 4:
                             // Método que pide dos fechas y luego usa método que filtra pasajes entre esas fechas
@@ -122,6 +124,43 @@ namespace ObligatorioP2
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
+
+        // Metodo que solicita ingresar info y valida los datos. Si estan bien crea instancia de objeto y llama método de sistema
+        // pasandole el objeto como parámetro.
+        public static void AltaClienteOcasional()
+        {
+            try
+            {
+                Console.WriteLine("Ingrese el nombre del cliente:");
+                string nombre = Console.ReadLine();
+
+                Console.WriteLine("Ingrese el documento de identidad:");
+                string documento = Console.ReadLine();
+
+                Console.WriteLine("Ingrese la nacionalidad:");
+                string nacionalidad = Console.ReadLine();
+
+                Console.WriteLine("Ingrese el correo electrónico:");
+                string correo = Console.ReadLine();
+
+                Console.WriteLine("Ingrese una contraseña:");
+                string contrasenia = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(documento) || string.IsNullOrWhiteSpace(nacionalidad) || string.IsNullOrWhiteSpace(correo) || string.IsNullOrWhiteSpace(contrasenia))
+                {
+                    throw new Exception("Los campos no pueden estar vacíos.");
+                }
+
+                Cliente cliente = new Ocasional(correo, contrasenia, documento, nombre, nacionalidad);
+
+                Console.WriteLine(s.AltaClienteOcasional(cliente));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+
 
         // Esto creo que va acá como primer filtro.
         //public bool ValidarFormatoFecha(string fecha)

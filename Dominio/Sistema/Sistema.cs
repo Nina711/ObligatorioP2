@@ -237,9 +237,29 @@ namespace Dominio
 
             return lista;
         }
+        public string AltaClienteOcasional(Cliente cliente)
+        {
+            string mensaje = "";
 
-        // Método para dar Alta a cliente ocasional
+            if (cliente == null)
+            {
+                throw new Exception("Debe ingresar un cliente");
+            }
 
+            cliente.Validar();
+
+            if (cliente is Ocasional)
+            {
+                _usuarios.Add(cliente);
+                mensaje += "Cliente ocasional agregado correctamente.";
+            } 
+            else
+            {
+                mensaje += "No se puede agregar el cliente porque no es Ocasional";
+            }
+
+                return mensaje;
+        }
 
         //Método para filtrar pasajes por fecha
     }
