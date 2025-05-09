@@ -9,7 +9,7 @@ namespace ObligatorioP2
         static void Main(string[] args)
         {
             s.PrecargarDatos();
-            //Habría que validar precargas supongo pero no me quedó muy claro dónde ni cómo (dudas con IValidable) -- le voy a preguntar la profe, porque entiendo seria en el metodo de precarga pero me parece que quedaria re largo idk
+            s.ValidarPrecargas();
 
             try
             {

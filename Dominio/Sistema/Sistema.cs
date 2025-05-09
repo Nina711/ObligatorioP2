@@ -190,6 +190,41 @@ namespace Dominio
         // Búsqueda de instancias -- para las validaciones
 
 
+        // Método para validar precargas
+
+        public void ValidarPrecargas()
+        {
+            foreach(Usuario u in _usuarios)
+            {
+                u.Validar();
+            }
+
+            foreach(Avion a in _aviones)
+            {
+                a.Validar();
+            }
+
+            foreach(Aeropuerto aerop in _aeropuertos)
+            {
+                aerop.Validar();
+            }
+
+            foreach(Ruta r in _rutas)
+            {
+                r.Validar();
+            }
+
+            foreach(Vuelo v in _vuelos)
+            {
+                v.Validar();
+            }
+
+            foreach (Pasaje p in _pasajes)
+            {
+                p.Validar();
+            }
+        }
+
 
         //Métodos para mostrar info en consola
         public string MostrarListadoClientes()
