@@ -12,24 +12,6 @@ namespace Dominio
 
         private bool _esElegible;
 
-        public string EsElegible
-        {
-            get
-            {
-                string mensaje = "";
-
-                if (_esElegible)
-                {
-                    mensaje = "Elegible";
-                }
-                else
-                {
-                    mensaje = "No elegible";
-                }
-                    return mensaje;
-            }
-        }
-
         public Ocasional(string correo, string contrasenia, string documento, string nombre, string nacionalidad) : base(correo, contrasenia, documento, nombre, nacionalidad)
         {
             EsElegibleRandomizado(); 
@@ -44,6 +26,24 @@ namespace Dominio
         }
 
         // ToString()
+        public string EsElegible
+        {
+            get
+            {
+                string mensaje = "";
+
+                if (_esElegible)
+                {
+                    mensaje = "Elegible";
+                }
+                else
+                {
+                    mensaje = "No elegible";
+                }
+                return mensaje;
+            }
+        }
+
         public override string ToString()
         {
             string mensaje = base.ToString() + $" {EsElegible}\n";

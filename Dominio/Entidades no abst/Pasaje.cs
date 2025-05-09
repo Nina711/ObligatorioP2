@@ -69,6 +69,13 @@ namespace Dominio.Entidades_no_abst
 
         //Validaciones 
 
+        public void Validar()
+        {
+            ValidarFecha();
+            ValidarPasajero();
+            ValidarVuelo();
+        }
+
         private void ValidarFecha()
         {
             if (_fecha < DateTime.Today)
@@ -110,43 +117,13 @@ namespace Dominio.Entidades_no_abst
                 throw new Exception("Los datos del pasajero no son correctos.");
             }
         }
+               
 
-        public void Validar()
+        // ToString
+
+        public string ToString()
         {
-            ValidarFecha();
-            ValidarPasajero();
-            ValidarVuelo();
+            return $"Id: {_id}, Pasajero: {_pasajero.Nombre}, Precio: {_precioPasaje}, Fecha: {_fecha}, Vuelo n°: {_vuelo.NumVuelo}.";
         }
-
-
-
-        // Creo que deberia hacerlo sistema el todo
-        /*public decimal CalcularPrecioPasaje()
-        {
-        }*/
-    
-        /* TAMPOCO VA ESTO SADLY ---
-         *
-        public decimal CalcularCostoEquipaje()
-        {
-            decimal costoBase = _vuelo.CostoAsiento;
-            decimal costoEquipaje = 0;
-
-            if (_pasajero is Premium && _equipaje == Equipaje.bodega)
-            {
-                costoEquipaje = costoBase + (costoBase * 0.05);
-            }
-            else if (_pasajero is Ocasional)
-            {
-                if(_equipaje == Equipaje.cabina) { 
-                costoEquipaje = costoBase + (costoBase * 0.10);
-                } else if (_equipaje == Equipaje.bodega)
-                {
-                    costoEquipaje = costoBase + (costoBase * 0.20);
-                }
-            }
-
-            return costoEquipaje;
-        }*/
     }
 }

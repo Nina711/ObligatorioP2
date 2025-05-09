@@ -18,22 +18,6 @@ namespace Dominio
         private List<Vuelo> _vuelos = new List<Vuelo>();
         private List<Pasaje> _pasajes = new List<Pasaje>();
 
-        //no va a servir esto pero lo dejare por el cariño <3
-        /*public decimal CalcularPrecioPasaje (Pasaje pasaje)
-        {
-            //obtengo el vuelo del pasaje
-            Vuelo vueloDelPasaje = Pasaje.Vuelo;
-            //hago la primera parte del calculo
-            decimal costoPasaje = vueloDelPasaje.CostoAsiento + (vueloDelPasaje.CostoAsiento * 0.25);
-            //obtengo ruta
-            Ruta rutaDelPasaje = vueloDelPasaje.Ruta();
-            //le sumo costo de operaciones de aeropuertos
-            costoPasaje += rutaDelPasaje.CalcularCostoOperacionAeropuertos();
-
-            costoPasaje += Pasaje.CalcularCostoEquipaje();            
-
-            return costoPasaje;
-        }*/
 
 
         //Precargar datos de prueba
@@ -168,11 +152,14 @@ namespace Dominio
             _vuelos.Add(new Vuelo("V028", _rutas[27], _aviones[3], new List<Frecuencia> { Frecuencia.Viernes }));
             _vuelos.Add(new Vuelo("V029", _rutas[28], _aviones[0], new List<Frecuencia> { Frecuencia.Sábado }));
             _vuelos.Add(new Vuelo("V030", _rutas[29], _aviones[1], new List<Frecuencia> { Frecuencia.Domingo }));
-        }   
+        }
 
         private void PrecargaPasajes()
         {
-        }   
+        }
+
+        // Búsqueda de instancias -- para las validaciones
+
 
 
         //Métodos para mostrar info en consola
@@ -221,7 +208,7 @@ namespace Dominio
         {
             string lista = "";
 
-            foreach(Vuelo v in _vuelos)
+            foreach (Vuelo v in _vuelos)
             {
                 //podriamos reemplazarlo por Contains, tendríamos que hacer override de Equals.
                 if (v.ObtenerAeropuertoSalida() == codigo.ToUpper() || v.ObtenerAeropuertoLlegada() == codigo.ToUpper())
@@ -237,6 +224,35 @@ namespace Dominio
 
             return lista;
         }
+
+        // Metodo para listar pasajes
+        public string PasajesEntreFechas(DateTime desde, DateTime hasta)
+        {
+            if (desde > hasta)
+            {
+                throw new Exception("La fecha de inicio no puede ser mayor a la de fin.");
+            }
+
+            string listPasajesFiltrados = "";
+
+            foreach (Pasaje p in _pasajes)
+            {
+                if (p.Fecha >= desde && p.Fecha <= hasta)
+                {
+                    listPasajesFiltrados += p.ToString() + "\n";
+                }
+            }
+
+            if (string.IsNullOrEmpty(listPasajesFiltrados))
+            {
+                listPasajesFiltrados = "No se encontraron pasajes entre esas fechas.";
+            }
+
+            return listPasajesFiltrados;
+        }
+
+        // Metodo para agregar cliente ocasional. 
+        // Me genero dudas este metodo, tengo que verlo, mas que nada por como se piden los datos en program (si como Ocasional o Cliente - si recibe ocasional no necesita excepcion ni usar is. ---- by ana
         public string AltaClienteOcasional(Cliente cliente)
         {
             string mensaje = "";
@@ -252,15 +268,14 @@ namespace Dominio
             {
                 _usuarios.Add(cliente);
                 mensaje += "Cliente ocasional agregado correctamente.";
-            } 
+            }
             else
             {
                 mensaje += "No se puede agregar el cliente porque no es Ocasional";
             }
 
-                return mensaje;
+            return mensaje;
         }
 
-        //Método para filtrar pasajes por fecha
     }
 }

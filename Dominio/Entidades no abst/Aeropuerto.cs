@@ -44,6 +44,14 @@ namespace Dominio
 
         // Validaciones
 
+        public void Validar()
+        {
+            ValidarCodigo();
+            ValidarCiudad();
+            ValidarCostoOperacionAeropuerto();
+            ValidarCostoTasas();
+        }
+
         private void ValidarCodigo()
         {
             if (string.IsNullOrWhiteSpace(_codigo))
@@ -81,12 +89,6 @@ namespace Dominio
             }
         }   
 
-        public void Validar()
-        {
-            ValidarCodigo();
-            ValidarCiudad();
-            ValidarCostoOperacionAeropuerto();
-            ValidarCostoTasas();
-        }
+        
     }
 }

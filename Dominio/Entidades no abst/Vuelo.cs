@@ -49,7 +49,7 @@ namespace Dominio.Entidades_no_abst
             this._costoAsiento = CalcularPrecioAsiento();
         }
 
-        //Calcular precio por asiento (sera el costo base del VUELO)
+        //Método que calcula precio por asiento (costo base del VUELO)
 
         public decimal CalcularPrecioAsiento()
         {
@@ -58,16 +58,7 @@ namespace Dominio.Entidades_no_abst
             return costoAsiento;
         }
 
-
-        // Valida si el alcance del avion puede cubrir una ruta. Entiendo que se usaría para crear un vuelo 
-        public void ValidarAlcance()
-        {
-            if (_ruta.Distancia > _avion.Alcance)
-            {
-                throw new Exception("El avión seleccionado no puede cubrir la distancia de esta ruta.");
-            }
-        }
-
+    
         public void Validar()
         {
             ValidarNumVuelo();
@@ -105,6 +96,16 @@ namespace Dominio.Entidades_no_abst
             if (_frecuencia == null || _frecuencia.Count < 1)
             {
                 throw new Exception("El campo frecuencia no puede estar vacío.");
+            }
+        }
+
+        // Método para validar si el alcance de un avión puede cubrir determinada ruta
+
+        public void ValidarAlcance()
+        {
+            if (_ruta.Distancia > _avion.Alcance)
+            {
+                throw new Exception("El avión seleccionado no puede cubrir la distancia de esta ruta.");
             }
         }
 

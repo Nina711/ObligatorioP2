@@ -1,5 +1,4 @@
 ﻿using Dominio;
-using Dominio.Entidades_abstractas;
 using Dominio.Entidades_no_abst;
 
 namespace ObligatorioP2
@@ -10,7 +9,7 @@ namespace ObligatorioP2
         static void Main(string[] args)
         {
             s.PrecargarDatos();
-            //Habría que validar precargas supongo pero no me quedó muy claro dónde ni cómo (dudas con IValidable)
+            //Habría que validar precargas supongo pero no me quedó muy claro dónde ni cómo (dudas con IValidable) -- le voy a preguntar la profe, porque entiendo seria en el metodo de precarga pero me parece que quedaria re largo idk
 
             try
             {
@@ -34,7 +33,7 @@ namespace ObligatorioP2
                             AltaClienteOcasional();
                             break;
                         case 4:
-                            // Método que pide dos fechas y luego usa método que filtra pasajes entre esas fechas
+                            ListarPasajesPorFechas();
                             break;
                         default:
                             flag = true;
@@ -49,7 +48,7 @@ namespace ObligatorioP2
 
                     Console.Clear();
                 }
-            } 
+            }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
@@ -95,6 +94,7 @@ namespace ObligatorioP2
             Console.WriteLine(s.MostrarListadoClientes());
         }
 
+        // -- Agregar loop para que si hay error se pueda volver a ingresar codigo
         public static void ListarVuelosPorCodigo()
         {
             try
@@ -103,7 +103,7 @@ namespace ObligatorioP2
                 string codigo = Console.ReadLine();
                 bool letra = true;
 
-                foreach(char c in codigo)
+                foreach (char c in codigo)
                 {
                     if (!char.IsLetter(c))
                     {
@@ -125,8 +125,36 @@ namespace ObligatorioP2
             }
         }
 
+        public static void ListarPasajesPorFechas()
+        {
+            try
+            {
+                Console.WriteLine("Ingrese la fecha desde (dd/mm/aaa):");
+                string desde = Console.ReadLine();
+
+                Console.WriteLine("Ingrese la fecha hasta (dd/mm/aaa):");
+                string hasta = Console.ReadLine();
+
+                if (ValidarFormatoFecha(desde, out DateTime fechaDesde) && ValidarFormatoFecha(hasta, out DateTime fechaHasta))
+                {
+                    Console.WriteLine($"Pasajes entre {desde} y {hasta}: \n {s.PasajesEntreFechas(fechaDesde, fechaHasta)}");
+
+                }
+                else
+                {
+                    Console.WriteLine("El formato de las fechas no es el válido.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         // Metodo que solicita ingresar info y valida los datos. Si estan bien crea instancia de objeto y llama método de sistema
         // pasandole el objeto como parámetro.
+
+        /* by ana ------------ voy a modificar esto para que no se pierdan los datos. si el user tiene un error al principio e ingresa luego todo, tiene que salir y volver a entrar y escribir todo de nuevo. ademas no se lanzan las excepciones de las clases, tira error generico. Tambien hay que validar que no exista un cliente con ese documento */
         public static void AltaClienteOcasional()
         {
             try
@@ -161,19 +189,13 @@ namespace ObligatorioP2
             }
         }
 
+        // Para validar fechas que ingresa el usuario
+        public static bool ValidarFormatoFecha(string fecha, out DateTime fechaParseada)
+        {
+            bool esFechaValida = DateTime.TryParse(fecha, out fechaParseada);
 
-        // Esto creo que va acá como primer filtro.
-        //public bool ValidarFormatoFecha(string fecha)
-        //{
-        //    DateTime fechaPasaje;
-        //    if (DateTime.TryParse(fecha, out fechaPasaje))
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("El formato de la fecha no es correcto.");
-        //    }
-        //}
+            return esFechaValida;
+        }
     }
 }
+
