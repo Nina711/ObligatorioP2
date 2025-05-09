@@ -103,7 +103,6 @@ namespace Dominio.Entidades_no_abst
 
         private void ValidarVuelo()
         {
-
             if (!(_vuelo is Vuelo))
             {
                 throw new Exception("El vuelo no es correcto");

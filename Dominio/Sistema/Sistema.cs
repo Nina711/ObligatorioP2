@@ -156,6 +156,35 @@ namespace Dominio
 
         private void PrecargaPasajes()
         {
+            _pasajes.Add(new Pasaje(_vuelos[0], DateTime.Now.AddDays(1), (Cliente)_usuarios[0], Equipaje.light, 150.50m));
+            _pasajes.Add(new Pasaje(_vuelos[1], DateTime.Now.AddDays(2), (Cliente)_usuarios[1], Equipaje.cabina, 200.00m));
+            _pasajes.Add(new Pasaje(_vuelos[2], DateTime.Now.AddDays(3), (Cliente)_usuarios[2], Equipaje.bodega, 300.00m));
+            _pasajes.Add(new Pasaje(_vuelos[3], DateTime.Now.AddDays(4), (Cliente)_usuarios[3], Equipaje.light, 180.75m));
+            _pasajes.Add(new Pasaje(_vuelos[4], DateTime.Now.AddDays(5), (Cliente)_usuarios[4], Equipaje.cabina, 220.20m));
+
+            _pasajes.Add(new Pasaje(_vuelos[5], DateTime.Now.AddDays(1), (Cliente)_usuarios[5], Equipaje.bodega, 350.00m));
+            _pasajes.Add(new Pasaje(_vuelos[6], DateTime.Now.AddDays(2), (Cliente)_usuarios[6], Equipaje.light, 120.00m));
+            _pasajes.Add(new Pasaje(_vuelos[7], DateTime.Now.AddDays(3), (Cliente)_usuarios[7], Equipaje.cabina, 270.00m));
+            _pasajes.Add(new Pasaje(_vuelos[8], DateTime.Now.AddDays(4), (Cliente)_usuarios[8], Equipaje.bodega, 330.00m));
+            _pasajes.Add(new Pasaje(_vuelos[9], DateTime.Now.AddDays(5), (Cliente)_usuarios[9], Equipaje.light, 199.99m));
+
+            _pasajes.Add(new Pasaje(_vuelos[10], DateTime.Now.AddDays(1), (Cliente)_usuarios[0], Equipaje.cabina, 210.10m));
+            _pasajes.Add(new Pasaje(_vuelos[11], DateTime.Now.AddDays(2), (Cliente)_usuarios[1], Equipaje.bodega, 289.95m));
+            _pasajes.Add(new Pasaje(_vuelos[12], DateTime.Now.AddDays(3), (Cliente)_usuarios[2], Equipaje.light, 190.00m));
+            _pasajes.Add(new Pasaje(_vuelos[13], DateTime.Now.AddDays(4), (Cliente)_usuarios[3], Equipaje.cabina, 250.00m));
+            _pasajes.Add(new Pasaje(_vuelos[14], DateTime.Now.AddDays(5), (Cliente)_usuarios[4], Equipaje.bodega, 310.00m));
+
+            _pasajes.Add(new Pasaje(_vuelos[15], DateTime.Now.AddDays(1), (Cliente)_usuarios[5], Equipaje.light, 175.50m));
+            _pasajes.Add(new Pasaje(_vuelos[16], DateTime.Now.AddDays(2), (Cliente)_usuarios[6], Equipaje.cabina, 240.00m));
+            _pasajes.Add(new Pasaje(_vuelos[17], DateTime.Now.AddDays(3), (Cliente)_usuarios[7], Equipaje.bodega, 320.00m));
+            _pasajes.Add(new Pasaje(_vuelos[18], DateTime.Now.AddDays(4), (Cliente)_usuarios[8], Equipaje.light, 160.00m));
+            _pasajes.Add(new Pasaje(_vuelos[19], DateTime.Now.AddDays(5), (Cliente)_usuarios[9], Equipaje.cabina, 230.00m));
+
+            _pasajes.Add(new Pasaje(_vuelos[20], DateTime.Now.AddDays(1), (Cliente)_usuarios[0], Equipaje.bodega, 280.00m));
+            _pasajes.Add(new Pasaje(_vuelos[21], DateTime.Now.AddDays(2), (Cliente)_usuarios[1], Equipaje.light, 135.00m));
+            _pasajes.Add(new Pasaje(_vuelos[22], DateTime.Now.AddDays(3), (Cliente)_usuarios[2], Equipaje.cabina, 220.00m));
+            _pasajes.Add(new Pasaje(_vuelos[23], DateTime.Now.AddDays(4), (Cliente)_usuarios[3], Equipaje.bodega, 290.00m));
+            _pasajes.Add(new Pasaje(_vuelos[24], DateTime.Now.AddDays(5), (Cliente)_usuarios[4], Equipaje.light, 160.00m));
         }
 
         // Búsqueda de instancias -- para las validaciones
