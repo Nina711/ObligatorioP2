@@ -253,25 +253,53 @@ namespace Dominio
 
         // Metodo para agregar cliente ocasional. 
         // Me genero dudas este metodo, tengo que verlo, mas que nada por como se piden los datos en program (si como Ocasional o Cliente - si recibe ocasional no necesita excepcion ni usar is. ---- by ana
-        public string AltaClienteOcasional(Cliente cliente)
+        // Agregué método para chequear si el cliente ya existe. En program se crea un Ocasional porque como Cliente es abstracta no se puede instanciar
+
+        public Cliente BuscarClientePorDocumento(string documento)
+        {
+            Cliente cliente = null;
+            int i = 0;
+
+            while (cliente == null && i < _usuarios.Count)
+            {
+                Usuario u = _usuarios[i];
+
+                if (u is Cliente)
+                {
+                    Cliente c = u as Cliente;
+
+                    if (c.Documento == documento)
+                    {
+                        cliente = c;
+                    }
+                }
+                i++;
+            }
+
+            return cliente;
+        }
+
+        public string AltaClienteOcasional(Ocasional ocasional)
         {
             string mensaje = "";
 
-            if (cliente == null)
+            if (ocasional == null)
             {
                 throw new Exception("Debe ingresar un cliente");
             }
 
-            cliente.Validar();
+            ocasional.Validar();
 
-            if (cliente is Ocasional)
+            Cliente c = BuscarClientePorDocumento(ocasional.Documento);
+
+            if (c != null && c is Ocasional)
             {
-                _usuarios.Add(cliente);
-                mensaje += "Cliente ocasional agregado correctamente.";
+                mensaje += "El cliente ya existe";
             }
             else
             {
-                mensaje += "No se puede agregar el cliente porque no es Ocasional";
+                _usuarios.Add(ocasional);
+                mensaje += "Cliente ocasional agregado correctamente.";
             }
 
             return mensaje;

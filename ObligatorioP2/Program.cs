@@ -102,6 +102,7 @@ namespace ObligatorioP2
                 Console.WriteLine("Ingrese un código de Aeropuerto:");
                 string codigo = Console.ReadLine();
                 bool letra = true;
+                bool flag = false;
 
                 foreach (char c in codigo)
                 {
@@ -114,7 +115,7 @@ namespace ObligatorioP2
 
                 if (codigo == null || codigo.Length != 3 || !letra)
                 {
-                    throw new Exception("Ingrese un código válido");
+                    Console.WriteLine("Debe ingresar un código válido");
                 }
 
                 Console.WriteLine(s.VuelosPorCodigo(codigo.ToUpper()));
@@ -179,9 +180,9 @@ namespace ObligatorioP2
                     throw new Exception("Los campos no pueden estar vacíos.");
                 }
 
-                Cliente cliente = new Ocasional(correo, contrasenia, documento, nombre, nacionalidad);
+                Ocasional ocasional = new Ocasional(correo, contrasenia, documento, nombre, nacionalidad);
 
-                Console.WriteLine(s.AltaClienteOcasional(cliente));
+                Console.WriteLine(s.AltaClienteOcasional(ocasional));
             }
             catch (Exception ex)
             {

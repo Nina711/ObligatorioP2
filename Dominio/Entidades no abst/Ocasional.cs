@@ -12,20 +12,7 @@ namespace Dominio
 
         private bool _esElegible;
 
-        public Ocasional(string correo, string contrasenia, string documento, string nombre, string nacionalidad) : base(correo, contrasenia, documento, nombre, nacionalidad)
-        {
-            EsElegibleRandomizado(); 
-        }
-
-        // Método para determinar si es elegible o no
-
-        private void EsElegibleRandomizado()
-        {
-            Random r = new Random();   
-            _esElegible = r.Next(0,2) == 1;
-        }
-
-        // ToString()
+        // Esto es la property 
         public string EsElegible
         {
             get
@@ -43,7 +30,21 @@ namespace Dominio
                 return mensaje;
             }
         }
+        public Ocasional(string correo, string contrasenia, string documento, string nombre, string nacionalidad) : base(correo, contrasenia, documento, nombre, nacionalidad)
+        {
+            EsElegibleRandomizado(); 
+        }
 
+        // Método para determinar si es elegible o no
+
+        private void EsElegibleRandomizado()
+        {
+            Random r = new Random();   
+            _esElegible = r.Next(0,2) == 1;
+        }
+
+        
+        // ToString
         public override string ToString()
         {
             string mensaje = base.ToString() + $" {EsElegible}\n";
