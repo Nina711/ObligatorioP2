@@ -8,9 +8,11 @@ namespace ObligatorioP2
         static Sistema s = new Sistema();
         static void Main(string[] args)
         {
+            // -------- PRECARGAS
             s.PrecargarDatos();
             s.ValidarPrecargas();
 
+            // --------- MENÚ
             try
             {
                 int opcion;
@@ -88,35 +90,58 @@ namespace ObligatorioP2
             return numero;
         }
 
+        // --------- Case 1: LISTAR CLIENTES 
         public static void ListarClientes()
         {
             Console.WriteLine("Listado de Clientes:");
             Console.WriteLine(s.MostrarListadoClientes());
         }
 
-        // -- Agregar loop para que si hay error se pueda volver a ingresar codigo
+        // --------- Case 2: LISTAR VUELOS POR CÓDIGO
         public static void ListarVuelosPorCodigo()
         {
             try
             {
-                Console.WriteLine("Ingrese un código de Aeropuerto:");
-                string codigo = Console.ReadLine();
-                bool letra = true;
-                bool flag = false;
+                string codigo;
+                bool esValido = false;
 
-                foreach (char c in codigo)
+                do
                 {
-                    if (!char.IsLetter(c))
+                    Console.WriteLine("Ingrese un código de Aeropuerto:");
+                    codigo = Console.ReadLine();
+
+                    if (codigo.Length == 3)
                     {
-                        letra = false;
-                        break;
+
+                        bool letra = true;
+                        //bool flag = false; -- no entendi que hace esta bandera
+
+                        foreach (char c in codigo)
+                        {
+                            if (!char.IsLetter(c))
+                            {
+                                letra = false;
+                                break;
+                            }
+                        }
+
+                        if (!letra)
+                        {
+                            Console.WriteLine("El código debe contener solo letras.");
+                        }
+                        else
+                        {
+                            esValido = true;
+                        }
                     }
+                    else
+                    {
+                        Console.WriteLine("El código debe contener exactamente 3 caracteres.");
+                    }
+
                 }
 
-                if (codigo == null || codigo.Length != 3 || !letra)
-                {
-                    Console.WriteLine("Debe ingresar un código válido");
-                }
+                while (!esValido);
 
                 Console.WriteLine(s.VuelosPorCodigo(codigo.ToUpper()));
             }
@@ -126,67 +151,107 @@ namespace ObligatorioP2
             }
         }
 
-        public static void ListarPasajesPorFechas()
-        {
-            try
-            {
-                Console.WriteLine("Ingrese la fecha desde (dd/mm/aaa):");
-                string desde = Console.ReadLine();
+        // --------- Case 3: ALTA DE CLIENTE OCASIONAL
 
-                Console.WriteLine("Ingrese la fecha hasta (dd/mm/aaa):");
-                string hasta = Console.ReadLine();
-
-                if (ValidarFormatoFecha(desde, out DateTime fechaDesde) && ValidarFormatoFecha(hasta, out DateTime fechaHasta))
-                {
-                    Console.WriteLine($"Pasajes entre {desde} y {hasta}: \n {s.PasajesEntreFechas(fechaDesde, fechaHasta)}");
-
-                }
-                else
-                {
-                    Console.WriteLine("El formato de las fechas no es el válido.");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        // Metodo que solicita ingresar info y valida los datos. Si estan bien crea instancia de objeto y llama método de sistema
-        // pasandole el objeto como parámetro.
-
-        /* by ana ------------ voy a modificar esto para que no se pierdan los datos. si el user tiene un error al principio e ingresa luego todo, tiene que salir y volver a entrar y escribir todo de nuevo. ademas no se lanzan las excepciones de las clases, tira error generico. Tambien hay que validar que no exista un cliente con ese documento */
+        /* Como mejora IDEAL pero re IDEAL, si nos da el tiempo, el documento deberia validarse primero para que si ya existe, tire ese error primero y no se tenga que ingresar todo nuevamente */
         public static void AltaClienteOcasional()
         {
             try
             {
-                Console.WriteLine("Ingrese el nombre del cliente:");
-                string nombre = Console.ReadLine();
-
-                Console.WriteLine("Ingrese el documento de identidad:");
-                string documento = Console.ReadLine();
-
-                Console.WriteLine("Ingrese la nacionalidad:");
-                string nacionalidad = Console.ReadLine();
-
-                Console.WriteLine("Ingrese el correo electrónico:");
-                string correo = Console.ReadLine();
-
-                Console.WriteLine("Ingrese una contraseña:");
-                string contrasenia = Console.ReadLine();
-
-                if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(documento) || string.IsNullOrWhiteSpace(nacionalidad) || string.IsNullOrWhiteSpace(correo) || string.IsNullOrWhiteSpace(contrasenia))
+                string nombre;
+                do
                 {
-                    throw new Exception("Los campos no pueden estar vacíos.");
-                }
+                    Console.WriteLine("Ingrese el nombre del cliente:");
+                    nombre = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(nombre))
+                    {
+                        Console.WriteLine("El nombre no puede ser un campo vacío.");
+                    }
+                } while (string.IsNullOrWhiteSpace(nombre));
+
+                string documento;
+                do
+                {
+                    Console.WriteLine("Ingrese el documento de identidad:");
+                    documento = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(documento))
+                    {
+                        Console.WriteLine("El documento no puede ser un campo vacío.");
+                    }
+                } while (string.IsNullOrWhiteSpace(documento));
+
+                string nacionalidad;
+                do
+                {
+                    Console.WriteLine("Ingrese la nacionalidad:");
+                    nacionalidad = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(nacionalidad))
+                    {
+                        Console.WriteLine("El nacionalidad no puede ser un campo vacío.");
+                    }
+                } while (string.IsNullOrWhiteSpace(nacionalidad));
+
+                string correo;
+                do
+                {
+                    Console.WriteLine("Ingrese el correo electrónico:");
+                    correo = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(correo))
+                    {
+                        Console.WriteLine("El correo no puede ser un campo vacío.");
+                    }
+                } while (string.IsNullOrWhiteSpace(correo));
+
+                string contrasenia;
+                do
+                {
+                    Console.WriteLine("Ingrese una contraseña:");
+                    contrasenia = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(contrasenia))
+                    {
+                        Console.WriteLine("El contrasenia no puede ser un campo vacío.");
+                    }
+                } while (string.IsNullOrWhiteSpace(contrasenia));
 
                 Ocasional ocasional = new Ocasional(correo, contrasenia, documento, nombre, nacionalidad);
-
-                Console.WriteLine(s.AltaClienteOcasional(ocasional));
+                s.AltaClienteOcasional(ocasional);
+                Console.WriteLine("Cliente ocasional agregado correctamente.");
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+
+        // ---------- Case 4: LISTAR PASAJES ENTRE DOS FECHAS 
+        public static void ListarPasajesPorFechas()
+        {
+            try
+            {
+                bool fechasValidas = false;
+
+                do
+                {
+                    Console.WriteLine("Ingrese la fecha desde (dd/mm/aaa):");
+                    string desde = Console.ReadLine();
+                    Console.WriteLine("Ingrese la fecha hasta (dd/mm/aaa):");
+                    string hasta = Console.ReadLine();
+
+                    if (ValidarFormatoFecha(desde, out DateTime fechaDesde) && ValidarFormatoFecha(hasta, out DateTime fechaHasta))
+                    {
+                        fechasValidas = true;
+                        Console.WriteLine($"Pasajes entre {desde} y {hasta}: \n {s.PasajesEntreFechas(fechaDesde, fechaHasta)}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("El formato de las fechas no es válido. Debe ser dd/mm/aaaa.");
+                    }
+                } while (!fechasValidas);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 

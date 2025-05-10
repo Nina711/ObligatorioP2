@@ -19,7 +19,6 @@ namespace Dominio
         private List<Pasaje> _pasajes = new List<Pasaje>();
 
 
-
         //Precargar datos de prueba
         public void PrecargarDatos()
         {
@@ -189,6 +188,25 @@ namespace Dominio
 
         // Búsqueda de instancias -- para las validaciones
 
+        //CLIENTE
+        public Cliente BuscarClientePorDocumento(string documento)
+        {
+            Cliente cliente = null;
+            int i = 0;
+
+            while (cliente == null && i < _usuarios.Count)
+            {
+                Usuario u = _usuarios[i];
+
+                if (u is Cliente c && c.Documento == documento)
+                {
+                    cliente = (Cliente)u;
+                }
+                i++;
+            }
+            return cliente;
+        }
+
 
         // Método para validar precargas
 
@@ -226,7 +244,7 @@ namespace Dominio
         }
 
 
-        //Métodos para mostrar info en consola
+        // Métodos para mostrar info en consola
         public string MostrarListadoClientes()
         {
             string listado = "";
@@ -247,26 +265,7 @@ namespace Dominio
             return listado;
         }
 
-        // Este lo hice y después me di cuenta que no lo necesitaba lol pero lo quise dejar por las dudas
-        //public Aeropuerto BuscarAeropuerto(string codigo)
-        //{
-        //    int i = 0;
-        //    Aeropuerto aeropuertoEncontrado = null;
-
-        //    while (aeropuertoEncontrado == null && i < _aeropuertos.Count)
-        //    {
-        //        Aeropuerto a = _aeropuertos[i];
-
-        //        if (codigo == a.Codigo)
-        //        {
-        //            aeropuertoEncontrado = a;
-        //        }
-        //    }
-
-        //    return aeropuertoEncontrado;
-        //}
-
-
+        
         // Método para mostrar vuelos por código de aeropuerto en consola
         public string VuelosPorCodigo(string codigo)
         {
@@ -317,36 +316,9 @@ namespace Dominio
 
         // Metodo para agregar cliente ocasional. 
         // Me genero dudas este metodo, tengo que verlo, mas que nada por como se piden los datos en program (si como Ocasional o Cliente - si recibe ocasional no necesita excepcion ni usar is. ---- by ana
-        // Agregué método para chequear si el cliente ya existe. En program se crea un Ocasional porque como Cliente es abstracta no se puede instanciar
-
-        public Cliente BuscarClientePorDocumento(string documento)
+            
+        public void AltaClienteOcasional(Ocasional ocasional)
         {
-            Cliente cliente = null;
-            int i = 0;
-
-            while (cliente == null && i < _usuarios.Count)
-            {
-                Usuario u = _usuarios[i];
-
-                if (u is Cliente)
-                {
-                    Cliente c = u as Cliente;
-
-                    if (c.Documento == documento)
-                    {
-                        cliente = c;
-                    }
-                }
-                i++;
-            }
-
-            return cliente;
-        }
-
-        public string AltaClienteOcasional(Ocasional ocasional)
-        {
-            string mensaje = "";
-
             if (ocasional == null)
             {
                 throw new Exception("Debe ingresar un cliente");
@@ -356,17 +328,14 @@ namespace Dominio
 
             Cliente c = BuscarClientePorDocumento(ocasional.Documento);
 
-            if (c != null && c is Ocasional)
+            if (c != null)
             {
-                mensaje += "El cliente ya existe";
+                throw new Exception ("El cliente ya existe");
             }
             else
             {
                 _usuarios.Add(ocasional);
-                mensaje += "Cliente ocasional agregado correctamente.";
             }
-
-            return mensaje;
         }
 
     }
