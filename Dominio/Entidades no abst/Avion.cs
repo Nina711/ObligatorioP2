@@ -93,14 +93,6 @@
             }
         }
 
-        // ---- Overrides 
-        /*
-         * Entiendo que no se puede hacerle override porque no tiene un identificador unico. Habrá que preguntarle al profe.
-        public override bool Equals(object obj)
-        {
-            var avion = obj as Avion;
-
-            return avion != null && avion.
-        }*/
+        
     }
 }

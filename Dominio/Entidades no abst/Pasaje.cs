@@ -125,7 +125,7 @@ namespace Dominio.Entidades_no_abst
 
         // --- Overrides
 
-        public string ToString()
+        public override string ToString()
         {
             return $"Id: {_id}, Pasajero: {_pasajero.Nombre}, Precio: {_precioPasaje}, Fecha: {_fecha.ToString("d")}, Vuelo n°: {_vuelo.NumVuelo}.";
         }
