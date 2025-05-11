@@ -62,6 +62,7 @@ namespace Dominio.Entidades_no_abst
         {
             ValidarAeropuertoSalida();
             ValidarAeropuertoLlegada();
+            ValidarDiferentesAeropuertos();
             ValidarDistancia();
         }
 
