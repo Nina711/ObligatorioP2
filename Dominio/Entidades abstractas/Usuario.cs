@@ -53,7 +53,7 @@ namespace Dominio.Entidades_abstractas
 
         // ToString()
 
-        public virtual string ToString()
+        public override string ToString()
         {
             string mensaje = $"Correo: {_correo}";
             return mensaje;

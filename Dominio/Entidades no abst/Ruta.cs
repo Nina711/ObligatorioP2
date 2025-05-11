@@ -31,15 +31,15 @@ namespace Dominio.Entidades_no_abst
 
         public Aeropuerto AeropuertoLlegada
         {
-            get { return this._aeropLlegada;}
+            get { return this._aeropLlegada; }
         }
 
         public decimal Distancia
         {
-            get { return this._distancia;}
+            get { return this._distancia; }
         }
 
-        public Ruta (Aeropuerto aeropSalida, Aeropuerto aeropLlegada, decimal distancia)
+        public Ruta(Aeropuerto aeropSalida, Aeropuerto aeropLlegada, decimal distancia)
         {
             _ultimoId++;
             this._id = _ultimoId;
@@ -71,7 +71,7 @@ namespace Dominio.Entidades_no_abst
             {
                 throw new Exception("El aeropuerto de salida no puede ser vacío.");
             }
-        }   
+        }
 
         private void ValidarAeropuertoLlegada()
         {
@@ -79,13 +79,21 @@ namespace Dominio.Entidades_no_abst
             {
                 throw new Exception("El aeropuerto de llegada no puede ser vacío.");
             }
-        }   
+        }
 
         private void ValidarDistancia()
         {
             if (_distancia <= 0)
             {
                 throw new Exception("La distancia no puede ser menor o igual a cero.");
+            }
+        }
+
+        private void ValidarDiferentesAeropuertos()
+        {
+            if (_aeropSalida.Equals(_aeropLlegada))
+            {
+                throw new Exception("Los aeropuertos de salida y llegada no pueden ser iguales.");
             }
         }
 

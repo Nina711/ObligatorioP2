@@ -31,6 +31,11 @@ namespace Dominio.Entidades_no_abst
                 throw new Exception("Debe ingresar un apodo");
             }
         }
+        public void Validar()
+        {
+            base.Validar();
+            ValidarApodo();
+        }
 
         public override bool Equals (object obj)
         {
@@ -39,10 +44,5 @@ namespace Dominio.Entidades_no_abst
             return admin != null && admin._apodo == this._apodo;
         }
 
-        public void Validar()
-        {
-            base.Validar();
-            ValidarApodo();
-        }
     }
 }
