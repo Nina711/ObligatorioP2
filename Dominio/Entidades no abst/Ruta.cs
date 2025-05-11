@@ -9,7 +9,7 @@ namespace Dominio.Entidades_no_abst
     public class Ruta : IValidable
     {
         private int _id;
-        private int _ultimoId;
+        private static int _ultimoId = 0;
         private Aeropuerto _aeropSalida;
         private Aeropuerto _aeropLlegada;
         private decimal _distancia;
@@ -19,9 +19,9 @@ namespace Dominio.Entidades_no_abst
             get { return this._id; }
         }
 
-        public int UltimoId
+        public static int UltimoId
         {
-            get { return this._ultimoId; }
+            get { return _ultimoId; }
         }
 
         public Aeropuerto AeropuertoSalida
@@ -41,7 +41,7 @@ namespace Dominio.Entidades_no_abst
 
         public Ruta (Aeropuerto aeropSalida, Aeropuerto aeropLlegada, decimal distancia)
         {
-            this._ultimoId++;
+            _ultimoId++;
             this._id = _ultimoId;
             this._aeropSalida = aeropSalida;
             this._aeropLlegada = aeropLlegada;
@@ -102,10 +102,17 @@ namespace Dominio.Entidades_no_abst
             return codigoLlegada;
         }
 
-        //ToString
+        //--- Overrides
+
         public string ToString()
         {
             return $"{_aeropSalida.Codigo}-{_aeropLlegada.Codigo}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            var ruta = obj as Ruta;
+            return ruta != null && ruta._id == this._id;
         }
     }
 }

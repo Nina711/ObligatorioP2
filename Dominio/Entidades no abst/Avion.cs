@@ -42,7 +42,7 @@
             _costoOperacionAvion = costoOperacionAvion;
         }
 
-        //Validaciones
+        // ---- Validaciones
 
         public void Validar()
         {
@@ -91,6 +91,16 @@
             {
                 throw new Exception("El campo costo de operación no puede ser menor o igual a cero.");
             }
-        }   
+        }
+
+        // ---- Overrides 
+        /*
+         * Entiendo que no se puede hacerle override porque no tiene un identificador unico. Habrá que preguntarle al profe.
+        public override bool Equals(object obj)
+        {
+            var avion = obj as Avion;
+
+            return avion != null && avion.
+        }*/
     }
 }

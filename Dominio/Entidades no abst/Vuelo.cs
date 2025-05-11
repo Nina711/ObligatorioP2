@@ -49,16 +49,7 @@ namespace Dominio.Entidades_no_abst
             this._costoAsiento = CalcularPrecioAsiento();
         }
 
-        //Método que calcula precio por asiento (costo base del VUELO)
-
-        public decimal CalcularPrecioAsiento()
-        {
-            decimal costoAsiento = (_avion.CostoOperacionAvion * _ruta.Distancia + _ruta.CalcularCostoOperacionAeropuertos()) / _avion.CantAsientos;
-
-            return costoAsiento;
-        }
-
-    
+        // Validaciones
         public void Validar()
         {
             ValidarNumVuelo();
@@ -119,8 +110,16 @@ namespace Dominio.Entidades_no_abst
             return _ruta.ObtenerCodigoAeropuertoLlegada();
         }
 
-        //ToString() -- uno para frecuencias por ser lista y otro para el resto de datos.
+        //Método que calcula precio por asiento (costo base del VUELO)
 
+        public decimal CalcularPrecioAsiento()
+        {
+            decimal costoAsiento = (_avion.CostoOperacionAvion * _ruta.Distancia + _ruta.CalcularCostoOperacionAeropuertos()) / _avion.CantAsientos;
+
+            return costoAsiento;
+        }
+
+        
         public string Frecuencias()
         {
             string frec = "";
@@ -134,10 +133,17 @@ namespace Dominio.Entidades_no_abst
             return frec;
         }
 
+        // Overrides
         public string ToString()
         {
             string mensaje = $"Número de vuelo {_numVuelo}, Modelo del avión: {_avion.Modelo}, Ruta: {_ruta.ToString()}, Frecuencia: {Frecuencias()}\n";
             return mensaje;
+        }
+
+        public override bool Equals (object obj)
+        {
+            var vuelo = obj as Vuelo;
+            return vuelo != null && vuelo.NumVuelo == this._numVuelo;
         }
 
 

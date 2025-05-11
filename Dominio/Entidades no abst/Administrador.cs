@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio.Entidades_abstractas;
@@ -27,11 +28,15 @@ namespace Dominio.Entidades_no_abst
         {
             if (string.IsNullOrWhiteSpace(_apodo))
             {
-                throw new Exception("El campo apodo no puede estar vacío.");
-            }
-            {
                 throw new Exception("Debe ingresar un apodo");
             }
+        }
+
+        public override bool Equals (object obj)
+        {
+            var admin = obj as Administrador;
+
+            return admin != null && admin._apodo == this._apodo;
         }
 
         public void Validar()

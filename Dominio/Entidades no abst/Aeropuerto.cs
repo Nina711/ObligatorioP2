@@ -42,7 +42,7 @@ namespace Dominio
             _costoTasas = costoTasas;
         }
 
-        // Validaciones
+        // ---- Validaciones
 
         public void Validar()
         {
@@ -87,8 +87,15 @@ namespace Dominio
             {
                 throw new Exception("El costo de tasas del aeropuerto no puede ser negativo");
             }
-        }   
+        }
 
-        
+        // --- Override
+
+        public override bool Equals(object obj)
+        {
+            var aerop = obj as Aeropuerto;
+            return aerop != null && aerop.Codigo == this._codigo;
+        }
+
     }
 }

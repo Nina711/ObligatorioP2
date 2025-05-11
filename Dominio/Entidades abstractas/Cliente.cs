@@ -71,7 +71,18 @@ namespace Dominio.Entidades_no_abst
             ValidarNacionalidad();
         }
 
-        // ToString
+        // -------- OVERRIDES
+
+        // --Equals
+
+        public override bool Equals(object obj)
+        {
+            var cliente = obj as Cliente;
+
+            return cliente != null && cliente._documento == _documento;
+        }
+
+        // --ToString
 
         public override string ToString()
         {

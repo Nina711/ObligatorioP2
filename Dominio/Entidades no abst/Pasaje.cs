@@ -12,7 +12,7 @@ namespace Dominio.Entidades_no_abst
     public class Pasaje : IValidable
     {
         private int _id;
-        private int _ultimoId = 0;
+        private static int _ultimoId = 0;
         private Vuelo _vuelo;
         private DateTime _fecha;
         private Cliente _pasajero;
@@ -25,7 +25,7 @@ namespace Dominio.Entidades_no_abst
         }
         public int UltimoId
         {
-            get { return this._ultimoId; }
+            get { return _ultimoId; }
         }
 
         public Vuelo Vuelo
@@ -57,7 +57,7 @@ namespace Dominio.Entidades_no_abst
 
         public Pasaje(Vuelo vuelo, DateTime fecha, Cliente pasajero, Equipaje equipaje, decimal precioPasaje)
         {
-            this._ultimoId++;
+            _ultimoId++;
             this._id = _ultimoId;
             this._vuelo = vuelo;
             this._fecha = fecha;
@@ -123,11 +123,18 @@ namespace Dominio.Entidades_no_abst
         //}
 
 
-        // ToString
+        // --- Overrides
 
         public string ToString()
         {
             return $"Id: {_id}, Pasajero: {_pasajero.Nombre}, Precio: {_precioPasaje}, Fecha: {_fecha}, Vuelo n°: {_vuelo.NumVuelo}.";
+        }
+
+        public override bool Equals (object obj)
+        {
+            var pasaje = obj as Pasaje;
+
+            return pasaje != null && pasaje._id == this._id;
         }
     }
 }

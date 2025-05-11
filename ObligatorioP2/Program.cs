@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Dominio.Entidades_abstractas;
 using Dominio.Entidades_no_abst;
 
 namespace ObligatorioP2
@@ -10,7 +11,6 @@ namespace ObligatorioP2
         {
             // -------- PRECARGAS
             s.PrecargarDatos();
-            s.ValidarPrecargas();
 
             // --------- MENÚ
             try
@@ -158,6 +158,17 @@ namespace ObligatorioP2
         {
             try
             {
+                string documento = "";
+                    do
+                    {
+                        Console.WriteLine("Ingrese el documento de identidad:");
+                        documento = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(documento))
+                        {
+                            Console.WriteLine("El documento no puede ser un campo vacío.");
+                        }
+                    } while (string.IsNullOrWhiteSpace(documento));
+                
                 string nombre;
                 do
                 {
@@ -169,17 +180,6 @@ namespace ObligatorioP2
                         Console.WriteLine("El nombre no puede ser un campo vacío.");
                     }
                 } while (string.IsNullOrWhiteSpace(nombre));
-
-                string documento;
-                do
-                {
-                    Console.WriteLine("Ingrese el documento de identidad:");
-                    documento = Console.ReadLine();
-                    if (string.IsNullOrWhiteSpace(documento))
-                    {
-                        Console.WriteLine("El documento no puede ser un campo vacío.");
-                    }
-                } while (string.IsNullOrWhiteSpace(documento));
 
                 string nacionalidad;
                 do
@@ -254,6 +254,26 @@ namespace ObligatorioP2
                 Console.WriteLine(ex.Message);
             }
         }
+
+        // Para buscar cliente por cedula (experiencia de usuario, no integralidad de datos)
+
+        /*public bool ExisteCliente(string documento)
+        {
+            bool existeCliente = false;
+            int i = 0;
+
+            while (Cliente.Documento == null && i < _usuarios.Count)
+            {
+                Usuario u = _usuarios[i];
+
+                if (u is Cliente c && c.Documento == documento)
+                {
+                    cliente = (Cliente)u;
+                }
+                i++;
+            }
+            return cliente;
+        }*/
 
         // Para validar fechas que ingresa el usuario
         public static bool ValidarFormatoFecha(string fecha, out DateTime fechaParseada)
