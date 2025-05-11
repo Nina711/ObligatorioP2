@@ -33,17 +33,17 @@ namespace Dominio
 
         private void PrecargaUsuarios()
         {
-            AltaClientePremium(new Premium("juan.perez@example.com", "1234", "DNI001", "Juan Pérez", "Argentina"));
-            AltaClientePremium(new Premium("ana.lopez@example.com", "abcd", "DNI002", "Ana López", "México"));
-            AltaClientePremium(new Premium("carlos.ramos@example.com", "pass123", "DNI003", "Carlos Ramos", "Chile"));
-            AltaClientePremium(new Premium("laura.mendez@example.com", "secure", "DNI004", "Laura Méndez", "Perú"));
-            AltaClientePremium(new Premium("roberto.garcia@example.com", "clave", "DNI005", "Roberto García", "Uruguay"));
+            AltaClientePremium(new Premium("juan.perez@example.com", "1234", "4312003", "Juan Pérez", "Argentina"));
+            AltaClientePremium(new Premium("ana.lopez@example.com", "abcd", "5291845", "Ana López", "México"));
+            AltaClientePremium(new Premium("carlos.ramos@example.com", "pass123", "3289011", "Carlos Ramos", "Chile"));
+            AltaClientePremium(new Premium("laura.mendez@example.com", "secure", "6102344", "Laura Méndez", "Perú"));
+            AltaClientePremium(new Premium("roberto.garcia@example.com", "clave", "4721890", "Roberto García", "Uruguay"));
 
-            AltaClienteOcasional(new Ocasional("maria.fernandez@example.com", "4321", "DOC001", "María Fernández", "Colombia"));           
-            AltaClienteOcasional(new Ocasional("jose.martin@example.com", "qwer", "DOC002", "José Martín", "Paraguay"));
-            AltaClienteOcasional(new Ocasional("sofia.hernandez@example.com", "asdf", "DOC003", "Sofía Hernández", "Ecuador"));
-            AltaClienteOcasional(new Ocasional("diego.rios@example.com", "zxcv", "DOC004", "Diego Ríos", "Bolivia"));
-            AltaClienteOcasional(new Ocasional("valentina.sosa@example.com", "mnbv", "DOC005", "Valentina Sosa", "Venezuela"));
+            AltaClienteOcasional(new Ocasional("maria.fernandez@example.com", "4321", "3851205", "María Fernández", "Colombia"));           
+            AltaClienteOcasional(new Ocasional("jose.martin@example.com", "qwer", "2940312", "José Martín", "Paraguay"));
+            AltaClienteOcasional(new Ocasional("sofia.hernandez@example.com", "asdf", "6372001", "Sofía Hernández", "Ecuador"));
+            AltaClienteOcasional(new Ocasional("diego.rios@example.com", "zxcv", "5031943", "Diego Ríos", "Bolivia"));
+            AltaClienteOcasional(new Ocasional("valentina.sosa@example.com", "mnbv", "6178432", "Valentina Sosa", "Venezuela"));
 
             AgregarAdministrador(new Administrador("admin1@example.com", "adminpass1", "AdminUno"));
             AgregarAdministrador(new Administrador("admin2@example.com", "adminpass2", "AdminDos"));
@@ -193,12 +193,11 @@ namespace Dominio
 
             if (string.IsNullOrWhiteSpace(listado))
             {
-                listado = "No se encontraron clientes.";
+                throw new Exception ("Aun no hay clientes registrados.");
             }
 
             return listado;
         }
-
 
         // Método para mostrar vuelos por código de aeropuerto en consola
         public string VuelosPorCodigo(string codigo)
@@ -215,7 +214,7 @@ namespace Dominio
 
             if (string.IsNullOrWhiteSpace(lista))
             {
-                lista = "No se encontraron vuelos para el código de aeropuerto ingresado.";
+                throw new Exception ("No se encontraron vuelos para el código de aeropuerto ingresado.");
             }
 
             return lista;
@@ -378,6 +377,26 @@ namespace Dominio
             avion.Validar();
             _aviones.Add(avion);
         }
+
+        // Para buscar cliente por cedula (experiencia de usuario, no integralidad de datos)
+        public bool ExisteCliente(string documento)
+        {
+            Cliente cliente = null;
+            int i = 0;
+
+            while (cliente == null && i < _usuarios.Count)
+            {
+                Usuario u = _usuarios[i];
+
+                if (u is Cliente c && c.Documento == documento)
+                {
+                    cliente = (Cliente)u;
+                }
+                i++;
+            }
+            return cliente != null;
+        }
+
     }
 }
 

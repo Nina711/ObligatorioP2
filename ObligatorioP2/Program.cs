@@ -147,28 +147,31 @@ namespace ObligatorioP2
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
         // --------- Case 3: ALTA DE CLIENTE OCASIONAL
 
-        /* Como mejora IDEAL pero re IDEAL, si nos da el tiempo, el documento deberia validarse primero para que si ya existe, tire ese error primero y no se tenga que ingresar todo nuevamente */
         public static void AltaClienteOcasional()
         {
             try
             {
                 string documento = "";
-                    do
+                do
+                {
+                    Console.WriteLine("Ingrese el documento de identidad:");
+                    documento = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(documento))
                     {
-                        Console.WriteLine("Ingrese el documento de identidad:");
-                        documento = Console.ReadLine();
-                        if (string.IsNullOrWhiteSpace(documento))
-                        {
-                            Console.WriteLine("El documento no puede ser un campo vacío.");
-                        }
-                    } while (string.IsNullOrWhiteSpace(documento));
-                
+                        Console.WriteLine("El documento no puede ser un campo vacío.");
+                    }
+                    else if (s.ExisteCliente(documento))
+                    {
+                        Console.WriteLine("Ya existe un cliente con ese documento.");
+                    }
+                } while (string.IsNullOrWhiteSpace(documento) || s.ExisteCliente(documento));
+
                 string nombre;
                 do
                 {
@@ -210,7 +213,7 @@ namespace ObligatorioP2
                     contrasenia = Console.ReadLine();
                     if (string.IsNullOrWhiteSpace(contrasenia))
                     {
-                        Console.WriteLine("El contrasenia no puede ser un campo vacío.");
+                        Console.WriteLine("El contraseña no puede ser un campo vacío.");
                     }
                 } while (string.IsNullOrWhiteSpace(contrasenia));
 
@@ -220,7 +223,7 @@ namespace ObligatorioP2
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -255,25 +258,6 @@ namespace ObligatorioP2
             }
         }
 
-        // Para buscar cliente por cedula (experiencia de usuario, no integralidad de datos)
-
-        /*public bool ExisteCliente(string documento)
-        {
-            bool existeCliente = false;
-            int i = 0;
-
-            while (Cliente.Documento == null && i < _usuarios.Count)
-            {
-                Usuario u = _usuarios[i];
-
-                if (u is Cliente c && c.Documento == documento)
-                {
-                    cliente = (Cliente)u;
-                }
-                i++;
-            }
-            return cliente;
-        }*/
 
         // Para validar fechas que ingresa el usuario
         public static bool ValidarFormatoFecha(string fecha, out DateTime fechaParseada)

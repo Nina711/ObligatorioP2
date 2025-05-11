@@ -127,7 +127,7 @@ namespace Dominio.Entidades_no_abst
 
         public string ToString()
         {
-            return $"Id: {_id}, Pasajero: {_pasajero.Nombre}, Precio: {_precioPasaje}, Fecha: {_fecha}, Vuelo n°: {_vuelo.NumVuelo}.";
+            return $"Id: {_id}, Pasajero: {_pasajero.Nombre}, Precio: {_precioPasaje}, Fecha: {_fecha.ToString("d")}, Vuelo n°: {_vuelo.NumVuelo}.";
         }
 
         public override bool Equals (object obj)
