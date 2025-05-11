@@ -17,7 +17,6 @@ namespace Dominio
         private List<Ruta> _rutas = new List<Ruta>();
         private List<Vuelo> _vuelos = new List<Vuelo>();
         private List<Pasaje> _pasajes = new List<Pasaje>();
-        private List<Administrador> _administradores = new List<Administrador>();
 
 
         //Precargar datos de prueba
@@ -291,12 +290,12 @@ namespace Dominio
 
             admin.Validar();
 
-            if (_administradores.Contains(admin))
+            if (_usuarios.Contains(admin))
             {
                 throw new Exception("Ya existe un administrador con ese alias.");
             }
 
-            _administradores.Add(admin);
+            _usuarios.Add(admin);
         }
 
         public void AgregarAeropuerto(Aeropuerto aerop)
