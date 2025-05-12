@@ -244,7 +244,7 @@ namespace ObligatorioP2
                     if (ValidarFormatoFecha(desde, out DateTime fechaDesde) && ValidarFormatoFecha(hasta, out DateTime fechaHasta))
                     {
                         fechasValidas = true;
-                        Console.WriteLine($"Pasajes entre {desde} y {hasta}: \n {s.PasajesEntreFechas(fechaDesde, fechaHasta)}");
+                        Console.WriteLine($"Pasajes entre {desde} y {hasta}:\n{s.PasajesEntreFechas(fechaDesde, fechaHasta)}");
                     }
                     else
                     {
