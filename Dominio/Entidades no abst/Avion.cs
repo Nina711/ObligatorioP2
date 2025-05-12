@@ -93,6 +93,6 @@
             }
         }
 
-        
+        // agregar modelo equals
     }
 }
