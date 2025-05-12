@@ -200,10 +200,6 @@ namespace Dominio
         {
             List<Vuelo> aux = new List<Vuelo>();
             
-            if(!(ExisteAeropuerto(codigo)) && aux.Count > 0)
-            {
-                throw new Exception("No existe el IATA ingresado.");
-            } 
 
             foreach (Vuelo v in _vuelos)
             {
@@ -212,6 +208,11 @@ namespace Dominio
                     aux.Add(v);
                 }
             }
+
+            if(!(ExisteAeropuerto(codigo)))
+            {
+                throw new Exception("No existe el IATA ingresado.");
+            } 
 
             return aux;
         }
@@ -250,7 +251,7 @@ namespace Dominio
 
             if (_usuarios.Contains(ocasional))
             {
-                throw new Exception("Cliente ya existe.");
+                throw new Exception("Ya existe un cliente con ese documento y/o correo electrónico.");
             }
 
             _usuarios.Add(ocasional);

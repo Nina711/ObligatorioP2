@@ -131,7 +131,7 @@ namespace ObligatorioP2
 
                         foreach (char c in codigo)
                         {
-                            if (!char.IsLetter(c))
+                            if (!(char.IsLetter(c)))
                             {
                                 letra = false;
                                 break;
@@ -156,7 +156,7 @@ namespace ObligatorioP2
 
                 while (!esValido);
 
-                List<Vuelo> aux = s.VuelosPorCodigo(codigo);
+                List<Vuelo> aux = s.VuelosPorCodigo(codigo.ToUpper());
 
                 if (aux.Count == 0)
                 {
@@ -183,17 +183,45 @@ namespace ObligatorioP2
             try
             {
                 string documento = "";
+                bool esNum = true;
                 do
                 {
                     Console.WriteLine("Ingrese el documento de identidad:");
                     documento = Console.ReadLine();
+
                     if (string.IsNullOrWhiteSpace(documento))
                     {
                         Console.WriteLine("El documento no puede ser un campo vacío.");
                     }
 
 
-                } while (string.IsNullOrWhiteSpace(documento));
+                    if (documento.Length > 6 && documento.Length < 9)
+                    {
+                        foreach (char c in documento)
+                        {
+                            if (char.IsLetter(c))
+                            {
+                                esNum = false;
+                                break;
+                            }
+                            else
+                            {
+                                esNum = true;
+                            }
+                        }
+
+                        if (!esNum)
+                        {
+                            Console.WriteLine("El documento solo puede contener números.");
+                        }
+
+                    } 
+                    else
+                    {
+                        Console.WriteLine("El documento debe contener entre 7 y 8 caracteres.");
+                    }
+
+                } while (string.IsNullOrWhiteSpace(documento) || !(esNum) || (documento.Length < 7 || documento.Length > 8));
 
                 string nombre;
                 do
@@ -228,7 +256,12 @@ namespace ObligatorioP2
                         Console.WriteLine("El correo no puede ser un campo vacío.");
                     }
 
-                } while (string.IsNullOrWhiteSpace(correo));
+                    if (!correo.Contains("@") || !correo.Contains(".com"))
+                    {
+                        Console.WriteLine("El formato de correo electrónico no es válido");
+                    }
+
+                } while (string.IsNullOrWhiteSpace(correo) || (!correo.Contains("@") || !correo.Contains(".com")));
 
                 string contrasenia;
                 do
@@ -275,14 +308,15 @@ namespace ObligatorioP2
                         if (pasajesFiltrados.Count == 0)
                         {
                             Console.WriteLine("No se encontraron pasajes en ese rango de fechas.");
-                        } else 
-                        { 
+                        }
+                        else
+                        {
                             foreach (Pasaje p in pasajesFiltrados)
                             {
                                 Console.WriteLine(p);
                             }
-                        }                    
-                     
+                        }
+
                     }
                     else
                     {
