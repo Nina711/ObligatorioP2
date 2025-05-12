@@ -179,45 +179,35 @@ namespace Dominio
         }
 
         // Método para listar clientes
-        public string MostrarListadoClientes()
+        public List<Usuario> MostrarListadoClientes()
         {
-            string listado = "";
+            List<Usuario> aux = new List<Usuario>();
 
             foreach (Usuario u in _usuarios)
             {
                 if (u is Premium || u is Ocasional)
                 {
-                    listado += u.ToString();
+                    aux.Add(u);
                 }
             }
 
-            if (string.IsNullOrWhiteSpace(listado))
-            {
-                throw new Exception ("Aun no hay clientes registrados.");
-            }
-
-            return listado;
+            return aux;
         }
 
         // Método para mostrar vuelos por código de aeropuerto en consola
-        public string VuelosPorCodigo(string codigo)
+        public List<Vuelo> VuelosPorCodigo(string codigo)
         {
-            string lista = "";
+            List<Vuelo> aux = new List<Vuelo>();
 
             foreach (Vuelo v in _vuelos)
             {
                 if (v.ObtenerAeropuertoSalida().Contains(codigo.ToUpper()) || v.ObtenerAeropuertoLlegada().Contains(codigo.ToUpper()))
                 {
-                    lista += v.ToString();
+                    aux.Add(v);
                 }
             }
 
-            if (string.IsNullOrWhiteSpace(lista))
-            {
-                throw new Exception ("No se encontraron vuelos para el código de aeropuerto ingresado.");
-            }
-
-            return lista;
+            return aux;
         }
 
         // Metodo para listar pasajes

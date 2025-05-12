@@ -99,7 +99,7 @@ namespace Dominio.Entidades_no_abst
             }
         }
 
-        //Obtener el código de los aeropuertos (1)
+        //Obtener el código de los aeropuertos
         public string ObtenerCodigoAeropuertoSalida()
         {
             string codigoSalida = _aeropSalida.Codigo;

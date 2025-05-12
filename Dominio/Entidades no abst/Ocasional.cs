@@ -12,7 +12,6 @@ namespace Dominio
 
         private bool _esElegible;
 
-        // Esto es la property 
         public string EsElegible
         {
             get

@@ -95,6 +95,7 @@ namespace Dominio
             }
         }
 
+        //--- Override
         public override bool Equals(object obj)
         {
             Avion avion = obj as Avion;

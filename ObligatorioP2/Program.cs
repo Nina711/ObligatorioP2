@@ -96,7 +96,13 @@ namespace ObligatorioP2
         public static void ListarClientes()
         {
             Console.WriteLine("Listado de Clientes:");
-            Console.WriteLine(s.MostrarListadoClientes());
+
+            List<Usuario> aux = s.MostrarListadoClientes();
+
+            foreach (Usuario u in aux)
+            {
+                Console.WriteLine(u);
+            }
         }
 
         // --------- Case 2: LISTAR VUELOS POR CÓDIGO
@@ -116,7 +122,6 @@ namespace ObligatorioP2
                     {
 
                         bool letra = true;
-                        //bool flag = false; -- no entendi que hace esta bandera
 
                         foreach (char c in codigo)
                         {
@@ -145,7 +150,12 @@ namespace ObligatorioP2
 
                 while (!esValido);
 
-                Console.WriteLine(s.VuelosPorCodigo(codigo.ToUpper()));
+                List<Vuelo> aux = s.VuelosPorCodigo(codigo);
+
+                foreach (Vuelo v in aux)
+                {
+                    Console.WriteLine(v);
+                }
             }
             catch (Exception ex)
             {

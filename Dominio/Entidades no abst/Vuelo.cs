@@ -101,7 +101,7 @@ namespace Dominio.Entidades_no_abst
             }
         }
 
-        //Obtiene el código de los aeropuertos a partir del método en Ruta (2)
+        //Obtiene el código de los aeropuertos a partir del método en Ruta
         public string ObtenerAeropuertoSalida()
         {
             return _ruta.ObtenerCodigoAeropuertoSalida();
