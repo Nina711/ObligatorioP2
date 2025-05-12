@@ -179,15 +179,16 @@ namespace Dominio
         }
 
         // Método para listar clientes
-        public List<Usuario> MostrarListadoClientes()
+        public List<Cliente> MostrarListadoClientes()
         {
-            List<Usuario> aux = new List<Usuario>();
+            List<Cliente> aux = new List<Cliente>();
+
 
             foreach (Usuario u in _usuarios)
             {
-                if (u is Premium || u is Ocasional)
+                if (u is Cliente)
                 {
-                    aux.Add(u);
+                    aux.Add((Cliente)u);
                 }
             }
 
@@ -198,6 +199,11 @@ namespace Dominio
         public List<Vuelo> VuelosPorCodigo(string codigo)
         {
             List<Vuelo> aux = new List<Vuelo>();
+            
+            if(!(ExisteAeropuerto(codigo)) && aux.Count > 0)
+            {
+                throw new Exception("No existe el IATA ingresado.");
+            } 
 
             foreach (Vuelo v in _vuelos)
             {
@@ -244,7 +250,7 @@ namespace Dominio
 
             if (_usuarios.Contains(ocasional))
             {
-                throw new Exception("Cliente no agregado. Ya existe un cliente con ese documento de identidad.");
+                throw new Exception("Cliente ya existe.");
             }
 
             _usuarios.Add(ocasional);
@@ -261,7 +267,7 @@ namespace Dominio
 
             if (_usuarios.Contains(premium))
             {
-                throw new Exception("Ya existe un cliente con ese documento de identidad.");
+                throw new Exception("Cliente ya existe.");
             }
 
             _usuarios.Add(premium);
@@ -371,23 +377,23 @@ namespace Dominio
             _aviones.Add(avion);
         }
 
-        // Para buscar cliente por cedula (experiencia de usuario, no integralidad de datos)
-        public bool ExisteCliente(string documento)
+        
+        public bool ExisteAeropuerto(string codigo)
         {
-            Cliente cliente = null;
+            Aeropuerto aerop = null;
             int i = 0;
 
-            while (cliente == null && i < _usuarios.Count)
+            while (aerop == null && i < _aeropuertos.Count)
             {
-                Usuario u = _usuarios[i];
+                Aeropuerto a = _aeropuertos[i];
 
-                if (u is Cliente c && c.Documento == documento)
+                if (a.Codigo == codigo)
                 {
-                    cliente = (Cliente)u;
+                    aerop = a;
                 }
                 i++;
             }
-            return cliente != null;
+            return aerop != null;
         }
 
     }

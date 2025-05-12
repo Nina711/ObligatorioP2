@@ -46,11 +46,16 @@ namespace Dominio.Entidades_no_abst
             {
                 throw new Exception("El documento no puede estar vacío.");
             }
+
+            if(_documento.Length < 7 || _documento.Length > 8)
+            {
+                throw new Exception("El documento debe tener como minimo 7 caracteres y como maximo 8.");
+            }
         }
 
         private void ValidarNombre()
         {
-            if (string.IsNullOrWhiteSpace(_nombre)) 
+            if (string.IsNullOrWhiteSpace(_nombre))
             {
                 throw new Exception("El nombre no puede estar vacío.");
             }
@@ -58,7 +63,8 @@ namespace Dominio.Entidades_no_abst
 
         private void ValidarNacionalidad()
         {
-            if (string.IsNullOrWhiteSpace(_nacionalidad)) {
+            if (string.IsNullOrWhiteSpace(_nacionalidad))
+            {
                 throw new Exception("La nacionalidad no puede ser vacía");
             }
         }
@@ -79,7 +85,8 @@ namespace Dominio.Entidades_no_abst
         {
             var cliente = obj as Cliente;
 
-            return cliente != null && cliente._documento == _documento;
+            return cliente != null &&
+                   (this.Documento == cliente.Documento || this.Correo == cliente.Correo);
         }
 
         // --ToString

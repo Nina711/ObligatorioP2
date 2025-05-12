@@ -52,12 +52,18 @@ namespace Dominio.Entidades_abstractas
             ValidarCorreo();
         }
 
-        // ToString()
+        // --- Overrides
 
-        public virtual string ToString()
+        public override string ToString()
         {
             string mensaje = $"Correo: {_correo}";
             return mensaje;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var usuario = obj as Usuario;
+            return usuario != null && usuario._correo == this._correo;
         }
     }
 }

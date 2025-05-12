@@ -9,7 +9,7 @@ namespace ObligatorioP2
         static Sistema s = new Sistema();
         static void Main(string[] args)
         {
-            
+
 
             // --------- MENÚ
             try
@@ -97,12 +97,20 @@ namespace ObligatorioP2
         {
             Console.WriteLine("Listado de Clientes:");
 
-            List<Usuario> aux = s.MostrarListadoClientes();
+            List<Cliente> aux = s.MostrarListadoClientes();
 
-            foreach (Usuario u in aux)
+            if (aux.Count == 0)
             {
-                Console.WriteLine(u);
+                Console.WriteLine("Aun no hay clientes registrados.");
             }
+            else
+            {
+                foreach (Cliente u in aux)
+                {
+                    Console.WriteLine(u.ToString());
+                }
+            }
+
         }
 
         // --------- Case 2: LISTAR VUELOS POR CÓDIGO
@@ -152,9 +160,16 @@ namespace ObligatorioP2
 
                 List<Vuelo> aux = s.VuelosPorCodigo(codigo);
 
-                foreach (Vuelo v in aux)
+                if (aux.Count == 0)
                 {
-                    Console.WriteLine(v);
+                    Console.WriteLine("No existen vuelos para ese codigo IATA.");
+                }
+                else
+                {
+                    foreach (Vuelo v in aux)
+                    {
+                        Console.WriteLine(v);
+                    }
                 }
             }
             catch (Exception ex)
@@ -178,11 +193,9 @@ namespace ObligatorioP2
                     {
                         Console.WriteLine("El documento no puede ser un campo vacío.");
                     }
-                    else if (s.ExisteCliente(documento))
-                    {
-                        Console.WriteLine("Ya existe un cliente con ese documento.");
-                    }
-                } while (string.IsNullOrWhiteSpace(documento) || s.ExisteCliente(documento));
+
+
+                } while (string.IsNullOrWhiteSpace(documento));
 
                 string nombre;
                 do
@@ -203,7 +216,7 @@ namespace ObligatorioP2
                     nacionalidad = Console.ReadLine();
                     if (string.IsNullOrWhiteSpace(nacionalidad))
                     {
-                        Console.WriteLine("El nacionalidad no puede ser un campo vacío.");
+                        Console.WriteLine("La nacionalidad no puede ser un campo vacío.");
                     }
                 } while (string.IsNullOrWhiteSpace(nacionalidad));
 
@@ -216,6 +229,7 @@ namespace ObligatorioP2
                     {
                         Console.WriteLine("El correo no puede ser un campo vacío.");
                     }
+
                 } while (string.IsNullOrWhiteSpace(correo));
 
                 string contrasenia;
@@ -260,15 +274,17 @@ namespace ObligatorioP2
 
                         Console.WriteLine($"Pasajes entre {fechaDesde:dd/MM/yyyy} y {fechaHasta:dd/MM/yyyy}:");
 
-                        foreach (Pasaje p in pasajesFiltrados)
-                        {
-                            Console.WriteLine(p); 
-                        }
-
                         if (pasajesFiltrados.Count == 0)
                         {
                             Console.WriteLine("No se encontraron pasajes en ese rango de fechas.");
-                        }
+                        } else 
+                        { 
+                            foreach (Pasaje p in pasajesFiltrados)
+                            {
+                                Console.WriteLine(p);
+                            }
+                        }                    
+                     
                     }
                     else
                     {
