@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,7 +54,7 @@ namespace Dominio.Entidades_abstractas
 
         // ToString()
 
-        public override string ToString()
+        public virtual string ToString()
         {
             string mensaje = $"Correo: {_correo}";
             return mensaje;
