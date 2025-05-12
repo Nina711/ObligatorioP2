@@ -95,6 +95,10 @@ namespace Dominio
             }
         }
 
-        // agregar modelo equals
+        public override bool Equals(object obj)
+        {
+            Avion avion = obj as Avion;
+            return avion != null && avion._modelo == _modelo;
+        }
     }
 }

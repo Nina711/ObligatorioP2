@@ -220,29 +220,24 @@ namespace Dominio
         }
 
         // Metodo para listar pasajes
-        public string PasajesEntreFechas(DateTime desde, DateTime hasta)
+        public List<Pasaje> PasajesEntreFechas(DateTime desde, DateTime hasta)
         {
             if (desde > hasta)
             {
                 throw new Exception("La fecha de inicio no puede ser mayor a la de fin.");
             }
 
-            string listPasajesFiltrados = "";
+            List<Pasaje> _pasajesFiltrados = new List<Pasaje>();
 
             foreach (Pasaje p in _pasajes)
             {
                 if (p.Fecha >= desde && p.Fecha <= hasta)
                 {
-                    listPasajesFiltrados += p.ToString() + "\n";
+                    _pasajesFiltrados.Add(p);
                 }
             }
 
-            if (string.IsNullOrEmpty(listPasajesFiltrados))
-            {
-                listPasajesFiltrados = "No se encontraron pasajes entre esas fechas.";
-            }
-
-            return listPasajesFiltrados;
+            return _pasajesFiltrados;
         }
 
         // ---- MÉTODOS PARA AGREGAR INSTANCIAS A LAS LISTAS
@@ -374,6 +369,12 @@ namespace Dominio
             }
 
             avion.Validar();
+
+            if(_aviones.Contains(avion))
+            {
+                throw new Exception("Ya existe este modelo de avión.");
+            }
+
             _aviones.Add(avion);
         }
 

@@ -244,7 +244,19 @@ namespace ObligatorioP2
                     if (ValidarFormatoFecha(desde, out DateTime fechaDesde) && ValidarFormatoFecha(hasta, out DateTime fechaHasta))
                     {
                         fechasValidas = true;
-                        Console.WriteLine($"Pasajes entre {desde} y {hasta}:\n{s.PasajesEntreFechas(fechaDesde, fechaHasta)}");
+                        List<Pasaje> pasajesFiltrados = s.PasajesEntreFechas(fechaDesde, fechaHasta);
+
+                        Console.WriteLine($"Pasajes entre {fechaDesde:dd/MM/yyyy} y {fechaHasta:dd/MM/yyyy}:");
+
+                        foreach (Pasaje p in pasajesFiltrados)
+                        {
+                            Console.WriteLine(p); 
+                        }
+
+                        if (pasajesFiltrados.Count == 0)
+                        {
+                            Console.WriteLine("No se encontraron pasajes en ese rango de fechas.");
+                        }
                     }
                     else
                     {
