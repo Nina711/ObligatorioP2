@@ -203,18 +203,13 @@ namespace Dominio
 
             foreach (Vuelo v in _vuelos)
             {
-                if (v.ObtenerAeropuertoSalida().Contains(codigo.ToUpper()) || v.ObtenerAeropuertoLlegada().Contains(codigo.ToUpper()))
+                if (v.ObtenerAeropuertoSalida().Contains(codigo) || v.ObtenerAeropuertoLlegada().Contains(codigo))
                 {
                     aux.Add(v);
                 }
             }
 
-            if(!(ExisteAeropuerto(codigo)))
-            {
-                throw new Exception("No existe el IATA ingresado.");
-            } 
-
-            return aux;
+                return aux;
         }
 
         // Metodo para listar pasajes
@@ -376,25 +371,6 @@ namespace Dominio
             }
 
             _aviones.Add(avion);
-        }
-
-        
-        public bool ExisteAeropuerto(string codigo)
-        {
-            Aeropuerto aerop = null;
-            int i = 0;
-
-            while (aerop == null && i < _aeropuertos.Count)
-            {
-                Aeropuerto a = _aeropuertos[i];
-
-                if (a.Codigo == codigo)
-                {
-                    aerop = a;
-                }
-                i++;
-            }
-            return aerop != null;
         }
 
     }
