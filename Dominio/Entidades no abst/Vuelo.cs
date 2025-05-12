@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio.Enumeraciones;
+using Dominio.Interfaces;
 
 namespace Dominio.Entidades_no_abst
 {
