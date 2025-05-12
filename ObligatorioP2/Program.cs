@@ -258,7 +258,7 @@ namespace ObligatorioP2
 
                     if (!correo.Contains("@") || !correo.Contains(".com"))
                     {
-                        Console.WriteLine("El formato de correo electrónico no es válido");
+                        Console.WriteLine("El formato de correo electrónico no es válido. Debe tener '@' y '.com'");
                     }
 
                 } while (string.IsNullOrWhiteSpace(correo) || (!correo.Contains("@") || !correo.Contains(".com")));
