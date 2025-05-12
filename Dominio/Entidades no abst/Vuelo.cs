@@ -93,7 +93,7 @@ namespace Dominio.Entidades_no_abst
 
         // Método para validar si el alcance de un avión puede cubrir determinada ruta
 
-        public void ValidarAlcance()
+        public void ValidarAlcanceParaVuelo()
         {
             if (_ruta.Distancia > _avion.Alcance)
             {
@@ -135,7 +135,7 @@ namespace Dominio.Entidades_no_abst
         }
 
         // Overrides
-        public string ToString()
+        public override string ToString()
         {
             string mensaje = $"Número de vuelo {_numVuelo}, Modelo del avión: {_avion.Modelo}, Ruta: {_ruta.ToString()}, Frecuencia: {Frecuencias()}\n";
             return mensaje;
