@@ -10,8 +10,6 @@ namespace ObligatorioP2
         static void Main(string[] args)
         {
 
-
-            // --------- MENÚ
             try
             {
                 // -------- PRECARGAS
