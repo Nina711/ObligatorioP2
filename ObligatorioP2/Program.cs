@@ -9,12 +9,14 @@ namespace ObligatorioP2
         static Sistema s = new Sistema();
         static void Main(string[] args)
         {
-            // -------- PRECARGAS
-            s.PrecargarDatos();
+            
 
             // --------- MENÚ
             try
             {
+                // -------- PRECARGAS
+                s.PrecargarDatos();
+                //--------- MENU
                 int opcion;
                 bool flag = false;
 

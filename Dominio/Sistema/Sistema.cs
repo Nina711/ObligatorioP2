@@ -312,6 +312,7 @@ namespace Dominio
 
         public void AgregarPasaje(Pasaje pasaje)
         {
+            
             if (pasaje == null)
             {
                 throw new Exception("Debe ingresar un pasaje");
@@ -325,6 +326,7 @@ namespace Dominio
             }
 
             _pasajes.Add(pasaje);
+            
         }
 
         public void AgregarRuta(Ruta ruta)

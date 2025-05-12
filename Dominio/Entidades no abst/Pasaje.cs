@@ -73,7 +73,7 @@ namespace Dominio.Entidades_no_abst
         public void Validar()
         {
             ValidarFecha();
-            //ValidarPasajero();
+            ValidarPasajero();
             ValidarVuelo();
         }
 
@@ -84,24 +84,22 @@ namespace Dominio.Entidades_no_abst
                 throw new Exception("La fecha del pasaje no puede ser menor al día de hoy.");
             }
 
-            //Creo que esta validacíon debería estar en un método aparte y que se use cuando se vaya a emitir un pasaje
+            int fecha = (int)_fecha.DayOfWeek;
+            bool esValido = false;
 
-            //int fecha = (int)_fecha.DayOfWeek;
-            //bool esValido = false;
+            foreach (Frecuencia f in _vuelo.Frecuencia)
+            {
+                if (((int)f) == fecha)
+                {
+                    esValido = true;
+                    break;
+                }
+            }
 
-            //foreach (Frecuencia f in _vuelo.Frecuencia)
-            //{
-            //    if (((int)f) == fecha)
-            //    {
-            //        esValido = true;
-            //        break;
-            //    }
-            //}
-
-            //if (!esValido)
-            //{
-            //    throw new Exception("El vuelo no opera en la fecha seleccionada.");
-            //}
+            if (!esValido)
+            {
+                throw new Exception("El vuelo no opera en la fecha seleccionada.");
+            }
         }
 
         private void ValidarVuelo()
@@ -112,17 +110,13 @@ namespace Dominio.Entidades_no_abst
             }
         }
 
-        //Este método no sería al revés? Tipo que si el pasajero es null y no es cliente entonces no es correcto? 
-        //Lo comenté porque al validar la precarga entra en el if y me salta la excepción.
-
-        //private void ValidarPasajero()
-        //{
-        //    if (_pasajero != null && _pasajero is Cliente)
-        //    {
-        //        throw new Exception("Los datos del pasajero no son correctos.");
-        //    }
-        //}
-
+        private void ValidarPasajero()
+        {
+            if (_pasajero == null && !(_pasajero is Cliente))
+            {
+                throw new Exception("Los datos del pasajero no son correctos.");
+            }
+        }
 
         // --- Overrides
 
