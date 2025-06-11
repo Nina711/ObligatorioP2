@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81 d17.13
+VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObligatorioP2", "ObligatorioP2\ObligatorioP2.csproj", "{E80BE630-FA6B-4A72-94C9-EE6090A12350}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{1A3EFB41-CC2C-4A99-98A1-F7FD4A150F17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{2205DDE2-EA5A-4B4C-A108-FC31A708A32F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1A3EFB41-CC2C-4A99-98A1-F7FD4A150F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A3EFB41-CC2C-4A99-98A1-F7FD4A150F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A3EFB41-CC2C-4A99-98A1-F7FD4A150F17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2205DDE2-EA5A-4B4C-A108-FC31A708A32F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2205DDE2-EA5A-4B4C-A108-FC31A708A32F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2205DDE2-EA5A-4B4C-A108-FC31A708A32F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2205DDE2-EA5A-4B4C-A108-FC31A708A32F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
