@@ -10,7 +10,7 @@ namespace Dominio.Interfaces
 {
     internal class PasajesPorFecha : IComparer<Pasaje>
     {
-        public int Compare(Pasaje x, Pasaje y)
+        public int Compare(Pasaje? x, Pasaje? y)
         {
             return x.Fecha.CompareTo(y.Fecha);
         }

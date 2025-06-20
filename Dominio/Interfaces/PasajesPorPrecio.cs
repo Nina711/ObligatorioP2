@@ -11,9 +11,9 @@ namespace Dominio.Interfaces
 {
     internal class PasajesPorPrecio : IComparer<Pasaje>
     {
-        public int Compare (Pasaje x, Pasaje y)
+        public int Compare (Pasaje? x, Pasaje? y)
         {
-            return x.precioPasaje.CompareTo(y.precioPasaje);
+            return x.precioPasaje.CompareTo(y.precioPasaje) * -1;
         }
     }
 }
