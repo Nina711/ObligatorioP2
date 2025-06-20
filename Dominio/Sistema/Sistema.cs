@@ -11,13 +11,44 @@ namespace Dominio
 {
     public class Sistema
     {
-        private List<Usuario> _usuarios = new List<Usuario>();
-        private List<Avion> _aviones = new List<Avion>();
-        private List<Aeropuerto> _aeropuertos = new List<Aeropuerto>();
-        private List<Ruta> _rutas = new List<Ruta>();
-        private List<Vuelo> _vuelos = new List<Vuelo>();
-        private List<Pasaje> _pasajes = new List<Pasaje>();
+        private List<Usuario> _usuarios;
+        private List<Avion> _aviones;
+        private List<Aeropuerto> _aeropuertos;
+        private List<Ruta> _rutas;
+        private List<Vuelo> _vuelos;
+        private List<Pasaje> _pasajes;
+        private static Sistema _instancia;
 
+        // Patrón singleton
+        public static Sistema Instancia
+        {
+            get
+            {
+                if (_instancia == null) _instancia = new Sistema();
+                return _instancia;
+            }
+        }
+
+        //Properties
+
+        public List<Usuario> Usuarios {get { return new List<Usuario>(_usuarios); }}
+        public List<Avion> Aviones {get { return new List<Avion>(_aviones);}}
+        public List<Aeropuerto> Aeropuertos {get { return new List<Aeropuerto>(_aeropuertos); }}   
+        public List<Ruta> Rutas {get { return new List<Ruta>(_rutas); }}
+        public List<Vuelo> Vuelos {get { return new List<Vuelo>(_vuelos); }}
+        public List<Pasaje> Pasajes { get { return new List<Pasaje>(_pasajes); }}
+
+        //Constructor para implementar el patrón singleton
+        public Sistema()
+        {
+            _usuarios = new List<Usuario>();
+            _aviones = new List<Avion>();
+            _aeropuertos = new List<Aeropuerto>();
+            _rutas = new List<Ruta>();
+            _vuelos = new List<Vuelo>();
+            _pasajes = new List<Pasaje>();
+            PrecargarDatos();
+        }
 
         //Precargar datos de prueba
         public void PrecargarDatos()
