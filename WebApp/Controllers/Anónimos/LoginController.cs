@@ -2,6 +2,7 @@
 using Dominio;
 using Dominio.Entidades_abstractas;
 using System.Reflection.Metadata;
+using Dominio.Entidades_no_abst;
 
 namespace WebApp.Controllers.Anónimos
 {
@@ -26,17 +27,20 @@ namespace WebApp.Controllers.Anónimos
                 }
                 else
                 {
-                    Usuario u = _sistema.BuscarClientePorCorreo(correo);
+                    Usuario u = _sistema.UsuarioLogueado(correo, contrasenia);
                     if (u != null)
-                    {
-                        if (u.Contrasenia == contrasenia)
+                    { 
+                        HttpContext.Session.SetString("correo", u.Correo);
+
+                        if (u is Administrador)
                         {
-                            HttpContext.Session.SetString("correo", u.Correo);
-                            return RedirectToAction("Index", "Cliente");
+                            HttpContext.Session.SetString("rol", "admin");
+                            return RedirectToAction("Index", "Administrador");
                         }
-                        else
+                        else if ( u is Cliente)
                         {
-                            ViewBag.Mensaje = "Contraseña incorrecta.";
+                            HttpContext.Session.SetString("rol", "cliente");
+                            return RedirectToAction("Index", "Cliente");
                         }
                     }
                     else

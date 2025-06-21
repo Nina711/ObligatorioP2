@@ -16,7 +16,7 @@ namespace WebApp.Controllers.Clientes
             }
 
             string correo = HttpContext.Session.GetString("correo");
-            Cliente clienteActual = _sistema.BuscarClientePorCorreo(correo);
+            Usuario clienteActual = _sistema.BuscarUsuarioPorCorreo(correo);
 
             return View(clienteActual);
         }

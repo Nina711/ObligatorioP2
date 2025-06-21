@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Dominio.Entidades_abstractas;
 using Dominio.Entidades_no_abst;
 using Dominio.Enumeraciones;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,8 @@ namespace WebApp.Controllers.Clientes
         {
             Vuelo vuelo = _sistema.BuscarVueloPorId(numVuelo);
             string correo = HttpContext.Session.GetString("correo");
-            Cliente pasajero = _sistema.BuscarClientePorCorreo(correo);
+            Usuario Upasajero = _sistema.BuscarUsuarioPorCorreo(correo);
+            Cliente pasajero = Upasajero as Cliente;
 
 
             if (vuelo == null)

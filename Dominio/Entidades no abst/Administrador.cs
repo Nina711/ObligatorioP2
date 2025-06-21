@@ -15,12 +15,15 @@ namespace Dominio.Entidades_no_abst
         public string Apodo
         {
             get { return this._apodo; }
+            set { this._apodo = value; }
         }
 
         public Administrador(string correo, string contrasenia, string apodo) : base(correo, contrasenia)
         {
             this._apodo = apodo;
         }
+
+        public Administrador() { }
 
         // Validaciones
 

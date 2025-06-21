@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Dominio.Entidades_no_abst;
 using Dominio.Entidades_abstractas;
 using Dominio.Enumeraciones;
+using System.ComponentModel.Design;
 
 namespace Dominio
 {
@@ -406,20 +407,18 @@ namespace Dominio
 
         // Método para buscar cliente por cédula (para obtener datos de la sesion actual)
 
-        public Cliente BuscarClientePorCorreo(string correo)
+        public Usuario BuscarUsuarioPorCorreo(string correo)
         {
             foreach (Usuario u in _usuarios)
             {
-                if (u is Cliente cliente)
+                if (u.Correo == correo)
                 {
-                    if (cliente.Correo == correo)
-                    {
-                        return cliente;
-                    }
+                    return u;
                 }
             }
             return null;
         }
+
 
         // Metodo para buscar vuelo (para poder comprar pasajes)
 
@@ -465,6 +464,25 @@ namespace Dominio
             decimal costoFinal = costoBase + (costoBase * margenGanancia) + rutaDelPasaje.CalcularCostoOperacionAeropuertos();
 
             return costoFinal;
+        }
+
+        //login
+
+        public Usuario UsuarioLogueado(string correo, string contrasenia)
+        {
+            foreach (Usuario u in _usuarios)
+            {
+                if (u.Correo == correo && u.Contrasenia == contrasenia)
+                {
+                    return u;
+                }
+                else if (u.Correo == correo && u.Contrasenia != contrasenia)
+                {
+                    throw new Exception("Contraseña incorrecta");
+                }
+            }
+
+            return null;
         }
 
     }
