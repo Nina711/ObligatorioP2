@@ -1,0 +1,31 @@
+﻿@using Dominio.Entidades_no_abst;
+@model Cliente;
+
+<h1>Mi perfil</h1>
+
+<div>
+	<strong>Nombre:</strong> @Model.Nombre
+</div>
+<div>
+	<strong>Documento:</strong> @Model.Documento
+</div>
+<div>
+	<strong>Correo:</strong> @Model.Correo
+</div>
+<div>
+	<strong>Nacionalidad:</strong> @Model.Nacionalidad
+</div>
+@if (Model is Premium cPremium)
+{
+	<div>
+		<strong>Puntos:</strong> @cPremium.Puntos
+	</div>
+}
+<div>
+	<a href="/Cliente/MisPasajes">Mis pasajes</a>
+</div>
+
+
+
+
+

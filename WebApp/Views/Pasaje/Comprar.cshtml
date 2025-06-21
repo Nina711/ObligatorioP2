@@ -1,0 +1,26 @@
+﻿@using Dominio;
+@using Dominio.Enumeraciones
+
+<h1>Comprar pasaje</h1>
+<h2>Vuelo @Model.NumVuelo</h2>
+@if (ViewBag.Mensaje != null)
+{
+				<p>@ViewBag.Mensaje</p>
+}
+<form method="post">
+		<input type="hidden" name="numVuelo" value="@Model.NumVuelo" />
+
+	<label>Fecha del vuelo:</label><br>
+	<input type="date" name="fechaPasaje" required><br>
+
+	<label>Tipo de equipaje:</label><br>
+	<select name="equipaje">
+		<option value="">Seleccione el tipo de equipaje</option>
+		@foreach (Equipaje tipo in ViewBag.TiposEquipaje)
+		{
+			<option value="@((int)tipo)">@tipo.ToString()</option>
+		}
+
+	</select><br>
+	<button type="submit">COMPRAR PASAJE</button>
+</form>
