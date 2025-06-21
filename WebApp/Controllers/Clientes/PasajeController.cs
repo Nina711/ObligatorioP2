@@ -30,10 +30,6 @@ namespace WebApp.Controllers.Clientes
         public IActionResult Comprar(string numVuelo, DateTime fechaPasaje, Equipaje equipaje)
         {
             Vuelo vuelo = _sistema.BuscarVueloPorId(numVuelo);
-
-            //---> La siguiente linea es para probar si funciona el controlador ahora que aun no tenemos login (le paso una cedula de un cliente que existe)
-            HttpContext.Session.SetString("cedula", "5291845");
-            //<-----------
             string correo = HttpContext.Session.GetString("correo");
             Cliente pasajero = _sistema.BuscarClientePorCorreo(correo);
 
