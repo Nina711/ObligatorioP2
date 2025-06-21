@@ -8,8 +8,8 @@ namespace Dominio.Enumeraciones
 {
     public enum Equipaje
     {
-        light = 1,
-        cabina = 2,
-        bodega = 3,
+        Light = 1,
+        Cabina = 2,
+        Bodega = 3,
     }
 }
