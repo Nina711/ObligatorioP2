@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Dominio;
-using Dominio.Entidades;
+using Dominio.Entidades_abstractas;
 using System.Reflection.Metadata;
 
 namespace WebApp.Controllers
@@ -18,7 +18,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                if(string.IsNullOrEmpty(email) || string.IsNullOrEmpty(contrasenia))
+                if(string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(contrasenia))
                 {
                     ViewBag.Mensaje = "Email y contraseña son obligatorios.";
                 }
