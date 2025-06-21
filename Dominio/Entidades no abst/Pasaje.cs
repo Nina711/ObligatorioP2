@@ -75,14 +75,18 @@ namespace Dominio.Entidades_no_abst
             ValidarFecha();
             ValidarPasajero();
             ValidarVuelo();
+            ValidarEquipaje();
         }
 
         private void ValidarFecha()
         {
+            /* Lo comento para que no haya problema con las precargas 
+             * 
             if (_fecha < DateTime.Today)
             {
                 throw new Exception("La fecha del pasaje no puede ser menor al día de hoy.");
             }
+            */
 
             int fecha = (int)_fecha.DayOfWeek;
             bool esValido = false;
@@ -102,11 +106,20 @@ namespace Dominio.Entidades_no_abst
             }
         }
 
+
         private void ValidarVuelo()
         {
             if (!(_vuelo is Vuelo))
             {
                 throw new Exception("El vuelo no es correcto");
+            }
+        }
+
+        private void ValidarEquipaje()
+        {
+            if (!Enum.IsDefined(typeof(Equipaje), _equipaje))
+            {
+                throw new Exception("Debe seleccionar un tipo de equipaje válido.");
             }
         }
 
@@ -125,7 +138,7 @@ namespace Dominio.Entidades_no_abst
             return $"Id: {_id}, Pasajero: {_pasajero.Nombre}, Precio: {_precioPasaje}, Fecha: {_fecha.ToString("d")}, Vuelo n°: {_vuelo.NumVuelo}.";
         }
 
-        public override bool Equals (object obj)
+        public override bool Equals(object obj)
         {
             var pasaje = obj as Pasaje;
 
