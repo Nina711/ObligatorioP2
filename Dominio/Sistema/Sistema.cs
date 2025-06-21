@@ -31,12 +31,12 @@ namespace Dominio
 
         //Properties
 
-        public List<Usuario> Usuarios {get { return new List<Usuario>(_usuarios); }}
-        public List<Avion> Aviones {get { return new List<Avion>(_aviones);}}
-        public List<Aeropuerto> Aeropuertos {get { return new List<Aeropuerto>(_aeropuertos); }}   
-        public List<Ruta> Rutas {get { return new List<Ruta>(_rutas); }}
-        public List<Vuelo> Vuelos {get { return new List<Vuelo>(_vuelos); }}
-        public List<Pasaje> Pasajes { get { return new List<Pasaje>(_pasajes); }}
+        public List<Usuario> Usuario { get { return new List<Usuario>(_usuarios); } }
+        public List<Avion> Aviones { get { return new List<Avion>(_aviones); } }
+        public List<Aeropuerto> Aeropuertos { get { return new List<Aeropuerto>(_aeropuertos); } }
+        public List<Ruta> Rutas { get { return new List<Ruta>(_rutas); } }
+        public List<Vuelo> Vuelos { get { return new List<Vuelo>(_vuelos); } }
+        public List<Pasaje> Pasajes { get { return new List<Pasaje>(_pasajes); } }
 
         //Constructor para implementar el patrón singleton
         public Sistema()
@@ -69,7 +69,7 @@ namespace Dominio
             AltaClientePremium(new Premium("laura.mendez@example.com", "secure", "6102344", "Laura Méndez", "Perú"));
             AltaClientePremium(new Premium("roberto.garcia@example.com", "clave", "4721890", "Roberto García", "Uruguay"));
 
-            AltaClienteOcasional(new Ocasional("maria.fernandez@example.com", "4321", "3851205", "María Fernández", "Colombia"));           
+            AltaClienteOcasional(new Ocasional("maria.fernandez@example.com", "4321", "3851205", "María Fernández", "Colombia"));
             AltaClienteOcasional(new Ocasional("jose.martin@example.com", "qwer", "2940312", "José Martín", "Paraguay"));
             AltaClienteOcasional(new Ocasional("sofia.hernandez@example.com", "asdf", "6372001", "Sofía Hernández", "Ecuador"));
             AltaClienteOcasional(new Ocasional("diego.rios@example.com", "zxcv", "5031943", "Diego Ríos", "Bolivia"));
@@ -181,31 +181,31 @@ namespace Dominio
 
         private void PrecargaPasajes()
         {
-            AgregarPasaje(new Pasaje(_vuelos[0], new DateTime(2025, 5, 12), (Cliente)_usuarios[0], Equipaje.light, 150.50m));
-            AgregarPasaje(new Pasaje(_vuelos[1], new DateTime(2025, 5, 13), (Cliente)_usuarios[1], Equipaje.cabina, 200.00m));
-            AgregarPasaje(new Pasaje(_vuelos[2], new DateTime(2025, 5, 14), (Cliente)_usuarios[2], Equipaje.bodega, 300.00m));
-            AgregarPasaje(new Pasaje(_vuelos[3], new DateTime(2025, 5, 15), (Cliente)_usuarios[3], Equipaje.light, 180.75m));
-            AgregarPasaje(new Pasaje(_vuelos[4], new DateTime(2025, 5, 19), (Cliente)_usuarios[4], Equipaje.cabina, 220.20m));
-            AgregarPasaje(new Pasaje(_vuelos[5], new DateTime(2025, 5, 13), (Cliente)_usuarios[5], Equipaje.bodega, 350.00m));
-            AgregarPasaje(new Pasaje(_vuelos[6], new DateTime(2025, 5, 17), (Cliente)_usuarios[6], Equipaje.light, 120.00m));
-            AgregarPasaje(new Pasaje(_vuelos[7], new DateTime(2025, 5, 15), (Cliente)_usuarios[7], Equipaje.cabina, 270.00m));
-            AgregarPasaje(new Pasaje(_vuelos[8], new DateTime(2025, 5, 14), (Cliente)_usuarios[8], Equipaje.bodega, 330.00m));
-            AgregarPasaje(new Pasaje(_vuelos[9], new DateTime(2025, 5, 18), (Cliente)_usuarios[9], Equipaje.light, 199.99m));
-            AgregarPasaje(new Pasaje(_vuelos[10], new DateTime(2025, 5, 16), (Cliente)_usuarios[0], Equipaje.cabina, 210.10m));
-            AgregarPasaje(new Pasaje(_vuelos[11], new DateTime(2025, 5, 13), (Cliente)_usuarios[1], Equipaje.bodega, 289.95m));
-            AgregarPasaje(new Pasaje(_vuelos[12], new DateTime(2025, 5, 15), (Cliente)_usuarios[2], Equipaje.light, 190.00m));
-            AgregarPasaje(new Pasaje(_vuelos[13], new DateTime(2025, 5, 19), (Cliente)_usuarios[3], Equipaje.cabina, 250.00m));
-            AgregarPasaje(new Pasaje(_vuelos[14], new DateTime(2025, 5, 14), (Cliente)_usuarios[4], Equipaje.bodega, 310.00m));
-            AgregarPasaje(new Pasaje(_vuelos[15], new DateTime(2025, 5, 13), (Cliente)_usuarios[5], Equipaje.light, 175.50m));
-            AgregarPasaje(new Pasaje(_vuelos[16], new DateTime(2025, 5, 15), (Cliente)_usuarios[6], Equipaje.cabina, 240.00m));
-            AgregarPasaje(new Pasaje(_vuelos[17], new DateTime(2025, 5, 17), (Cliente)_usuarios[7], Equipaje.bodega, 320.00m));
-            AgregarPasaje(new Pasaje(_vuelos[18], new DateTime(2025, 5, 16), (Cliente)_usuarios[8], Equipaje.light, 160.00m));
-            AgregarPasaje(new Pasaje(_vuelos[19], new DateTime(2025, 5, 18), (Cliente)_usuarios[9], Equipaje.cabina, 230.00m));
-            AgregarPasaje(new Pasaje(_vuelos[20], new DateTime(2025, 5, 14), (Cliente)_usuarios[0], Equipaje.bodega, 280.00m));
-            AgregarPasaje(new Pasaje(_vuelos[21], new DateTime(2025, 5, 13), (Cliente)_usuarios[1], Equipaje.light, 135.00m));
-            AgregarPasaje(new Pasaje(_vuelos[22], new DateTime(2025, 5, 16), (Cliente)_usuarios[2], Equipaje.cabina, 220.00m));
-            AgregarPasaje(new Pasaje(_vuelos[23], new DateTime(2025, 5, 17), (Cliente)_usuarios[3], Equipaje.bodega, 290.00m));
-            AgregarPasaje(new Pasaje(_vuelos[24], new DateTime(2025, 5, 19), (Cliente)_usuarios[4], Equipaje.light, 160.00m));
+            AgregarPasaje(new Pasaje(_vuelos[0], new DateTime(2025, 5, 12), (Cliente)_usuarios[0], Equipaje.Light, 150.50m));
+            AgregarPasaje(new Pasaje(_vuelos[1], new DateTime(2025, 5, 13), (Cliente)_usuarios[1], Equipaje.Cabina, 200.00m));
+            AgregarPasaje(new Pasaje(_vuelos[2], new DateTime(2025, 5, 14), (Cliente)_usuarios[2], Equipaje.Bodega, 300.00m));
+            AgregarPasaje(new Pasaje(_vuelos[3], new DateTime(2025, 5, 15), (Cliente)_usuarios[3], Equipaje.Light, 180.75m));
+            AgregarPasaje(new Pasaje(_vuelos[4], new DateTime(2025, 5, 19), (Cliente)_usuarios[4], Equipaje.Cabina, 220.20m));
+            AgregarPasaje(new Pasaje(_vuelos[5], new DateTime(2025, 5, 13), (Cliente)_usuarios[5], Equipaje.Bodega, 350.00m));
+            AgregarPasaje(new Pasaje(_vuelos[6], new DateTime(2025, 5, 17), (Cliente)_usuarios[6], Equipaje.Light, 120.00m));
+            AgregarPasaje(new Pasaje(_vuelos[7], new DateTime(2025, 5, 15), (Cliente)_usuarios[7], Equipaje.Cabina, 270.00m));
+            AgregarPasaje(new Pasaje(_vuelos[8], new DateTime(2025, 5, 14), (Cliente)_usuarios[8], Equipaje.Bodega, 330.00m));
+            AgregarPasaje(new Pasaje(_vuelos[9], new DateTime(2025, 5, 18), (Cliente)_usuarios[9], Equipaje.Light, 199.99m));
+            AgregarPasaje(new Pasaje(_vuelos[10], new DateTime(2025, 5, 16), (Cliente)_usuarios[0], Equipaje.Cabina, 210.10m));
+            AgregarPasaje(new Pasaje(_vuelos[11], new DateTime(2025, 5, 13), (Cliente)_usuarios[1], Equipaje.Bodega, 289.95m));
+            AgregarPasaje(new Pasaje(_vuelos[12], new DateTime(2025, 5, 15), (Cliente)_usuarios[2], Equipaje.Light, 190.00m));
+            AgregarPasaje(new Pasaje(_vuelos[13], new DateTime(2025, 5, 19), (Cliente)_usuarios[3], Equipaje.Cabina, 250.00m));
+            AgregarPasaje(new Pasaje(_vuelos[14], new DateTime(2025, 5, 14), (Cliente)_usuarios[4], Equipaje.Bodega, 310.00m));
+            AgregarPasaje(new Pasaje(_vuelos[15], new DateTime(2025, 5, 13), (Cliente)_usuarios[5], Equipaje.Light, 175.50m));
+            AgregarPasaje(new Pasaje(_vuelos[16], new DateTime(2025, 5, 15), (Cliente)_usuarios[6], Equipaje.Cabina, 240.00m));
+            AgregarPasaje(new Pasaje(_vuelos[17], new DateTime(2025, 5, 17), (Cliente)_usuarios[7], Equipaje.Bodega, 320.00m));
+            AgregarPasaje(new Pasaje(_vuelos[18], new DateTime(2025, 5, 16), (Cliente)_usuarios[8], Equipaje.Light, 160.00m));
+            AgregarPasaje(new Pasaje(_vuelos[19], new DateTime(2025, 5, 18), (Cliente)_usuarios[9], Equipaje.Cabina, 230.00m));
+            AgregarPasaje(new Pasaje(_vuelos[20], new DateTime(2025, 5, 14), (Cliente)_usuarios[0], Equipaje.Bodega, 280.00m));
+            AgregarPasaje(new Pasaje(_vuelos[21], new DateTime(2025, 5, 13), (Cliente)_usuarios[1], Equipaje.Light, 135.00m));
+            AgregarPasaje(new Pasaje(_vuelos[22], new DateTime(2025, 5, 16), (Cliente)_usuarios[2], Equipaje.Cabina, 220.00m));
+            AgregarPasaje(new Pasaje(_vuelos[23], new DateTime(2025, 5, 17), (Cliente)_usuarios[3], Equipaje.Bodega, 290.00m));
+            AgregarPasaje(new Pasaje(_vuelos[24], new DateTime(2025, 5, 19), (Cliente)_usuarios[4], Equipaje.Light, 160.00m));
 
         }
 
@@ -230,7 +230,7 @@ namespace Dominio
         public List<Vuelo> VuelosPorCodigo(string codigo)
         {
             List<Vuelo> aux = new List<Vuelo>();
-            
+
 
             foreach (Vuelo v in _vuelos)
             {
@@ -240,7 +240,7 @@ namespace Dominio
                 }
             }
 
-                return aux;
+            return aux;
         }
 
         // Metodo para listar pasajes
@@ -336,7 +336,7 @@ namespace Dominio
 
         public void AgregarPasaje(Pasaje pasaje)
         {
-            
+
             if (pasaje == null)
             {
                 throw new Exception("Debe ingresar un pasaje");
@@ -350,7 +350,7 @@ namespace Dominio
             }
 
             _pasajes.Add(pasaje);
-            
+
         }
 
         public void AgregarRuta(Ruta ruta)
@@ -389,19 +389,82 @@ namespace Dominio
 
         public void AgregarAvion(Avion avion)
         {
-            if(avion == null)
+            if (avion == null)
             {
                 throw new Exception("Debe ingresar un avión");
             }
 
             avion.Validar();
 
-            if(_aviones.Contains(avion))
+            if (_aviones.Contains(avion))
             {
                 throw new Exception("Ya existe este modelo de avión.");
             }
 
             _aviones.Add(avion);
+        }
+
+        // Método para buscar cliente por cédula (para obtener datos de la sesion actual)
+
+        public Cliente BuscarClientePorCedula(string cedula)
+        {
+            foreach (Usuario u in _usuarios)
+            {
+                if (u is Cliente cliente)
+                {
+                    if (cliente.Documento == cedula)
+                    {
+                        return cliente;
+                    }
+                }
+            }
+            return null;
+        }
+
+        // Metodo para buscar vuelo (para poder comprar pasajes)
+
+        public Vuelo BuscarVueloPorId(string numeroVuelo)
+        {
+            foreach (Vuelo v in _vuelos)
+            {
+                if (v.NumVuelo == numeroVuelo)
+                {
+                    return v;
+                }
+            }
+            return null;
+
+        }
+
+        // Métodos para cálculo de pasaje
+
+        public decimal CalcularPrecioPasaje(Vuelo vuelo, Cliente pasajero, Equipaje equipaje)
+        {
+            
+            decimal costoBase = vuelo.CostoAsiento;
+            decimal margenGanancia = 0.25m;
+
+            if (pasajero is Premium && equipaje == Equipaje.Bodega)
+            {
+                margenGanancia += 0.05m;
+            }
+            else if (pasajero is Ocasional)
+            {
+                if (equipaje == Equipaje.Cabina)
+                {
+                    margenGanancia += 0.10m;
+                }
+                else if (equipaje == Equipaje.Bodega)
+                {
+                    margenGanancia += 0.20m;
+                }
+            }
+
+            Ruta rutaDelPasaje = vuelo.Ruta;
+
+            decimal costoFinal = costoBase + (costoBase * margenGanancia) + rutaDelPasaje.CalcularCostoOperacionAeropuertos();
+
+            return costoFinal;
         }
 
     }
