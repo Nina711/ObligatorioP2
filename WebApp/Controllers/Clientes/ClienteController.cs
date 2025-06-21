@@ -10,16 +10,13 @@ namespace WebApp.Controllers.Clientes
         private Sistema _sistema = Sistema.Instancia;
         public IActionResult Index()
         {
-            //---> La siguiente linea es para probar si funciona el controlador ahora que aun no tenemos login (le paso una cedula de un cliente que existe)
-            HttpContext.Session.SetString("cedula", "5291845");
-            //<-----------
-            string cedula = HttpContext.Session.GetString("cedula");
-            Cliente clienteActual = _sistema.BuscarClientePorCedula(cedula);
-
-            if (clienteActual == null)
+            if (HttpContext.Session.GetString("correo") == null)
             {
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("Index", "Registro"); //login no esta hecho aun
             }
+
+            string correo = HttpContext.Session.GetString("correo");
+            Cliente clienteActual = _sistema.BuscarClientePorCorreo(correo);
 
             return View(clienteActual);
         }

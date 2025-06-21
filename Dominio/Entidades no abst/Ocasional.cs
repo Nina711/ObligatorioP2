@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio
+namespace Dominio.Entidades_no_abst
 {
     public class Ocasional : Cliente
     {
@@ -33,6 +33,8 @@ namespace Dominio
         {
             EsElegibleRandomizado(); 
         }
+
+        public Ocasional() { }
 
         // Método para determinar si es elegible o no
 

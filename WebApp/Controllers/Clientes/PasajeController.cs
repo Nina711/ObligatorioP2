@@ -34,8 +34,8 @@ namespace WebApp.Controllers.Clientes
             //---> La siguiente linea es para probar si funciona el controlador ahora que aun no tenemos login (le paso una cedula de un cliente que existe)
             HttpContext.Session.SetString("cedula", "5291845");
             //<-----------
-            string cedula = HttpContext.Session.GetString("cedula");
-            Cliente pasajero = _sistema.BuscarClientePorCedula(cedula);
+            string correo = HttpContext.Session.GetString("correo");
+            Cliente pasajero = _sistema.BuscarClientePorCorreo(correo);
 
 
             if (vuelo == null)

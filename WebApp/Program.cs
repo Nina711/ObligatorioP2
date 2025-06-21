@@ -21,7 +21,7 @@ namespace WebApp
             }
 
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
 

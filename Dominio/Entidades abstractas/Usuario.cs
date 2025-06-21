@@ -15,11 +15,13 @@ namespace Dominio.Entidades_abstractas
         public string Correo
         {
             get { return this._correo; }
+            set { this._correo = value; }
         }
 
         public string Contrasenia
         {
             get { return this._contrasenia; }
+            set { this._contrasenia = value; }
         }
 
         public Usuario(string correo, string contrasenia)
@@ -27,6 +29,8 @@ namespace Dominio.Entidades_abstractas
             _correo = correo;
             _contrasenia = contrasenia;
         }
+
+        public Usuario() { }
 
         // ---- VALIDACIONES
 
@@ -43,6 +47,15 @@ namespace Dominio.Entidades_abstractas
             if (string.IsNullOrWhiteSpace(_contrasenia))
             {
                 throw new Exception("La contraseña no puede ser vacía");
+            }
+
+            if (_contrasenia.Length < 8)
+            {
+                throw new Exception("La contraseña debe tener al menos 8 caracteres.");
+            }
+
+            if(!(_contrasenia.Any(char.IsLetter)) || !(_contrasenia.Any(char.IsDigit))){
+                throw new Exception("La contraseña debe contener al menos una letra y un número.");
             }
         }
 

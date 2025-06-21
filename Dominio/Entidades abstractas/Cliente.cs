@@ -18,18 +18,21 @@ namespace Dominio.Entidades_no_abst
         public string Documento
         {
             get { return this._documento; }
+            set { this._documento = value; }    
 
         }
 
         public string Nombre
         {
             get { return this._nombre; }
+            set { this._nombre = value; }
 
         }
 
         public string Nacionalidad
         {
             get { return this._nacionalidad; }
+            set { this._nacionalidad = value; }     
         }
 
         public Cliente(string correo, string contrasenia, string documento, string nombre, string nacionalidad) : base(correo, contrasenia)
@@ -38,6 +41,8 @@ namespace Dominio.Entidades_no_abst
             _nombre = nombre;
             _nacionalidad = nacionalidad;
         }
+
+        public Cliente () { }
 
         // --- VALIDACIONES PROPIAS DE CLIENTES
         private void ValidarDocumento()

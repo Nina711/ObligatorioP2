@@ -1,5 +1,18 @@
-﻿
-@{
-	<h1>Prueba de pagina de inicio</h1>
-	<h2>Aca iria el LOGIN</h2>
-}
+﻿<h1>Iniciar Sesión</h1>
+
+<form method="post">
+    <label>Correo</label>
+    <input type="email" id="correo" name="Correo" required /><br /><br />
+
+    <label>Contraseña</label>
+    <input type="password" id="contrasenia" name="Contrasenia" required /><br /><br />  
+
+    <input type="submit" value="Iniciar sesión" /><br /><br />
+
+    @if (ViewBag.Mensaje != null)
+    {
+        <p>@ViewBag.Mensaje</p>
+    }
+
+    <br /><p>Aún no tenes una cuenta? Haz click en <a href="/Registro/Index">Registrarse</a></p>
+</form>

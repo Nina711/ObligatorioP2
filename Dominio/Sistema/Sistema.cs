@@ -63,17 +63,17 @@ namespace Dominio
 
         private void PrecargaUsuarios()
         {
-            AltaClientePremium(new Premium("juan.perez@example.com", "1234", "4312003", "Juan Pérez", "Argentina"));
-            AltaClientePremium(new Premium("ana.lopez@example.com", "abcd", "5291845", "Ana López", "México"));
-            AltaClientePremium(new Premium("carlos.ramos@example.com", "pass123", "3289011", "Carlos Ramos", "Chile"));
-            AltaClientePremium(new Premium("laura.mendez@example.com", "secure", "6102344", "Laura Méndez", "Perú"));
-            AltaClientePremium(new Premium("roberto.garcia@example.com", "clave", "4721890", "Roberto García", "Uruguay"));
+            AltaClientePremium(new Premium("juan.perez@example.com", "Abjeja1234", "4312003", "Juan Pérez", "Argentina"));
+            AltaClientePremium(new Premium("ana.lopez@example.com", "abcd1234", "5291845", "Ana López", "México"));
+            AltaClientePremium(new Premium("carlos.ramos@example.com", "pass1234", "3289011", "Carlos Ramos", "Chile"));
+            AltaClientePremium(new Premium("laura.mendez@example.com", "secure12", "6102344", "Laura Méndez", "Perú"));
+            AltaClientePremium(new Premium("roberto.garcia@example.com", "clave123", "4721890", "Roberto García", "Uruguay"));
 
-            AltaClienteOcasional(new Ocasional("maria.fernandez@example.com", "4321", "3851205", "María Fernández", "Colombia"));
-            AltaClienteOcasional(new Ocasional("jose.martin@example.com", "qwer", "2940312", "José Martín", "Paraguay"));
-            AltaClienteOcasional(new Ocasional("sofia.hernandez@example.com", "asdf", "6372001", "Sofía Hernández", "Ecuador"));
-            AltaClienteOcasional(new Ocasional("diego.rios@example.com", "zxcv", "5031943", "Diego Ríos", "Bolivia"));
-            AltaClienteOcasional(new Ocasional("valentina.sosa@example.com", "mnbv", "6178432", "Valentina Sosa", "Venezuela"));
+            AltaClienteOcasional(new Ocasional("maria.fernandez@example.com", "abeja4321", "3851205", "María Fernández", "Colombia"));
+            AltaClienteOcasional(new Ocasional("jose.martin@example.com", "qwerty01", "2940312", "José Martín", "Paraguay"));
+            AltaClienteOcasional(new Ocasional("sofia.hernandez@example.com", "asdf1234", "6372001", "Sofía Hernández", "Ecuador"));
+            AltaClienteOcasional(new Ocasional("diego.rios@example.com", "zxcv7894", "5031943", "Diego Ríos", "Bolivia"));
+            AltaClienteOcasional(new Ocasional("valentina.sosa@example.com", "mnbv4561", "6178432", "Valentina Sosa", "Venezuela"));
 
             AgregarAdministrador(new Administrador("admin1@example.com", "adminpass1", "AdminUno"));
             AgregarAdministrador(new Administrador("admin2@example.com", "adminpass2", "AdminDos"));
@@ -406,13 +406,13 @@ namespace Dominio
 
         // Método para buscar cliente por cédula (para obtener datos de la sesion actual)
 
-        public Cliente BuscarClientePorCedula(string cedula)
+        public Cliente BuscarClientePorCorreo(string correo)
         {
             foreach (Usuario u in _usuarios)
             {
                 if (u is Cliente cliente)
                 {
-                    if (cliente.Documento == cedula)
+                    if (cliente.Correo == correo)
                     {
                         return cliente;
                     }

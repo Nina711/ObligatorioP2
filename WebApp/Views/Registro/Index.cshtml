@@ -1,0 +1,29 @@
+﻿@using Dominio
+@using Dominio.Entidades_abstractas
+@using Dominio.Entidades_no_abst
+@model Dominio.Entidades_no_abst.Ocasional
+
+<h1>Formulario de registro</h1>
+
+<form method="post"> 
+    <label>Nombre:</label>
+    <input type="text" id="nombre" name="Nombre" required/><br /><br />
+
+    <label>Cédula de identidad:</label>
+    <input type="text" id="documento" name="Documento" required/><br /><br />
+
+    <label>Email:</label>
+    <input type="email" id="correo" name="Correo" required/><br /><br />
+
+    <label>Nacionalidad:</label>
+    <input type="text" id="nacionalidad" name="Nacionalidad" required/><br /><br />
+
+    <label>Contraseña</label>
+    <input type="password" id="contrasenia" name="Contrasenia" required/><br /><br />
+
+    <input type="submit" value="Registrarse" />
+</form>
+
+@if (ViewBag.Mensaje != null){
+    <p>@ViewBag.Mensaje</p>
+}
