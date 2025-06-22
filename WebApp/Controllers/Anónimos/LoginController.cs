@@ -40,12 +40,13 @@ namespace WebApp.Controllers.Anónimos
                         else if ( u is Cliente)
                         {
                             HttpContext.Session.SetString("rol", "cliente");
-                            return RedirectToAction("Index", "Cliente");
+                            return RedirectToAction("Index", "Vuelo");
                         }
                     }
                     else
                     {
-                        ViewBag.Mensaje = "Usuario no encontrado.";
+                        // Yo creo que acá tendría que ser un catch de las excepciones que tiene AltaClienteOcasional para que la responsabilidad sea del back back
+                        ViewBag.Mensaje = "Usuario no existe.";
                     }
                 }
             }
