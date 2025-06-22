@@ -485,6 +485,60 @@ namespace Dominio
             return null;
         }
 
+        // ----- MÉTODOS PARA LISTAR PASAJES
+
+        public List<Pasaje> ListarPasajesCliente (Cliente cliente)
+        {
+            List<Pasaje> auxPasajes = new List<Pasaje>();
+
+            foreach(Pasaje p in _pasajes)
+            {
+                if(p.Pasajero == cliente)
+                {
+                    auxPasajes.Add(p);
+                }
+            }
+
+            auxPasajes.Sort(CompararPorPrecioDesc);
+            return auxPasajes;
+        }
+
+        public List<Pasaje> ListarPasajesAdmin()
+        {
+            List<Pasaje> auxPasajes = new List<Pasaje>(_pasajes);
+            auxPasajes.Sort(CompararPorFechaDesc);
+            return auxPasajes;
+        }
+
+        // Ordenamiento descendente por precio para clientes
+        private int CompararPorPrecioDesc(Pasaje p1, Pasaje p2)
+        {
+            return p2.PrecioPasaje.CompareTo(p1.PrecioPasaje); 
+        }
+
+        // Ordenamiento descendente por fecha para admins
+
+        private int CompararPorFechaDesc (Pasaje p1, Pasaje p2)
+        {
+            return p2.Fecha.CompareTo(p1.Fecha);
+        }
+
+        public List<Vuelo> BuscarVuelosPorCodigo(string codSalida, string codLlegada)
+        {
+            List<Vuelo> auxVuelos = new List<Vuelo>();
+
+            foreach (Vuelo v in _vuelos)
+            {
+                // Esto supongo que está mal porque no respeta el encapsulamiento pero no se como arreglarlo asi que cree la vista y sigo con otra cosa para avanzar
+
+                if (v.Ruta.AeropuertoSalida.Codigo == codSalida ||v.Ruta.AeropuertoLlegada.Codigo == codLlegada)
+                {
+                    auxVuelos.Add(v);
+                }
+            }
+
+            return auxVuelos;
+        }
     }
 }
 
