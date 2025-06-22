@@ -29,15 +29,15 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Vuelo" asp-action="Index">Vuelos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Vuelo" asp-action="Index">Buscar Vuelos</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Vuelo" asp-action="Buscador">Buscar Vuelos</a>
                                 </li>
-                                // aun no ta hecho
+                                
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Mis Pasajes">Pasajes comprados</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="MisPasajes">Pasajes comprados</a>
                                 </li>
-                                //no tiene nada aun
+                                
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Index">Ver Perfil</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="MiPerfil">Ver Perfil</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Cerrar sesión</a>
@@ -45,10 +45,10 @@
                             }
                             else if (rol == "admin"){
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Pasajes" asp-action="Index">Ver Pasajes</a>
+                                    <a class="nav-link text-dark" asp-controller="Administrador" asp-action="ListarPasajes">Ver Pasajes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Cliente" asp-action="ListaClientes">Gestionar Usuarios</a>
+                                    <a class="nav-link text-dark" asp-controller="Administrador" asp-action="ListaClientes">Gestionar Usuarios</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Cerrar sesión</a>

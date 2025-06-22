@@ -13,7 +13,7 @@ namespace Dominio.Interfaces
     {
         public int Compare (Pasaje? x, Pasaje? y)
         {
-            return x.precioPasaje.CompareTo(y.precioPasaje) * -1;
+            return x.PrecioPasaje.CompareTo(y.PrecioPasaje) * -1;
         }
     }
 }

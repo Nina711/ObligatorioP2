@@ -8,23 +8,44 @@ namespace WebApp.Controllers.Clientes
     public class ClienteController : Controller
     {
         private Sistema _sistema = Sistema.Instancia;
-        public IActionResult Index()
+
+        private Cliente ObtenerClienteLogueado()
         {
-            if (HttpContext.Session.GetString("correo") == null)
+            string correo = HttpContext.Session.GetString("correo");
+
+            if (string.IsNullOrEmpty(correo)) return null; // ver
+
+            Usuario userLogueado = _sistema.BuscarUsuarioPorCorreo(correo);
+            return userLogueado as Cliente;
+
+        }
+        public IActionResult MiPerfil()
+        {
+            Cliente clienteLogueado = ObtenerClienteLogueado();
+
+            if (clienteLogueado == null)
             {
                 return RedirectToAction("Index", "Registro"); //login no esta hecho aun
             }
-
-            string correo = HttpContext.Session.GetString("correo");
-            Usuario clienteActual = _sistema.BuscarUsuarioPorCorreo(correo);
-
-            return View(clienteActual);
+        
+            return View(clienteLogueado);
         }
-
+        
         public IActionResult MisPasajes()
         {
-            return View();
+            Cliente clienteLogueado = ObtenerClienteLogueado();
+
+            if (clienteLogueado == null)
+            {
+                return RedirectToAction("Index", "Registro"); 
+            }
+
+            List<Pasaje> _pasajesCliente = _sistema.ListarPasajesCliente(clienteLogueado);
+
+            return View(_pasajesCliente);
+
         }
+
     }
 }
 

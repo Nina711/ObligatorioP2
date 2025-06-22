@@ -51,9 +51,9 @@ namespace Dominio.Entidades_no_abst
                 return this._equipaje;
             }
         }
-        public decimal precioPasaje
+        public decimal PrecioPasaje
         {
-            get { return this.precioPasaje; }
+            get { return this._precioPasaje; }
         }
 
         public Pasaje(Vuelo vuelo, DateTime fecha, Cliente pasajero, Equipaje equipaje, decimal precioPasaje)
@@ -109,7 +109,7 @@ namespace Dominio.Entidades_no_abst
 
         private void ValidarVuelo()
         {
-            if (!(_vuelo is Vuelo))
+            if (_vuelo == null) 
             {
                 throw new Exception("El vuelo no es correcto");
             }

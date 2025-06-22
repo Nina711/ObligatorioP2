@@ -48,6 +48,7 @@ namespace WebApp.Controllers.Clientes
                 _sistema.AgregarPasaje(p);
                 return RedirectToAction("MisPasajes", "Cliente");
             }
+
             catch (Exception ex)
             {
                 ViewBag.Mensaje = ex.Message;
