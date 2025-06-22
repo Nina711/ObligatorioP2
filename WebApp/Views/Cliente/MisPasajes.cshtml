@@ -1,1 +1,35 @@
-﻿<h1>Mis Pasajes</h1>
+﻿@using Dominio.Entidades_no_abst;
+@model List<Pasaje>
+
+<h1>Mis Pasajes</h1>
+
+@if (Model == null || Model.Count == 0)
+{
+	<p>Usted aún no ha comprado pasajes.</p>
+	<a href="/Vuelo/Index">Comprar pasajes</a>
+}
+else
+{
+	<table>
+		<thead>
+			<tr>
+				<th>Fecha y hora</th>
+				<th>Vuelo</th>
+				<th>Tipo de equipaje</th>
+				<th>Precio del pasaje</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (Pasaje p in Model)
+			{
+				<tr>
+					<td>@p.Fecha.ToString("dd/mm/yyy hh:mm")</td>
+					<td>@p.Vuelo.NumVuelo</td>
+					<td>@p.Equipaje</td>
+					<td>@p.PrecioPasaje.ToString("C")</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<a href="/Vuelo/Index">Volver</a>
+}
