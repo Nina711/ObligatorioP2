@@ -7,6 +7,7 @@ using Dominio.Entidades_no_abst;
 using Dominio.Entidades_abstractas;
 using Dominio.Enumeraciones;
 using System.ComponentModel.Design;
+using System.Net.Http;
 
 namespace Dominio
 {
@@ -527,11 +528,15 @@ namespace Dominio
         {
             List<Vuelo> auxVuelos = new List<Vuelo>();
 
+            if (codSalida == null && codLlegada == null)
+            {
+                throw new Exception("Debe ingresar al menos un código.");
+            }
+
             foreach (Vuelo v in _vuelos)
             {
-                // Esto supongo que está mal porque no respeta el encapsulamiento pero no se como arreglarlo asi que cree la vista y sigo con otra cosa para avanzar
-
-                if (v.Ruta.AeropuertoSalida.Codigo == codSalida ||v.Ruta.AeropuertoLlegada.Codigo == codLlegada)
+                
+                if (v.Ruta.TieneAeropuerto(codSalida, codLlegada))
                 {
                     auxVuelos.Add(v);
                 }
@@ -539,6 +544,16 @@ namespace Dominio
 
             return auxVuelos;
         }
+
+        public Cliente ObtenerClienteLogueado(string correo)
+        {
+            
+            Usuario userLogueado = BuscarUsuarioPorCorreo(correo);
+            return userLogueado as Cliente;
+
+        }
+
+
     }
 }
 

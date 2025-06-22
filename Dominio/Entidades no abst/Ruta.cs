@@ -112,6 +112,26 @@ namespace Dominio.Entidades_no_abst
             return codigoLlegada;
         }
 
+        public bool TieneAeropuerto(string codSalida, string codLlegada)
+        {
+           
+           if (codSalida != null && codSalida.Equals(_aeropSalida.Codigo) && codLlegada == null)
+            {
+                return true;
+
+            }
+            else if (codLlegada != null && codLlegada.Equals(_aeropLlegada.Codigo) && codSalida == null)
+            {
+                return true;
+            }
+            else if (codSalida != null && codSalida.Equals(_aeropSalida.Codigo) && codLlegada != null && codLlegada.Equals(_aeropLlegada.Codigo))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         //--- Overrides
 
         public string ToString()

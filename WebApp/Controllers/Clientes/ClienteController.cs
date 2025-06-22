@@ -9,23 +9,14 @@ namespace WebApp.Controllers.Clientes
     {
         private Sistema _sistema = Sistema.Instancia;
 
-        private Cliente ObtenerClienteLogueado()
-        {
-            string correo = HttpContext.Session.GetString("correo");
-
-            if (string.IsNullOrEmpty(correo)) return null; // ver
-
-            Usuario userLogueado = _sistema.BuscarUsuarioPorCorreo(correo);
-            return userLogueado as Cliente;
-
-        }
+        
         public IActionResult MiPerfil()
         {
-            Cliente clienteLogueado = ObtenerClienteLogueado();
+            Cliente clienteLogueado = _sistema.ObtenerClienteLogueado(HttpContext.Session.GetString("correo"));
 
             if (clienteLogueado == null)
             {
-                return RedirectToAction("Index", "Registro"); //login no esta hecho aun
+                return RedirectToAction("Index", "Registro"); 
             }
         
             return View(clienteLogueado);
@@ -33,7 +24,7 @@ namespace WebApp.Controllers.Clientes
         
         public IActionResult MisPasajes()
         {
-            Cliente clienteLogueado = ObtenerClienteLogueado();
+            Cliente clienteLogueado = _sistema.ObtenerClienteLogueado(HttpContext.Session.GetString("correo"));
 
             if (clienteLogueado == null)
             {

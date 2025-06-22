@@ -10,6 +10,7 @@ namespace WebApp.Controllers.Clientes
         private Sistema _sistema = Sistema.Instancia;
         public IActionResult Index()
         {
+            if(HttpContext.Session.GetString("correo") != null)
             ViewBag.Vuelos = _sistema.Vuelos;
             return View();
         }
@@ -21,25 +22,28 @@ namespace WebApp.Controllers.Clientes
         }
 
         [HttpPost]
-        [HttpPost]
         public IActionResult Buscador(string codSalida, string codLlegada)
         {
-            ViewBag.YaBusco = true;
-            ViewBag.MsjVacio = null;
+            ViewBag.Mensaje = null;
 
-            // esto es gpt - voy a hablar con el profe a ver que onda
-
-            codSalida = codSalida?.ToUpper().Trim() ?? "";
-            codLlegada = codLlegada?.ToUpper().Trim() ?? "";
-
-            if (string.IsNullOrEmpty(codSalida) && string.IsNullOrEmpty(codLlegada))
+            try
             {
-                ViewBag.MsjVacio = "Debe ingresar al menos un código de aeropuerto";
-                return View();
-            }
+                List<Vuelo> auxVuelos = _sistema.BuscarVuelosPorCodigo(codSalida?.ToUpper(), codLlegada?.ToUpper());
 
-            List<Vuelo> auxVuelos = _sistema.BuscarVuelosPorCodigo(codSalida, codLlegada);
-            return View(auxVuelos);
+                if (auxVuelos.Count == 0)
+                {
+                    ViewBag.Mensaje = "No se encontraron vuelos para los códigos ingresados.";
+                }
+
+                return View(auxVuelos);
+
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.Mensaje = ex.Message;
+                return View(new List<Vuelo>());
+            }
         }
     }
 }
