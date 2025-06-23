@@ -28,6 +28,19 @@ namespace Dominio.Entidades_no_abst
                 }
                 return mensaje;
             }
+
+            // Agregué setter para poder editar el valor del atributo
+             set
+            {
+                if (value == "Elegible")
+                {
+                    _esElegible = true;
+                }
+                else if (value == "No elegible")
+                {
+                    _esElegible = false;
+                }
+            }
         }
         public Ocasional(string correo, string contrasenia, string documento, string nombre, string nacionalidad) : base(correo, contrasenia, documento, nombre, nacionalidad)
         {

@@ -1,0 +1,20 @@
+﻿@using Dominio
+@using Dominio.Entidades_abstractas
+@using Dominio.Entidades_no_abst
+@model Premium
+
+<h1>Editar puntos de cliente</h1>
+<form method="post">
+    <p>Nombre del cliente: @Model.Nombre</p>
+    <p>Puntos actuales: @Model.Puntos</p>
+    <label>Editar:</label>
+    <input type="hidden" name="correo" value="@Model.Correo" />
+    <input type="number" name="Puntos" required /><br /><br />
+    <input type="submit" value="Actualizar puntos" />
+</form><br />
+<a href="/Administrador/ListaClientes">Volver</a>
+
+@if(ViewBag.Mensaje!= null)
+{
+    <p>@ViewBag.Mensaje</p>
+}

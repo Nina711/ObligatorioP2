@@ -25,7 +25,8 @@ namespace WebApp.Controllers.Anónimos
                 {
                     _sistema.AltaClienteOcasional(ocasional);
                     HttpContext.Session.SetString("correo", ocasional.Correo);
-                    return RedirectToAction("Index", "Cliente");
+                    HttpContext.Session.SetString("rol", "cliente");
+                    return RedirectToAction("MiPerfil", "Cliente");
                 }
                 else
                 {

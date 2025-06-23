@@ -15,6 +15,7 @@
 	<tbody>
 		@foreach (Vuelo vuelo in ViewBag.Vuelos)
 		{
+			// Creo que más de dos puntos no podríamos usar, habría que ver con el profe 
 			<tr>
 				<td>@vuelo.NumVuelo</td>
 				<td>@vuelo.Ruta.AeropuertoSalida.Ciudad</td>

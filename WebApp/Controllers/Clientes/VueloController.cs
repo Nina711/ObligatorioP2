@@ -7,17 +7,40 @@ namespace WebApp.Controllers.Clientes
 {
     public class VueloController : Controller
     {
+        //Acá agregué lo del control del rol en todas las vistas
         private Sistema _sistema = Sistema.Instancia;
         public IActionResult Index()
         {
             if(HttpContext.Session.GetString("correo") != null)
             ViewBag.Vuelos = _sistema.Vuelos;
+            string rol = HttpContext.Session.GetString("rol");
+
+            if (rol != "cliente" && rol != null)
+            {
+                return RedirectToAction("Index", "Administrador");
+            }
+            else if(rol == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             return View();
         }
 
         [HttpGet]
         public IActionResult Buscador()
         {
+            string rol = HttpContext.Session.GetString("rol");
+
+            if (rol != "cliente" && rol != null)
+            {
+                return RedirectToAction("Index", "Administrador");
+            }
+            else if (rol == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             return View();
         }
 
@@ -33,6 +56,17 @@ namespace WebApp.Controllers.Clientes
                 if (auxVuelos.Count == 0)
                 {
                     ViewBag.Mensaje = "No se encontraron vuelos para los códigos ingresados.";
+                }
+
+                string rol = HttpContext.Session.GetString("rol");
+
+                if (rol != "cliente" && rol != null)
+                {
+                    return RedirectToAction("Index", "Administrador");
+                }
+                else if (rol == null)
+                {
+                    return RedirectToAction("Index", "Login");
                 }
 
                 return View(auxVuelos);

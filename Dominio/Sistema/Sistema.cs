@@ -225,6 +225,9 @@ namespace Dominio
                 }
             }
 
+            // ordenar la lista por numero de documento
+            aux.Sort();
+
             return aux;
         }
 
@@ -406,7 +409,7 @@ namespace Dominio
             _aviones.Add(avion);
         }
 
-        // Método para buscar cliente por cédula (para obtener datos de la sesion actual)
+        // Método para buscar cliente por correo (para obtener datos de la sesion actual)
 
         public Usuario BuscarUsuarioPorCorreo(string correo)
         {
@@ -440,7 +443,7 @@ namespace Dominio
 
         public decimal CalcularPrecioPasaje(Vuelo vuelo, Cliente pasajero, Equipaje equipaje)
         {
-            
+
             decimal costoBase = vuelo.CostoAsiento;
             decimal margenGanancia = 0.25m;
 
@@ -488,13 +491,13 @@ namespace Dominio
 
         // ----- MÉTODOS PARA LISTAR PASAJES
 
-        public List<Pasaje> ListarPasajesCliente (Cliente cliente)
+        public List<Pasaje> ListarPasajesCliente(Cliente cliente)
         {
             List<Pasaje> auxPasajes = new List<Pasaje>();
 
-            foreach(Pasaje p in _pasajes)
+            foreach (Pasaje p in _pasajes)
             {
-                if(p.Pasajero == cliente)
+                if (p.Pasajero == cliente)
                 {
                     auxPasajes.Add(p);
                 }
@@ -514,12 +517,12 @@ namespace Dominio
         // Ordenamiento descendente por precio para clientes
         private int CompararPorPrecioDesc(Pasaje p1, Pasaje p2)
         {
-            return p2.PrecioPasaje.CompareTo(p1.PrecioPasaje); 
+            return p2.PrecioPasaje.CompareTo(p1.PrecioPasaje);
         }
 
         // Ordenamiento descendente por fecha para admins
 
-        private int CompararPorFechaDesc (Pasaje p1, Pasaje p2)
+        private int CompararPorFechaDesc(Pasaje p1, Pasaje p2)
         {
             return p2.Fecha.CompareTo(p1.Fecha);
         }
@@ -535,7 +538,7 @@ namespace Dominio
 
             foreach (Vuelo v in _vuelos)
             {
-                
+
                 if (v.Ruta.TieneAeropuerto(codSalida, codLlegada))
                 {
                     auxVuelos.Add(v);
@@ -547,13 +550,35 @@ namespace Dominio
 
         public Cliente ObtenerClienteLogueado(string correo)
         {
-            
+
             Usuario userLogueado = BuscarUsuarioPorCorreo(correo);
             return userLogueado as Cliente;
 
         }
 
+        // Para editar puntos clientes premium
+        public void EditarPuntos(Cliente c, int puntos)
+        {
+            if (c != null && c is Premium p)
+            {
+                p.Puntos = puntos;
+            }
+        }
 
+        // para editar elegibilidad de cliente ocasional
+
+        public void EditarElegibilidad(Cliente c, string s)
+        {
+            if (c != null && c is Ocasional o)
+            {
+                o.Validar();
+                o.EsElegible = s;
+            }
+            else
+            {
+                throw new Exception("Cliente no encontrado.");
+            }
+        }
     }
 }
 

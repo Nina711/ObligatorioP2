@@ -9,7 +9,7 @@ using Dominio.Entidades_abstractas;
 
 namespace Dominio.Entidades_no_abst
 {
-    public abstract class Cliente : Usuario
+    public abstract class Cliente : Usuario, IComparable<Cliente>
     {
         private string _documento;
         private string _nombre;
@@ -100,6 +100,13 @@ namespace Dominio.Entidades_no_abst
         {
             string mensaje = $"Nombre: {_nombre}, {base.ToString()}, Nacionalidad: {_nacionalidad},";
             return mensaje;
+        }
+
+        // Agregué Interfaz de comparación para ordenar los clientes por número de documento 
+
+        public int CompareTo(Cliente c)
+        {
+            return _documento.CompareTo(c.Documento);
         }
 
     }

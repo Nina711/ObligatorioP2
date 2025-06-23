@@ -1,1 +1,40 @@
-﻿<h1>Ver y modificar clientes</h1>
+﻿@using Dominio
+@using Dominio.Entidades_no_abst
+@using Dominio.Entidades_abstractas
+@model List<Cliente>
+
+<h1>Lista de Clientes</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Documento</th>
+            <th>Correo</th>
+            <th>Nacionalidad</th>
+            <th>Elegibilidad/Puntos</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Cliente c in Model)
+        {
+            <tr>
+                <td>@c.Nombre</td>
+                <td>@c.Documento</td>
+                <td>@c.Correo</td>
+                <td>@c.Nacionalidad</td>
+                @if (c is Ocasional o)
+                {
+                    <td>@o.EsElegible</td>
+                    <td><a href="/Administrador/EditarElegibilidad?correo=@o.Correo" class="btn btn-primary">Editar</a></td>
+                }
+                else if (c is Premium p)
+                {
+                    <td>@p.Puntos</td>
+                    <td><a href="/Administrador/EditarPuntos?correo=@p.Correo" class="btn btn-primary">Editar</a></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table><br />
+<a href="/Administrador/Index">Volver</a>

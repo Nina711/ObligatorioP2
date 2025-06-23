@@ -12,17 +12,25 @@ namespace Dominio.Entidades_no_abst
 
         public int Puntos
         {
-            get
+            get { return this._puntos; }
+
+            // Agregué setter para poder editar el valor del atributo
+            set
             {
-                return this._puntos;
+                if (value < 0)
+                {
+                    throw new Exception("La cantidad de puntos no puede ser negativa.");
+                }
+
+                this._puntos = value;
             }
         }
 
-        
+
         public Premium(string correo, string contrasenia, string documento, string nombre, string nacionalidad) : base(correo, contrasenia, documento, nombre, nacionalidad)
         {
             _puntos = 0;
-            
+
         }
 
         // ToString()
