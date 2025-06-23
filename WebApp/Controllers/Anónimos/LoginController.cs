@@ -45,8 +45,8 @@ namespace WebApp.Controllers.Anónimos
                     }
                     else
                     {
-                        // Yo creo que acá tendría que ser un catch de las excepciones que tiene AltaClienteOcasional para que la responsabilidad sea del back back
-                        ViewBag.Mensaje = "Usuario no existe.";
+                        
+                        ViewBag.Mensaje = "Datos incorrector.";
                     }
                 }
             }

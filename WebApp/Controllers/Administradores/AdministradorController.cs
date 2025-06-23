@@ -10,8 +10,6 @@ namespace WebApp.Controllers.Administradores
     {
         private Sistema _sistema = Sistema.Instancia;
 
-        //Acá agregué lo del control del rol en todas las vistas
-
         [HttpGet]
         public IActionResult Index()
         {

@@ -275,7 +275,7 @@ namespace Dominio
         {
             if (ocasional == null)
             {
-                throw new Exception("Debe ingresar un cliente");
+                throw new Exception("Debe ingresar un cliente.");
             }
 
             ocasional.Validar();
@@ -480,10 +480,7 @@ namespace Dominio
                 {
                     return u;
                 }
-                else if (u.Correo == correo && u.Contrasenia != contrasenia)
-                {
-                    throw new Exception("Contraseña incorrecta");
-                }
+         
             }
 
             return null;
@@ -510,7 +507,7 @@ namespace Dominio
         public List<Pasaje> ListarPasajesAdmin()
         {
             List<Pasaje> auxPasajes = new List<Pasaje>(_pasajes);
-            auxPasajes.Sort(CompararPorFechaDesc);
+            auxPasajes.Sort(CompararPorFechaAsc);
             return auxPasajes;
         }
 
@@ -522,9 +519,9 @@ namespace Dominio
 
         // Ordenamiento descendente por fecha para admins
 
-        private int CompararPorFechaDesc(Pasaje p1, Pasaje p2)
+        private int CompararPorFechaAsc(Pasaje p1, Pasaje p2)
         {
-            return p2.Fecha.CompareTo(p1.Fecha);
+            return p1.Fecha.CompareTo(p2.Fecha);
         }
 
         public List<Vuelo> BuscarVuelosPorCodigo(string codSalida, string codLlegada)

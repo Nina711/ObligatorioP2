@@ -111,7 +111,7 @@ namespace Dominio.Entidades_no_abst
         {
             if (_vuelo == null) 
             {
-                throw new Exception("El vuelo no es correcto");
+                throw new Exception("El vuelo no es correcto.");
             }
         }
 

@@ -15,6 +15,8 @@ else
 			<tr>
 				<th>Fecha y hora</th>
 				<th>Vuelo</th>
+				<th>Ruta</th>
+
 				<th>Tipo de equipaje</th>
 				<th>Precio del pasaje</th>
 			</tr>
@@ -23,8 +25,9 @@ else
 			@foreach (Pasaje p in Model)
 			{
 				<tr>
-					<td>@p.Fecha.ToString("dd/mm/yyy hh:mm")</td>
+					<td>@p.Fecha.ToString("dd/mm/yyyy hh:mm")</td>
 					<td>@p.Vuelo.NumVuelo</td>
+					<td>@p.Vuelo.Ruta.ToString()</td>
 					<td>@p.Equipaje</td>
 					<td>@p.PrecioPasaje.ToString("C")</td>
 				</tr>
@@ -33,3 +36,4 @@ else
 	</table>
 	<a href="/Vuelo/Index">Volver</a>
 }
+

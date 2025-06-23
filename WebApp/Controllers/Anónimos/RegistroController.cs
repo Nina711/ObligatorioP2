@@ -21,6 +21,7 @@ namespace WebApp.Controllers.Anónimos
         {
             try
             {
+
                 if (ModelState.IsValid)
                 {
                     _sistema.AltaClienteOcasional(ocasional);
@@ -30,7 +31,7 @@ namespace WebApp.Controllers.Anónimos
                 }
                 else
                 {
-                    throw new Exception("Los datos son inválidos");
+                    throw new Exception("Los datos son inválidos.");
                 }
             }
             catch (Exception ex)

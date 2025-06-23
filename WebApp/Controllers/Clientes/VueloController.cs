@@ -7,12 +7,13 @@ namespace WebApp.Controllers.Clientes
 {
     public class VueloController : Controller
     {
-        //Acá agregué lo del control del rol en todas las vistas
+        
         private Sistema _sistema = Sistema.Instancia;
         public IActionResult Index()
         {
-            if(HttpContext.Session.GetString("correo") != null)
-            ViewBag.Vuelos = _sistema.Vuelos;
+
+            //if(HttpContext.Session.GetString("correo") != null) --- que es esto?
+            List<Vuelo> vuelos = _sistema.Vuelos;
             string rol = HttpContext.Session.GetString("rol");
 
             if (rol != "cliente" && rol != null)
@@ -23,8 +24,12 @@ namespace WebApp.Controllers.Clientes
             {
                 return RedirectToAction("Index", "Login");
             }
+            if(vuelos.Count == 0)
+            {
+                ViewBag.Mensaje = "No hay vuelos disponibles.";
+            }
 
-            return View();
+            return View(vuelos);
         }
 
         [HttpGet]

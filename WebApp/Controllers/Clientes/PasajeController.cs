@@ -11,7 +11,6 @@ namespace WebApp.Controllers.Clientes
 
     {
 
-        //Acá agregué lo del control del rol en todas las vistas
         private Sistema _sistema = Sistema.Instancia;
 
         [HttpGet]
@@ -66,10 +65,13 @@ namespace WebApp.Controllers.Clientes
 
             try
             {
+
                 decimal precioPasaje = _sistema.CalcularPrecioPasaje(vuelo, pasajero, equipaje);
                 Pasaje p = new Pasaje(vuelo, fechaPasaje, pasajero, equipaje, precioPasaje);
                 _sistema.AgregarPasaje(p);
-                return RedirectToAction("MisPasajes", "Cliente");
+                ViewBag.Exito = "Compra existosa.";
+                ViewBag.TiposEquipaje = Enum.GetValues(typeof(Equipaje));
+                return View(vuelo);
             }
 
             catch (Exception ex)

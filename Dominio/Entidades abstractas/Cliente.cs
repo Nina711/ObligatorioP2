@@ -70,7 +70,7 @@ namespace Dominio.Entidades_no_abst
         {
             if (string.IsNullOrWhiteSpace(_nacionalidad))
             {
-                throw new Exception("La nacionalidad no puede ser vacía");
+                throw new Exception("La nacionalidad no puede ser vacía.");
             }
         }
 

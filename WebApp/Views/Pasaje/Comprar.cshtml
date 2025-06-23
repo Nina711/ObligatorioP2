@@ -1,19 +1,23 @@
 ﻿@using Dominio;
 @using Dominio.Enumeraciones
-@model Dominio.Entidades_no_abst.Vuelo // acá cambie el nombre del modelo para que fuera mas especifico 
+@model Vuelo  
 
 
-<h1>Comprar pasaje</h1>
-<h2>Vuelo @Model.NumVuelo</h2>
+<h1>Finaliza tu compra</h1>
+
 @if (ViewBag.Mensaje != null)
 {
 <p>@ViewBag.Mensaje</p>
 }
+<h2>Datos de vuelo</h2>
+<h3>Vuelo @Model.NumVuelo</h3>
+<h3>Ruta: @Model.Ruta.ToString()</h3>
+<h3>Avion: @Model.Avion.Modelo</h3>
 <form method="post">
 		<input type="hidden" name="numVuelo" value="@Model.NumVuelo" />
 
 	<label>Fecha del vuelo:</label><br>
-	<input type="date" name="fechaPasaje" required><br>
+	<input type="date" name="fechaPasaje" ><br>
 
 	<label>Tipo de equipaje:</label><br>
 	<select name="equipaje">
@@ -26,3 +30,11 @@
 	</select><br>
 	<button type="submit">COMPRAR PASAJE</button>
 </form>
+
+@if (ViewBag.Exito != null)
+{
+	<p>@ViewBag.Exito</p>
+	<br />
+	<a href="/Cliente/MisPasajes">Mis pasajes</a>
+}
+
