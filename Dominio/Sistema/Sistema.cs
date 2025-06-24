@@ -568,14 +568,10 @@ namespace Dominio
         {
             if (c != null && c is Ocasional o)
             {
-                o.Validar();
                 o.EsElegible = s;
-            }
-            else
-            {
-                throw new Exception("Cliente no encontrado.");
             }
         }
     }
 }
+
 

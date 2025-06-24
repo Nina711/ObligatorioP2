@@ -9,12 +9,11 @@
     <p>Puntos actuales: @Model.Puntos</p>
     <label>Editar:</label>
     <input type="hidden" name="correo" value="@Model.Correo" />
-    <input type="number" name="Puntos" required /><br /><br />
+    <input type="number" name="Puntos" /><br /><br />
     <input type="submit" value="Actualizar puntos" />
 </form><br />
-<a href="/Administrador/ListaClientes">Volver</a>
-
-@if(ViewBag.Mensaje!= null)
+@if (ViewBag.Mensaje != null)
 {
     <p>@ViewBag.Mensaje</p>
 }
+<br /><a href="/Administrador/ListaClientes">Volver</a>

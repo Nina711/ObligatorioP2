@@ -24,7 +24,7 @@ namespace WebApp.Controllers.Administradores
                 return RedirectToAction("Index", "Login");
             }
 
-                return View();
+            return View();
         }
 
         [HttpGet]
@@ -121,6 +121,13 @@ namespace WebApp.Controllers.Administradores
                 if (usuario != null && usuario is Cliente c)
                 {
                     p = c as Premium;
+
+                    if (puntos < 0)
+                    {
+                        ViewBag.Mensaje = "La cantidad de puntos debe ser mayor a 0.";
+                        return View(p);
+                    }
+
                     _sistema.EditarPuntos(p, puntos);
                 }
             }
@@ -191,7 +198,7 @@ namespace WebApp.Controllers.Administradores
 
                     if (elegibilidad == "-1")
                     {
-                        ViewBag.Mensaje = "Debés seleccionar una opción válida.";
+                        ViewBag.Mensaje = "Debes seleccionar una opción válida.";
                         return View(o);
                     }
 

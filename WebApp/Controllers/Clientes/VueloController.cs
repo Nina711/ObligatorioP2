@@ -79,7 +79,6 @@ namespace WebApp.Controllers.Clientes
             }
             catch (Exception ex)
             {
-
                 ViewBag.Mensaje = ex.Message;
                 return View(new List<Vuelo>());
             }
