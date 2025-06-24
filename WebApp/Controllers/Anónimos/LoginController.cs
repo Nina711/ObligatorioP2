@@ -46,7 +46,7 @@ namespace WebApp.Controllers.Anónimos
                     else
                     {
                         
-                        ViewBag.Mensaje = "Datos incorrector.";
+                        ViewBag.Mensaje = "Datos incorrectos.";
                     }
                 }
             }

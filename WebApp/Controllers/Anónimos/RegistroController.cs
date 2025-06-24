@@ -22,7 +22,7 @@ namespace WebApp.Controllers.Anónimos
             try
             {
 
-                if (ModelState.IsValid)
+                if (ocasional != null)
                 {
                     _sistema.AltaClienteOcasional(ocasional);
                     HttpContext.Session.SetString("correo", ocasional.Correo);

@@ -21,10 +21,12 @@
     <label>Contraseña</label>
     <input type="password" id="contrasenia" name="Contrasenia" /><br /><br />
 
-    <input type="submit" value="Registrarse" /><br /><br /><br />
-    <p>¿Ya tenes una cuenta? Iniciá sesión <a href="/Login/Index">aquí</a></p> <!-- Agregué esto para poder ir a inicio de sesion-->
-</form>
+    <input type="submit" value="Registrarse" /><br /><br />
 
-@if (ViewBag.Mensaje != null){
-    <p>@ViewBag.Mensaje</p>
-}
+    @if (ViewBag.Mensaje != null)
+    {
+        <p>@ViewBag.Mensaje</p>
+    }
+
+    <br /><p>¿Ya tenes una cuenta? Iniciá sesión <a href="/Login/Index">aquí</a></p> <!-- Agregué esto para poder ir a inicio de sesion-->
+</form>
