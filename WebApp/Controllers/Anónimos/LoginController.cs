@@ -13,6 +13,22 @@ namespace WebApp.Controllers.Anónimos
         [HttpGet]
         public IActionResult Index()
         {
+
+            Cliente clienteLogueado = _sistema.ObtenerClienteLogueado(HttpContext.Session.GetString("correo"));
+            string rol = HttpContext.Session.GetString("rol");
+
+            if (rol != null)
+            {
+                if (rol == "cliente")
+                {
+                    return RedirectToAction("MiPerfil", "Cliente");
+                }
+                else if (rol == "admin")
+                {
+                    return RedirectToAction("ListarPasajes", "Administrador");
+                }
+            }
+
             return View();
         }
 
