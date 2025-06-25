@@ -183,31 +183,31 @@ namespace Dominio
 
         private void PrecargaPasajes()
         {
-            AgregarPasaje(new Pasaje(_vuelos[0], new DateTime(2025, 5, 12), (Cliente)_usuarios[0], Equipaje.Light, 150.50m));
-            AgregarPasaje(new Pasaje(_vuelos[1], new DateTime(2025, 5, 13), (Cliente)_usuarios[1], Equipaje.Cabina, 200.00m));
-            AgregarPasaje(new Pasaje(_vuelos[2], new DateTime(2025, 5, 14), (Cliente)_usuarios[2], Equipaje.Bodega, 300.00m));
-            AgregarPasaje(new Pasaje(_vuelos[3], new DateTime(2025, 5, 15), (Cliente)_usuarios[3], Equipaje.Light, 180.75m));
-            AgregarPasaje(new Pasaje(_vuelos[4], new DateTime(2025, 5, 19), (Cliente)_usuarios[4], Equipaje.Cabina, 220.20m));
-            AgregarPasaje(new Pasaje(_vuelos[5], new DateTime(2025, 5, 13), (Cliente)_usuarios[5], Equipaje.Bodega, 350.00m));
-            AgregarPasaje(new Pasaje(_vuelos[6], new DateTime(2025, 5, 17), (Cliente)_usuarios[6], Equipaje.Light, 120.00m));
-            AgregarPasaje(new Pasaje(_vuelos[7], new DateTime(2025, 5, 15), (Cliente)_usuarios[7], Equipaje.Cabina, 270.00m));
-            AgregarPasaje(new Pasaje(_vuelos[8], new DateTime(2025, 5, 14), (Cliente)_usuarios[8], Equipaje.Bodega, 330.00m));
-            AgregarPasaje(new Pasaje(_vuelos[9], new DateTime(2025, 5, 18), (Cliente)_usuarios[9], Equipaje.Light, 199.99m));
-            AgregarPasaje(new Pasaje(_vuelos[10], new DateTime(2025, 5, 16), (Cliente)_usuarios[0], Equipaje.Cabina, 210.10m));
-            AgregarPasaje(new Pasaje(_vuelos[11], new DateTime(2025, 5, 13), (Cliente)_usuarios[1], Equipaje.Bodega, 289.95m));
-            AgregarPasaje(new Pasaje(_vuelos[12], new DateTime(2025, 5, 15), (Cliente)_usuarios[2], Equipaje.Light, 190.00m));
-            AgregarPasaje(new Pasaje(_vuelos[13], new DateTime(2025, 5, 19), (Cliente)_usuarios[3], Equipaje.Cabina, 250.00m));
-            AgregarPasaje(new Pasaje(_vuelos[14], new DateTime(2025, 5, 14), (Cliente)_usuarios[4], Equipaje.Bodega, 310.00m));
-            AgregarPasaje(new Pasaje(_vuelos[15], new DateTime(2025, 5, 13), (Cliente)_usuarios[5], Equipaje.Light, 175.50m));
-            AgregarPasaje(new Pasaje(_vuelos[16], new DateTime(2025, 5, 15), (Cliente)_usuarios[6], Equipaje.Cabina, 240.00m));
-            AgregarPasaje(new Pasaje(_vuelos[17], new DateTime(2025, 5, 17), (Cliente)_usuarios[7], Equipaje.Bodega, 320.00m));
-            AgregarPasaje(new Pasaje(_vuelos[18], new DateTime(2025, 5, 16), (Cliente)_usuarios[8], Equipaje.Light, 160.00m));
-            AgregarPasaje(new Pasaje(_vuelos[19], new DateTime(2025, 5, 18), (Cliente)_usuarios[9], Equipaje.Cabina, 230.00m));
-            AgregarPasaje(new Pasaje(_vuelos[20], new DateTime(2025, 5, 14), (Cliente)_usuarios[0], Equipaje.Bodega, 280.00m));
-            AgregarPasaje(new Pasaje(_vuelos[21], new DateTime(2025, 5, 13), (Cliente)_usuarios[1], Equipaje.Light, 135.00m));
-            AgregarPasaje(new Pasaje(_vuelos[22], new DateTime(2025, 5, 16), (Cliente)_usuarios[2], Equipaje.Cabina, 220.00m));
-            AgregarPasaje(new Pasaje(_vuelos[23], new DateTime(2025, 5, 17), (Cliente)_usuarios[3], Equipaje.Bodega, 290.00m));
-            AgregarPasaje(new Pasaje(_vuelos[24], new DateTime(2025, 5, 19), (Cliente)_usuarios[4], Equipaje.Light, 160.00m));
+            AgregarPasaje(new Pasaje(_vuelos[0], new DateTime(2025, 7, 14), (Cliente)_usuarios[0], Equipaje.Light, 150.50m)); // Lunes
+            AgregarPasaje(new Pasaje(_vuelos[1], new DateTime(2025, 7, 15), (Cliente)_usuarios[1], Equipaje.Cabina, 200.00m)); // Martes
+            AgregarPasaje(new Pasaje(_vuelos[2], new DateTime(2025, 7, 16), (Cliente)_usuarios[2], Equipaje.Bodega, 300.00m)); // Miércoles
+            AgregarPasaje(new Pasaje(_vuelos[3], new DateTime(2025, 7, 10), (Cliente)_usuarios[3], Equipaje.Light, 180.75m)); // Jueves
+            AgregarPasaje(new Pasaje(_vuelos[4], new DateTime(2025, 7, 14), (Cliente)_usuarios[4], Equipaje.Cabina, 220.20m)); // Lunes
+            AgregarPasaje(new Pasaje(_vuelos[5], new DateTime(2025, 7, 15), (Cliente)_usuarios[5], Equipaje.Bodega, 350.00m)); // Martes
+            AgregarPasaje(new Pasaje(_vuelos[6], new DateTime(2025, 7, 12), (Cliente)_usuarios[6], Equipaje.Light, 120.00m)); // Sábado
+            AgregarPasaje(new Pasaje(_vuelos[7], new DateTime(2025, 7, 10), (Cliente)_usuarios[7], Equipaje.Cabina, 270.00m)); // Jueves
+            AgregarPasaje(new Pasaje(_vuelos[8], new DateTime(2025, 7, 14), (Cliente)_usuarios[8], Equipaje.Bodega, 330.00m)); // Lunes
+            AgregarPasaje(new Pasaje(_vuelos[9], new DateTime(2025, 7, 13), (Cliente)_usuarios[9], Equipaje.Light, 199.99m)); // Domingo
+            AgregarPasaje(new Pasaje(_vuelos[10], new DateTime(2025, 7, 11), (Cliente)_usuarios[0], Equipaje.Cabina, 210.10m)); // Viernes
+            AgregarPasaje(new Pasaje(_vuelos[11], new DateTime(2025, 7, 15), (Cliente)_usuarios[1], Equipaje.Bodega, 289.95m)); // Martes
+            AgregarPasaje(new Pasaje(_vuelos[12], new DateTime(2025, 7, 10), (Cliente)_usuarios[2], Equipaje.Light, 190.00m)); // Jueves
+            AgregarPasaje(new Pasaje(_vuelos[13], new DateTime(2025, 7, 14), (Cliente)_usuarios[3], Equipaje.Cabina, 250.00m)); // Lunes
+            AgregarPasaje(new Pasaje(_vuelos[14], new DateTime(2025, 7, 16), (Cliente)_usuarios[4], Equipaje.Bodega, 310.00m)); // Miércoles
+            AgregarPasaje(new Pasaje(_vuelos[15], new DateTime(2025, 7, 15), (Cliente)_usuarios[5], Equipaje.Light, 175.50m)); // Martes
+            AgregarPasaje(new Pasaje(_vuelos[16], new DateTime(2025, 7, 10), (Cliente)_usuarios[6], Equipaje.Cabina, 240.00m)); // Jueves
+            AgregarPasaje(new Pasaje(_vuelos[17], new DateTime(2025, 7, 12), (Cliente)_usuarios[7], Equipaje.Bodega, 320.00m)); // Sábado
+            AgregarPasaje(new Pasaje(_vuelos[18], new DateTime(2025, 7, 14), (Cliente)_usuarios[8], Equipaje.Light, 160.00m)); // Lunes
+            AgregarPasaje(new Pasaje(_vuelos[19], new DateTime(2025, 7, 13), (Cliente)_usuarios[9], Equipaje.Cabina, 230.00m)); // Domingo
+            AgregarPasaje(new Pasaje(_vuelos[20], new DateTime(2025, 7, 16), (Cliente)_usuarios[0], Equipaje.Bodega, 280.00m)); // Miércoles
+            AgregarPasaje(new Pasaje(_vuelos[21], new DateTime(2025, 7, 15), (Cliente)_usuarios[1], Equipaje.Light, 135.00m)); // Martes
+            AgregarPasaje(new Pasaje(_vuelos[22], new DateTime(2025, 7, 11), (Cliente)_usuarios[2], Equipaje.Cabina, 220.00m)); // Viernes
+            AgregarPasaje(new Pasaje(_vuelos[23], new DateTime(2025, 7, 12), (Cliente)_usuarios[3], Equipaje.Bodega, 290.00m)); // Sábado
+            AgregarPasaje(new Pasaje(_vuelos[24], new DateTime(2025, 7, 14), (Cliente)_usuarios[4], Equipaje.Light, 160.00m)); // Lunes
 
         }
 
@@ -570,6 +570,7 @@ namespace Dominio
             {
                 o.EsElegible = s;
             }
+
         }
     }
 }

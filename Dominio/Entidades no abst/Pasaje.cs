@@ -80,13 +80,10 @@ namespace Dominio.Entidades_no_abst
 
         private void ValidarFecha()
         {
-            /* Lo comento para que no haya problema con las precargas 
-             * 
             if (_fecha < DateTime.Today)
             {
                 throw new Exception("La fecha del pasaje no puede ser menor al día de hoy.");
             }
-            */
 
             int fecha = (int)_fecha.DayOfWeek;
             bool esValido = false;
@@ -129,6 +126,13 @@ namespace Dominio.Entidades_no_abst
             {
                 throw new Exception("Los datos del pasajero no son correctos.");
             }
+        }
+
+        //Para obtener ruta
+
+        public Ruta ObtenerRuta()
+        {
+            return _vuelo.Ruta;
         }
 
         // --- Overrides

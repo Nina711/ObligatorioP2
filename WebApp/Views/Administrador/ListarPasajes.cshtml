@@ -16,17 +16,23 @@ else
 				<th>Fecha y hora</th>
 				<th>Vuelo</th>
 				<th>Tipo de equipaje</th>
+				<th>Ruta</th>
 				<th>Precio del pasaje</th>
+				<th>Correo cliente</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach (Pasaje p in Model)
 			{
+				Ruta ruta = p.ObtenerRuta();
+				string correoCliente = p.Pasajero.Correo;
 				<tr>
 					<td>@p.Fecha.ToString("dd/mm/yyyy hh:mm")</td>
 					<td>@p.Vuelo.NumVuelo</td>
 					<td>@p.Equipaje</td>
+					<td>@ruta.ToString()</td>
 					<td>@p.PrecioPasaje.ToString("C")</td>
+					<td>@correoCliente</td>
 				</tr>
 			}
 		</tbody>

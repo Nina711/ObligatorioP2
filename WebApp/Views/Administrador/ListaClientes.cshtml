@@ -8,10 +8,10 @@
 <table>
     <thead>
         <tr>
+            <th>Correo</th>
             <th>Nombre</th>
             <th>Documento</th>
-            <th>Correo</th>
-            <th>Nacionalidad</th>
+            <th>Tipo cliente</th>
             <th>Elegibilidad/Puntos</th>
         </tr>
     </thead>
@@ -19,10 +19,19 @@
         @foreach (Cliente c in Model)
         {
             <tr>
+                <td>@c.Correo</td>
                 <td>@c.Nombre</td>
                 <td>@c.Documento</td>
-                <td>@c.Correo</td>
-                <td>@c.Nacionalidad</td>
+                <td>@if (c is Ocasional ocasional)
+                    {
+                        <p>Ocasional</p>
+                    }
+                    else
+                    {
+                        <p>Premium</p>
+                    }
+                </td>
+
                 @if (c is Ocasional o)
                 {
                     <td>@o.EsElegible</td>

@@ -35,12 +35,12 @@ namespace WebApp.Controllers.Anónimos
                         if (u is Administrador)
                         {
                             HttpContext.Session.SetString("rol", "admin");
-                            return RedirectToAction("Index", "Administrador");
+                            return RedirectToAction("ListarPasajes", "Administrador");
                         }
                         else if ( u is Cliente)
                         {
                             HttpContext.Session.SetString("rol", "cliente");
-                            return RedirectToAction("Index", "Vuelo");
+                            return RedirectToAction("MiPerfil", "Cliente");
                         }
                     }
                     else

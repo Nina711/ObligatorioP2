@@ -11,8 +11,8 @@
 }
 <h2>Datos de vuelo</h2>
 <h3>Vuelo @Model.NumVuelo</h3>
-<h3>Ruta: @Model.Ruta.ToString()</h3>
-<h3>Avion: @Model.Avion.Modelo</h3>
+<h4>Ruta: @Model.Ruta.ToString()</h4>
+<h4>Avion: @Model.Avion.Modelo</h4>
 <form method="post">
 		<input type="hidden" name="numVuelo" value="@Model.NumVuelo" />
 
@@ -27,9 +27,9 @@
 			<option value="@((int)tipo)">@tipo.ToString()</option>
 		}
 
-	</select><br>
+	</select><br><br />
 	<button type="submit">COMPRAR PASAJE</button>
-</form>
+</form><br />
 
 @if (ViewBag.Exito != null)
 {
