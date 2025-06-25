@@ -9,11 +9,10 @@
 {
 <p>@ViewBag.Mensaje</p>
 }
-<h2>Datos de vuelo</h2>
-<h3>Vuelo @Model.NumVuelo</h3>
-<h4>Frecuencia: @string.Join(", ", @Model.Frecuencia)</h4>
-<h4>Ruta: @Model.Ruta.ToString()</h4>
-<h4>Avion: @Model.Avion.Modelo</h4>
+<h2>Vuelo @Model.NumVuelo</h2>
+<h3>Frecuencia: @string.Join(", ", @Model.Frecuencia)</h1>
+<h3>Ruta: @Model.Ruta.ToString()</h3>
+<h3>Avion: @Model.Avion.Modelo</h3>
 <form method="post">
 		<input type="hidden" name="numVuelo" value="@Model.NumVuelo" />
 

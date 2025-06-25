@@ -11,8 +11,6 @@ namespace WebApp.Controllers.Clientes
         private Sistema _sistema = Sistema.Instancia;
         public IActionResult Index()
         {
-
-            //if(HttpContext.Session.GetString("correo") != null) --- que es esto?
             List<Vuelo> vuelos = _sistema.Vuelos;
             string rol = HttpContext.Session.GetString("rol");
 

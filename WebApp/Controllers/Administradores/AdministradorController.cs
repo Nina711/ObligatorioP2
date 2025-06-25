@@ -86,17 +86,6 @@ namespace WebApp.Controllers.Administradores
         [HttpPost]
         public IActionResult EditarPuntos(int puntos, string correo)
         {
-            string rol = HttpContext.Session.GetString("rol");
-
-            if (rol != "admin" && rol != null)
-            {
-                return RedirectToAction("Index", "Vuelo");
-            }
-            else if (rol == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
             Usuario usuario = _sistema.BuscarUsuarioPorCorreo(correo);
             Premium p = null;
 
@@ -108,7 +97,7 @@ namespace WebApp.Controllers.Administradores
 
                     if (puntos < 0)
                     {
-                        ViewBag.Mensaje = "La cantidad de puntos debe ser mayor a 0.";
+                        ViewBag.Mensaje = "La cantidad de puntos debe ser mayor o igual a 0.";
                         return View(p);
                     }
 
@@ -160,17 +149,7 @@ namespace WebApp.Controllers.Administradores
         [HttpPost]
         public IActionResult EditarElegibilidad(string correo, string elegibilidad)
         {
-            string rol = HttpContext.Session.GetString("rol");
-
-            if (rol != "admin" && rol != null)
-            {
-                return RedirectToAction("Index", "Vuelo");
-            }
-            else if (rol == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
+            
             Usuario usuario = _sistema.BuscarUsuarioPorCorreo(correo);
             Ocasional o = null;
 

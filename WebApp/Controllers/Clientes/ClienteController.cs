@@ -9,6 +9,7 @@ namespace WebApp.Controllers.Clientes
     {
         private Sistema _sistema = Sistema.Instancia;
 
+        [HttpGet]
         public IActionResult MiPerfil()
         {
             Cliente clienteLogueado = _sistema.ObtenerClienteLogueado(HttpContext.Session.GetString("correo"));
@@ -21,7 +22,8 @@ namespace WebApp.Controllers.Clientes
 
             return View(clienteLogueado);
         }
-        
+
+        [HttpGet]
         public IActionResult MisPasajes()
         {
             Cliente clienteLogueado = _sistema.ObtenerClienteLogueado(HttpContext.Session.GetString("correo"));

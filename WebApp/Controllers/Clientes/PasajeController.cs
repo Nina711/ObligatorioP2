@@ -10,7 +10,6 @@ namespace WebApp.Controllers.Clientes
     public class PasajeController : Controller
 
     {
-
         private Sistema _sistema = Sistema.Instancia;
 
         [HttpGet]
@@ -42,17 +41,6 @@ namespace WebApp.Controllers.Clientes
         [HttpPost]
         public IActionResult Comprar(string numVuelo, DateTime fechaPasaje, Equipaje equipaje)
         {
-            string rol = HttpContext.Session.GetString("rol");
-
-            if (rol != "cliente" && rol != null)
-            {
-                return RedirectToAction("Index", "Administrador");
-            }
-            else if (rol == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
             Vuelo vuelo = _sistema.BuscarVueloPorId(numVuelo);
             string correo = HttpContext.Session.GetString("correo");
             Usuario Upasajero = _sistema.BuscarUsuarioPorCorreo(correo);

@@ -5,45 +5,56 @@
 
 <h1>Lista de Clientes</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Correo</th>
-            <th>Nombre</th>
-            <th>Documento</th>
-            <th>Tipo cliente</th>
-            <th>Elegibilidad/Puntos</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Cliente c in Model)
-        {
-            <tr>
-                <td>@c.Correo</td>
-                <td>@c.Nombre</td>
-                <td>@c.Documento</td>
-                <td>@if (c is Ocasional ocasional)
-                    {
-                        <p>Ocasional</p>
-                    }
-                    else
-                    {
-                        <p>Premium</p>
-                    }
-                </td>
+@if (Model == null || Model.Count == 0)
+{
+    <p>Aún no hay clientes registrados.</p>
+    <a href="/Administrador/ListarPasajes">Volver</a>
+}
+else
+{
 
-                @if (c is Ocasional o)
-                {
-                    <td>@o.EsElegible</td>
-                    <td><a href="/Administrador/EditarElegibilidad?correo=@o.Correo" class="btn btn-primary">Editar</a></td>
-                }
-                else if (c is Premium p)
-                {
-                    <td>@p.Puntos</td>
-                    <td><a href="/Administrador/EditarPuntos?correo=@p.Correo" class="btn btn-primary">Editar</a></td>
-                }
+    <table>
+        <thead>
+            <tr>
+                <th>Correo</th>
+                <th>Nombre</th>
+                <th>Documento</th>
+                <th>Tipo cliente</th>
+                <th>Elegibilidad/Puntos</th>
             </tr>
-        }
-    </tbody>
-</table><br />
-<a href="/Administrador/Index">Volver</a>
+        </thead>
+        <tbody>
+            @foreach (Cliente c in Model)
+            {
+                <tr>
+                    <td>@c.Correo</td>
+                    <td>@c.Nombre</td>
+                    <td>@c.Documento</td>
+                    <td>
+                        @if (c is Ocasional ocasional)
+                        {
+                            <p>Ocasional</p>
+                        }
+                        else
+                        {
+                            <p>Premium</p>
+                        }
+                    </td>
+
+                    @if (c is Ocasional o)
+                    {
+                        <td>@o.EsElegible</td>
+                        <td><a href="/Administrador/EditarElegibilidad?correo=@o.Correo" class="btn btn-primary">Editar</a></td>
+                    }
+                    else if (c is Premium p)
+                    {
+                        <td>@p.Puntos</td>
+                        <td><a href="/Administrador/EditarPuntos?correo=@p.Correo" class="btn btn-primary">Editar</a></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a href="/Administrador/ListarPasajes">Volver</a>
+}
