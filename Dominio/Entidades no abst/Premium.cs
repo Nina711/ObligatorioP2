@@ -13,17 +13,7 @@ namespace Dominio.Entidades_no_abst
         public int Puntos
         {
             get { return this._puntos; }
-
-            // Agregué setter para poder editar el valor del atributo
-            set
-            {
-                if (value < 0)
-                {
-                    throw new Exception("La cantidad de puntos no puede ser negativa.");
-                }
-
-                this._puntos = value;
-            }
+            set { this._puntos = value;}
         }
 
 
@@ -31,6 +21,20 @@ namespace Dominio.Entidades_no_abst
         {
             _puntos = 0;
 
+        }
+
+        public void Validar()
+        {
+            base.Validar();
+            ValidarPuntos();
+        }
+
+        private void ValidarPuntos()
+        {
+            if (_puntos < 0)
+            {
+                throw new Exception("La cantidad de puntos no puede ser negativa.");
+            }
         }
 
         // ToString()

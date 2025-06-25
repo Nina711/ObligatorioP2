@@ -9,8 +9,6 @@ namespace WebApp.Controllers.Clientes
     {
         private Sistema _sistema = Sistema.Instancia;
 
-        //Acá agregué lo del control del rol en todas las vistas
-
         public IActionResult MiPerfil()
         {
             Cliente clienteLogueado = _sistema.ObtenerClienteLogueado(HttpContext.Session.GetString("correo"));

@@ -11,6 +11,7 @@
 }
 <h2>Datos de vuelo</h2>
 <h3>Vuelo @Model.NumVuelo</h3>
+<h4>Frecuencia: @string.Join(", ", @Model.Frecuencia)</h4>
 <h4>Ruta: @Model.Ruta.ToString()</h4>
 <h4>Avion: @Model.Avion.Modelo</h4>
 <form method="post">

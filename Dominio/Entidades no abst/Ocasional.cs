@@ -49,6 +49,12 @@ namespace Dominio.Entidades_no_abst
 
         public Ocasional() { }
 
+        //Validaciones
+        public void Validar()
+        {
+            base.Validar();
+        }
+
         // Método para determinar si es elegible o no
 
         private void EsElegibleRandomizado()

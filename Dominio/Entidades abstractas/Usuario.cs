@@ -61,8 +61,8 @@ namespace Dominio.Entidades_abstractas
 
         public void Validar()
         {
-            ValidarContrasenia();
             ValidarCorreo();
+            ValidarContrasenia();
         }
 
         // --- Overrides

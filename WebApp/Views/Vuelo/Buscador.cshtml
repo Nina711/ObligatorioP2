@@ -1,16 +1,14 @@
 ﻿@using Dominio;
 @model List<Vuelo>
 
-<h1>Buscador de vuelos</h1>
-<h2>Buscá tu vuelo por aeropuerto</h2>
+<h1>Buscá tu vuelo por aeropuerto</h1>
 
 <form method="post">
-	<label>Ingrese el código del aeropuerto de salida</label>
+	<label>Código de salida:</label>
 	<input type="text" name="codSalida">
-	<br />
-	<label>Ingrese el código del aeropuerto de llegada</label>
+	<label>Código de llegada:</label>
 	<input type="text" name="codLlegada">
-	<button type="submit">Buscar</button>
+	<button type="submit">Buscar vuelo</button>
 </form>
 
 @if (ViewBag.Mensaje != null)

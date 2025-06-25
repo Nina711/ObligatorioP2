@@ -10,22 +10,6 @@ namespace WebApp.Controllers.Administradores
     {
         private Sistema _sistema = Sistema.Instancia;
 
-        [HttpGet]
-        public IActionResult Index()
-        {
-            string rol = HttpContext.Session.GetString("rol");
-
-            if (rol != "admin" && rol != null)
-            {
-                return RedirectToAction("Index", "Vuelo");
-            }
-            else if (rol == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
-            return View();
-        }
 
         [HttpGet]
         public IActionResult ListarPasajes()
