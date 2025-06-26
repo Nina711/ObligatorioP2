@@ -10,12 +10,12 @@
     <p>Elegibilidad actual: @Model.EsElegible</p>
     <label>Editar:</label>
     <input type="hidden" name="correo" value="@Model.Correo" />
-    <select name="elegibilidad">
+    <select class="form-select w-25"  name="elegibilidad">
         <option value="-1">Seleccione una opción</option>
         <option value="Elegible">Elegible</option>
         <option value="No elegible">No Elegible</option>
     </select><br /><br />
-    <input type="submit" value="Actualizar elegibilidad" />
+    <input class="btn btn-primary"  type="submit" value="Actualizar elegibilidad" />
 </form><br />
 @if (ViewBag.Mensaje != null)
 {

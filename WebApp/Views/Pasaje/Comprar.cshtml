@@ -17,10 +17,10 @@
 		<input type="hidden" name="numVuelo" value="@Model.NumVuelo" />
 
 	<label>Fecha del vuelo:</label><br>
-	<input type="date" name="fechaPasaje" ><br>
+		<input type="date" class="form-control w-25" name="fechaPasaje"><br>
 
 	<label>Tipo de equipaje:</label><br>
-	<select name="equipaje">
+		<select class="form-select w-25"  name="equipaje">
 		<option value="">Seleccione el tipo de equipaje</option>
 		@foreach (Equipaje tipo in ViewBag.TiposEquipaje)
 		{
@@ -28,7 +28,7 @@
 		}
 
 	</select><br><br />
-	<button type="submit">COMPRAR PASAJE</button>
+		<button class="btn btn-primary" type="submit">COMPRAR PASAJE</button>
 </form><br />
 
 @if (ViewBag.Exito != null)

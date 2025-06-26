@@ -3,14 +3,14 @@
 
 <h1>Buscá tu vuelo por aeropuerto</h1>
 
-<form method="post">
+<form  method="post">
 	<label>Código de salida:</label>
-	<input type="text" name="codSalida">
+	<input class="form-control w-25"  type="text" name="codSalida"><br />
 	<label>Código de llegada:</label>
-	<input type="text" name="codLlegada">
-	<button type="submit">Buscar vuelo</button>
+	<input class="form-control w-25" type="text" name="codLlegada"><br />
+	<input class="btn btn-primary" type="submit" value="Buscar vuelo" />
 </form>
-
+<br />
 @if (ViewBag.Mensaje != null)
 {
 	<p>@ViewBag.Mensaje</p>
@@ -20,7 +20,7 @@
 @if (Model != null && Model.Count > 0)
 {
 
-	<table>
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Número de avión</th>
