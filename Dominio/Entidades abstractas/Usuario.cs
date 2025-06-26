@@ -51,11 +51,11 @@ namespace Dominio.Entidades_abstractas
 
             if (_contrasenia.Length < 8)
             {
-                throw new Exception("La contraseña debe tener al menos 8 caracteres.");
+                throw new Exception("La contraseña debe tener al menos 8 caracteres y contener al menos una letra y un número.");
             }
 
             if(!(_contrasenia.Any(char.IsLetter)) || !(_contrasenia.Any(char.IsDigit))){
-                throw new Exception("La contraseña debe contener al menos una letra y un número.");
+                throw new Exception("La contraseña debe tener al menos 8 caracteres y contener al menos una letra y un número.");
             }
         }
 
